@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheese & Charcuterie Boards - Farmhouse Artisan Cheese</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Category Hero with 3-image composite */
+        .category-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .category-hero-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .category-hero-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5);
+        }
+        
+        .category-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 40px;
+        }
+        
+        .category-hero h1 {
+            font-size: 4em;
+            font-weight: 100;
+            letter-spacing: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .category-hero p {
+            font-size: 1.1em;
+            color: #ccc;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        
+        /* Text content section with smaller image */
+        .content-section {
+            padding: 120px 8%;
+            background: #fff;
+        }
+        
+        .content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+        
+        .content-text h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+        }
+        
+        .content-text p {
+            font-size: 1.05em;
+            line-height: 2;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .content-image {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+        }
+        
+        .content-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        @media (max-width: 1024px) {
+            .content-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .category-hero h1 {
+                font-size: 3em;
+                letter-spacing: 10px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .category-hero {
+                height: 50vh;
+            }
+            
+            .category-hero h1 {
+                font-size: 2em;
+                letter-spacing: 8px;
+            }
+            
+            .category-hero p {
+                font-size: 0.95em;
+            }
+            
+            .content-section {
+                padding: 80px 5%;
+            }
+            
+            .content-text h2 {
+                font-size: 2em;
+                letter-spacing: 8px;
+            }
+            
+            .content-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .category-hero h1 {
+                font-size: 1.5em;
+                letter-spacing: 6px;
+            }
+            
+            .content-text h2 {
+                font-size: 1.5em;
+                letter-spacing: 6px;
+            }
+        }
+
+        .events-gifting-section {
+            background: #000;
+        }
+
+        .events-gifting-section .content-text h2,
+        .events-gifting-section .content-text p {
+            color: #fff;
+        }
+
+        /* Contact CTA Button in Events & Gifting Section */
+        .contact-cta-button {
+            display: inline-block;
+            padding: 18px 60px;
+            background: #000;
+            color: #fff;
+            border: 1px solid #000;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 300;
+            font-size: 0.75em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            margin-top: 30px;
+        }
+
+        .contact-cta-button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Sticky Order Form Tab */
+        .sticky-order-tab {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #000;
+            color: #D4AF37; /* Gold */
+            border: none;
+            border-radius: 8px 0 0 8px; /* Rounded left corners only */
+            padding: 20px 12px;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 300;
+            font-size: 0.8em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            cursor: pointer;
+            transition: all 0.3s ease, opacity 0.3s ease;
+            z-index: 998;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        }
+        .sticky-order-tab:hover {
+            background: #1a1a1a;
+            padding-left: 15px;
+        }
+
+        /* Modal Overlay */
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .order-modal.active {
+            display: flex;
+        }
+
+        /* Modal Content Box */
+        .modal-content {
+            background: #fff;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh; /* Limit height to 90% of viewport */
+            padding: 60px 50px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow-y: auto; /* Allow scrolling if content is too tall */
+        }
+
+        /* Close Button */
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            font-size: 2.5em;
+            font-weight: 100;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        /* Modal Heading */
+        .modal-content h2 {
+            font-size: 2em;
+            font-weight: 100;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        /* Form Styling */
+        .order-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #000;
+        }
+
+        .order-form input,
+        .order-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5e5e5;
+            background: #fafafa;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 0.95em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .order-form input:focus,
+        .order-form textarea:focus {
+            outline: none;
+            border-color: #000;
+            background: #fff;
+        }
+
+        .order-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Submit Button */
+        .modal-submit {
+            width: 100%;
+            padding: 18px 60px;
+            background: #000;
+            color: #fff;
+            border: 1px solid #000;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-weight: 300;
+            font-size: 0.75em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            margin-top: 10px;
+        }
+
+        .modal-submit:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 40px 30px;
+                width: 95%;
+            }
+            
+            .modal-content h2 {
+                font-size: 1.5em;
+                letter-spacing: 4px;
+            }
+            
+            .sticky-order-tab {
+                font-size: 0.7em;
+                padding: 15px 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
+                <span class="logo-text">Farmhouse Artisan Cheese</span>
+            </a>              
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-trigger">Collection</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="cheeses.html">Cheeses</a></li>
+                        <li><a href="boards.html">Cheese & Charcuterie Boards</a></li>
+                        <li><a href="groceries.html">Fine Groceries</a></li>
+                        <li><a href="gifts.html">Boutique Gifts</a></li>
+                        <li><a href="gift-boxes.html">Gift Boxes</a></li>
+                        <li><a href="housemade.html">Housemade</a></li>
+                    </ul>
+                </li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="category-hero">
+        <div class="category-hero-images">
+            <img src="./assets/images/char-event.png" alt="Custom Boards">
+        </div>
+        <div class="category-hero-content">
+            <h1>Charcuterie Boards</h1>
+            <p>Elegance Without the Effort</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="content-container">
+            <div class="content-text">
+                <h2>The Art of Sharing</h2>
+                <p>There's something timeless about a beautiful charcuterie board: the colours, the textures, the pleasure of sharing good food with good company. At Farmhouse Artisan Cheese in Oakville, we turn that moment into an art form—without you having to lift a finger.</p>
+                <p>Our charcuterie boards are thoughtfully curated with premium cheeses, hand-selected cured meats, seasonal accompaniments, and artisan crackers. Every board showcases the same attention to quality and craft you'll find in our collection of over 120 specialty cheeses, ensuring each bite is balanced, flavourful, and memorable.</p>
+            </div>
+            <div class="content-image">
+                <img src="./assets/images/char1.JPG" alt="Board Detail" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="about" style="background: #fafafa;">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./assets/images/char2.jpg" alt="Custom Boards" loading="lazy">
+            </div>
+            <div class="about-text">
+                <h2 style="color: #000;">Your Way</h2>
+                <p style="color: #000;">You can enjoy our expertise in two easy ways:</p>
+                <p style="color: #000;">Choose a <strong>beautifully arranged board</strong> crafted by Farmhouse Artisan Cheese, or <strong>bring your favourite board from home</strong> and let our team custom-fill it with the perfect mix of cheeses, charcuterie, and pairings tailored to your taste, guest list, and occasion.</p>
+                <p style="color: #000;"><i>(Minimum 2 business days required for advanced orders.)</i></p>
+                <div style="text-align: left; margin-top: 40px;">
+                <button class="contact-cta-button">Contact Us</button>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section events-gifting-section">
+        <div class="content-container">
+            <div class="content-text">
+                <h2>Events</h2>
+                <p>Planning a corporate event, client meeting, or team celebration? Our charcuterie spreads make hosting effortless and impressive. We also offer elegant <strong>seasonal gifting options</strong>, from curated boards to gift-ready selections, so you can wow clients, colleagues, friends, and family with zero stress.</p>
+                <p>Visit us in Oakville and chat with our knowledgeable staff about your next gathering. Whether you're hosting two people or twenty, we'll help you design a charcuterie experience that looks stunning, tastes incredible, and makes you the perfect host.</p>
+            </div>
+            <div class="content-image">
+                <img src="./assets/images/charcuterie.jpeg" alt="Event Boards" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-section">
+        <div class="quote">
+            Every board showcases the same attention to quality and craft you'll find in our collection of over 120 specialty cheeses
+        </div>
+        <div class="quote-author">— Farmhouse Artisan Cheese</div>
+            <div style="text-align: center; margin-top: 50px;">
+                <button class="contact-cta-button">Contact Us</button>
+            </div>
+    </section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section footer-logo">
+            <div>
+                <a href="index.html">
+                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo.png" alt="Farmhouse Artisan Cheese">
+                </a>
+                <div style="margin-top: 30px;">
+                    <div style="display: flex; gap: 20px; align-items: center;">
+                        <a href="https://www.facebook.com/farmhouseartisancheese/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="opacity: 0.8; transition: opacity 0.3s ease; display: block;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/farmhouseartisancheese/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="opacity: 0.8; transition: opacity 0.3s ease; display: block;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <p style="margin-top: 20px; color: #999; font-size: 0.9em; font-weight: 300; letter-spacing: 1px;">info@farmhouseartisancheese.com</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Navigate</h3>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="index.html#collection">Our Collection</a></li>
+                <li><a href="notes.html">Notes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Location</h3>
+            <p>345 Kerr Street<br>
+            Oakville, ON L6K 3B9<br>
+            (905) 582-9600<br>
+            </p>
+        </div>
+        <div class="footer-section">
+            <h3>Hours</h3>
+            <p>
+            Mon: Closed<br>
+            Tue–Thu: 11am–5pm<br>
+            Fri: 10am–6pm<br>
+            Sat: 10am–6pm<br>
+            Sun: 11am–3pm
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Farmhouse Artisan Cheese. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="scripts.js"></script>
+
+<!-- Sticky Order Form Tab -->
+<!-- <button class="sticky-order-tab">Order Form</button> -->
+
+<!-- Modal -->
+<div class="order-modal" id="orderModal">
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2>Contact Us</h2>
+        <form class="order-form">
+            <div class="form-group">
+                <label for="modal-name">Name</label>
+                <input type="text" id="modal-name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="modal-email">Email</label>
+                <input type="email" id="modal-email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="modal-phone">Phone</label>
+                <input type="tel" id="modal-phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="modal-message">Message</label>
+                <textarea id="modal-message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="modal-submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+// Get elements
+const modal = document.getElementById('orderModal');
+const contactButtons = document.querySelectorAll('.contact-cta-button'); // Get all contact buttons
+const stickyTab = document.querySelector('.sticky-order-tab');
+const closeButton = document.querySelector('.modal-close');
+
+// Open modal
+function openModal() {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+}
+
+// Close modal
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Event listeners for contact buttons (multiple on page)
+contactButtons.forEach(button => {
+    button.addEventListener('click', openModal);
+});
+
+// Event listener for sticky tab (only if it exists)
+if (stickyTab) {
+    stickyTab.addEventListener('click', openModal);
+    
+    // Show/hide sticky tab on scroll
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            stickyTab.style.opacity = '1';
+            stickyTab.style.pointerEvents = 'auto';
+        } else {
+            stickyTab.style.opacity = '0';
+            stickyTab.style.pointerEvents = 'none';
+        }
+    });
+    
+    // Initially hide the tab
+    stickyTab.style.opacity = '0';
+    stickyTab.style.pointerEvents = 'none';
+}
+
+closeButton.addEventListener('click', closeModal);
+
+// Close on outside click
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+    }
+});
+
+// Form submit
+document.querySelector('.order-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Form submitted! (This will be connected to email later)');
+    closeModal();
+});
+</script>
+
+</body>
+</html>
