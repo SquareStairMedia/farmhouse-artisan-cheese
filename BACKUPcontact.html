@@ -76,7 +76,7 @@
             
             <div class="contact-form">
                 <h2>Send a Message</h2>
-                <form id="contactForm">
+                <form action="#" method="POST">
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -98,43 +98,7 @@
                     </div>
                     
                     <button type="submit" class="submit-button">Send Message</button>
-                    <div id="formStatus" style="margin-top: 20px; text-align: center;"></div>
                 </form>
-
-                <script>
-                document.getElementById('contactForm').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    
-                    const formData = {
-                        name: document.getElementById('name').value,
-                        email: document.getElementById('email').value,
-                        phone: document.getElementById('phone').value,
-                        message: document.getElementById('message').value
-                    };
-                    
-                    const statusDiv = document.getElementById('formStatus');
-                    statusDiv.textContent = 'Sending...';
-                    
-                    try {
-                        const response = await fetch('http://localhost:3000/api/contact', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(formData)
-                        });
-                        
-                        if (response.ok) {
-                            statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
-                            statusDiv.style.color = 'green';
-                            document.getElementById('contactForm').reset();
-                        } else {
-                            throw new Error('Failed to send');
-                        }
-                    } catch (error) {
-                        statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
-                        statusDiv.style.color = 'red';
-                    }
-                });
-                </script>
             </div>
         </div>
     </section>
@@ -194,63 +158,8 @@
         <p>&copy; 2025 Farmhouse Artisan Cheese. All rights reserved.</p>
     </div>
 </footer>
-    
-<!-- Success Modal -->
-<div class="success-modal" id="successModal">
-    <div class="success-content">
-        <h2>Thank You!</h2>
-        <p>Your message has been sent successfully. Please check your email for our confirmation. We'll be in touch soon.</p>
-        <button class="success-close" onclick="closeSuccessModal()">Close</button>
-    </div>
-</div>
 
 <script src="scripts.js"></script>
-
-<script>
-document.getElementById('contactForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
     
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
-    };
-    
-    const statusDiv = document.getElementById('formStatus');
-    statusDiv.textContent = 'Sending...';
-    
-    try {
-        const response = await fetch('http://localhost:3000/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        
-        if (response.ok) {
-            document.getElementById('successModal').classList.add('active');
-            document.getElementById('contactForm').reset();
-            statusDiv.textContent = '';
-        } else {
-            throw new Error('Failed to send');
-        }
-    } catch (error) {
-        statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
-        statusDiv.style.color = 'red';
-    }
-});
-
-function closeSuccessModal() {
-    document.getElementById('successModal').classList.remove('active');
-}
-
-// Close on outside click
-document.getElementById('successModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        closeSuccessModal();
-    }
-});
-</script>
-
 </body>
 </html>
