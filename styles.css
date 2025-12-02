@@ -679,7 +679,7 @@ nav {
    ============================================ */
 
 footer {
-    background: #000;
+    background: #000;width: 100% !important;
     color: #fff;
     padding: 40px 8% 50px;
 }
