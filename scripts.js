@@ -62,3 +62,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Newsletter modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterButton = document.getElementById('newsletterButton');
+    const newsletterModal = document.getElementById('newsletterModal');
+    const newsletterClose = document.querySelector('.newsletter-modal-close');
+    const newsletterForm = document.getElementById('newsletterForm');
+    
+    if (newsletterButton) {
+        newsletterButton.addEventListener('click', function() {
+            newsletterModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (newsletterClose) {
+        newsletterClose.addEventListener('click', function() {
+            newsletterModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    newsletterModal.addEventListener('click', function(e) {
+        if (e.target === newsletterModal) {
+            newsletterModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('newsletter-name').value,
+                email: document.getElementById('newsletter-email').value,
+                phone: document.getElementById('newsletter-phone').value,
+                seasonalOfferings: document.getElementById('seasonal-offerings').checked
+            };
+            
+            const statusDiv = document.getElementById('newsletterStatus');
+            statusDiv.textContent = 'Subscribing...';
+            
+            try {
+                const response = await fetch('https://farmhouse-backend.onrender.com/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.ok) {
+                    statusDiv.textContent = 'Thank you for subscribing!';
+                    statusDiv.style.color = 'green';
+                    newsletterForm.reset();
+                    setTimeout(() => {
+                        newsletterModal.classList.remove('active');
+                        document.body.style.overflow = '';
+                        statusDiv.textContent = '';
+                    }, 2000);
+                } else {
+                    throw new Error('Failed to subscribe');
+                }
+            } catch (error) {
+                statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
+                statusDiv.style.color = 'red';
+            }
+        });
+    }
+});

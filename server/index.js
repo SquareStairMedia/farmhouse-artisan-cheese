@@ -1,3 +1,4 @@
+// /server/index.js
 const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
@@ -65,6 +66,53 @@ app.post('/api/contact', async (req, res) => {
   } catch (error) {
     console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send email' });
+  }
+});
+
+// Newsletter signup endpoint
+app.post('/api/newsletter', async (req, res) => {
+  try {
+    const { name, email, phone, seasonalOfferings } = req.body;
+
+    if (!name || !email) {
+      return res.status(400).json({ error: 'Name and email are required' });
+    }
+
+    // Send notification email to shop owner
+    await resend.emails.send({
+      from: 'farmhouse-test@radarmagnet.com',
+      to: process.env.OWNER_EMAIL,
+      subject: `New Newsletter Signup from ${name}`,
+      html: `
+        <h2>New Newsletter Signup</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
+      `
+    });
+
+    // Send welcome email to subscriber
+    await resend.emails.send({
+      from: 'farmhouse-test@radarmagnet.com',
+      to: email,
+      subject: 'Welcome to Farmhouse Artisan Cheese',
+      html: `
+        <h2>Welcome, ${name}!</h2>
+        <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
+        <p>You'll be the first to hear about new arrivals, seasonal selections, and special events at our Oakville location.</p>
+        <br>
+        <p>Best regards,</p>
+        <p><strong>Farmhouse Artisan Cheese</strong></p>
+        <p>345 Kerr Street, Oakville, ON L6K 3B7</p>
+        <p>(905) 582-9600</p>
+      `
+    });
+
+    res.json({ success: true, message: 'Newsletter signup successful' });
+  } catch (error) {
+    console.error('Error processing newsletter signup:', error);
+    res.status(500).json({ error: 'Failed to process signup' });
   }
 });
 

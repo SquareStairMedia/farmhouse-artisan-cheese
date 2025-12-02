@@ -1215,3 +1215,180 @@ footer {
     background: #fff;
     color: #000;
 }
+
+/* Newsletter Button */
+.newsletter-cta {
+    text-align: center;
+    padding: 40px 0 0;
+    margin-top: 60px;
+    border-top: 1px solid #222;
+}
+
+.newsletter-button {
+    display: inline-block;
+    padding: 18px 60px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 0.75em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.newsletter-button:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* Newsletter Modal */
+.newsletter-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter-modal.active {
+    display: flex;
+}
+
+.newsletter-modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    padding: 60px 50px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.newsletter-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: none;
+    border: none;
+    font-size: 2.5em;
+    font-weight: 100;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.newsletter-modal-close:hover {
+    color: #000;
+}
+
+.newsletter-modal-content h2 {
+    font-size: 2em;
+    font-weight: 100;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.newsletter-modal-content p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.newsletter-form .form-group {
+    margin-bottom: 25px;
+}
+
+.newsletter-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.85em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #000;
+}
+
+.newsletter-form input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    background: #fafafa;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 0.95em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    outline: none;
+    border-color: #000;
+    background: #fff;
+}
+
+.newsletter-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.newsletter-checkbox input[type="checkbox"] {
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    margin-top: 2px;
+}
+
+.newsletter-checkbox label {
+    text-transform: none;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+    margin-bottom: 0;
+}
+
+.newsletter-submit {
+    width: 100%;
+    padding: 18px 60px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #000;
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 0.75em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    margin-top: 10px;
+}
+
+.newsletter-submit:hover {
+    background: #fff;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .newsletter-modal-content {
+        padding: 40px 30px;
+        width: 95%;
+    }
+    
+    .newsletter-modal-content h2 {
+        font-size: 1.5em;
+        letter-spacing: 4px;
+    }
+}
