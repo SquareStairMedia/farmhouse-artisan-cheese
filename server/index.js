@@ -56,7 +56,7 @@ app.post('/api/contact', async (req, res) => {
         <br>
         <p>Best regards,</p>
         <p><strong>Farmhouse Artisan Cheese</strong></p>
-        <p>345 Kerr Street, Oakville, ON L6K 3B9</p>
+        <p>345 Kerr Street, Oakville, ON L6K 3B7</p>
         <p>(905) 582-9600</p>
       `
     });
