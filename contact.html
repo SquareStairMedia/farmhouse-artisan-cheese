@@ -140,6 +140,9 @@
     </section>
 
 <footer>
+    <div class="newsletter-cta">
+        <button class="newsletter-button" id="newsletterButton">Join Our Email List</button>
+    </div>
     <div class="footer-content">
         <div class="footer-section footer-logo">
             <div>
@@ -205,6 +208,39 @@
 </div>
 
 <script src="scripts.js"></script>
+
+<!-- Newsletter Modal -->
+<div class="newsletter-modal" id="newsletterModal">
+    <div class="newsletter-modal-content">
+        <button class="newsletter-modal-close">&times;</button>
+        <h2>Stay Connected</h2>
+        <p>Be the first to hear about new arrivals, seasonal selections, and special events.</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <div class="form-group">
+                <label for="newsletter-name">Name *</label>
+                <input type="text" id="newsletter-name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="newsletter-email">Email *</label>
+                <input type="email" id="newsletter-email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="newsletter-phone">Phone</label>
+                <input type="tel" id="newsletter-phone" name="phone">
+            </div>
+            
+            <div class="newsletter-checkbox">
+                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
+                <label for="seasonal-offerings">I'd like to hear about seasonal offerings and special events</label>
+            </div>
+            
+            <button type="submit" class="newsletter-submit">Subscribe</button>
+            <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
+        </form>
+    </div>
+</div>
 
 <script>
 document.getElementById('contactForm').addEventListener('submit', async (e) => {

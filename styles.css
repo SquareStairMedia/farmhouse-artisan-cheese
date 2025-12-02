@@ -681,7 +681,7 @@ nav {
 footer {
     background: #000;
     color: #fff;
-    padding: 120px 8% 50px;
+    padding: 40px 8% 50px;
 }
 
 .footer-content {
@@ -1219,9 +1219,7 @@ footer {
 /* Newsletter Button */
 .newsletter-cta {
     text-align: center;
-    padding: 40px 0 0;
-    margin-top: 60px;
-    border-top: 1px solid #222;
+    padding: 0px 0 40px 0;
 }
 
 .newsletter-button {
