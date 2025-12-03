@@ -53,7 +53,8 @@ app.post('/api/contact', async (req, res) => {
         <h2>Thank you for reaching out!</h2>
         <p>Dear ${name},</p>
         <p>We've received your message and will get back to you shortly.</p>
-        <p>In the meantime, feel free to visit us at our Oakville location or browse our selection online.</p>
+        <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
+        <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
         <br>
         <p>Best regards,</p>
         <p><strong>Farmhouse Artisan Cheese</strong></p>
@@ -100,7 +101,9 @@ app.post('/api/newsletter', async (req, res) => {
       html: `
         <h2>Welcome, ${name}!</h2>
         <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
-        <p>You'll be the first to hear about new arrivals, seasonal selections, and special events at our Oakville location.</p>
+        <p>We look forward to providing you with exciting new arrivals, seasonal selections, and special events at our Oakville location.</p>
+        <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
+        <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
         <br>
         <p>Best regards,</p>
         <p><strong>Farmhouse Artisan Cheese</strong></p>
