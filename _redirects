@@ -1,0 +1,40 @@
+/about /about.html 301
+/contact /contact.html 301
+/cheeses /cheeses.html 301
+/blog /notes.html 301
+/faqs /index.html 301
+
+/cheeses/soft /cheeses.html 301
+/cheeses/semi-soft /cheeses.html 301
+/cheeses/hard /cheeses.html 301
+/cheeses/blue /cheeses.html 301
+/cheeses/goat /cheeses.html 301
+/cheeses/sheep /cheeses.html 301
+
+/product-category/cheese /cheeses.html 301
+/product-category/gift-boxes /gift-boxes.html 301
+/product-category/charcuterie /boards.html 301
+/product-category/crackers /groceries.html 301
+/product-category/wine-pairings /groceries.html 301
+
+/product/*cheese* /cheeses.html 301
+/product/*gift*box* /gift-boxes.html 301
+/product/*charcuterie* /boards.html 301
+/product/*board* /boards.html 301
+/product/*cracker* /groceries.html 301
+/product/*preserve* /groceries.html 301
+/product/*pantry* /groceries.html 301
+
+/product/* /index.html 301
+
+/blog/* /notes.html 301
+
+/classes /index.html 301
+/events /index.html 301
+
+/cart /index.html 301
+/checkout /index.html 301
+/my-account /index.html 301
+
+/privacy-policy /index.html 301
+/terms-and-conditions /index.html 301
