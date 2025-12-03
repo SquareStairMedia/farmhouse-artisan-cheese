@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const { Resend } = require('resend');
+const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
@@ -14,13 +15,31 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 app.use(cors());
 app.use(express.json());
 
+// Rate limiting for contact form - 3 submissions per hour per IP
+const contactLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 3, // limit each IP to 3 requests per windowMs
+  message: 'Too many contact form submissions from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Rate limiting for newsletter signup - 2 signups per hour per IP
+const newsletterLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 2, // limit each IP to 2 requests per windowMs
+  message: 'Too many newsletter signup attempts from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // Health check endpoint
 app.get('/', (req, res) => {
   res.json({ status: 'Farmhouse Artisan Cheese API is running' });
 });
 
-// Contact form endpoint
-app.post('/api/contact', async (req, res) => {
+// Contact form endpoint with rate limiting
+app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
 
@@ -29,8 +48,7 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
 
-    // TEMPORARILY DISABLED FOR TESTING - Send notification email to shop owner
-    /*
+    // Send notification email to shop owner
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
@@ -44,7 +62,6 @@ app.post('/api/contact', async (req, res) => {
         <p>${message}</p>
       `
     });
-    */
 
     // Send auto-reply to customer
     await resend.emails.send({
@@ -55,7 +72,7 @@ app.post('/api/contact', async (req, res) => {
         <h2>Thank you for reaching out!</h2>
         <p>Dear ${name},</p>
         <p>We've received your message and will get back to you shortly.</p>
-        <p>Browse through "Our Collection" online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
+        <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
         <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
         <br>
         <p>Best regards,</p>
@@ -72,8 +89,8 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Newsletter signup endpoint
-app.post('/api/newsletter', async (req, res) => {
+// Newsletter signup endpoint with rate limiting
+app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
     const { name, email, phone, seasonalOfferings } = req.body;
 
@@ -81,8 +98,7 @@ app.post('/api/newsletter', async (req, res) => {
       return res.status(400).json({ error: 'Name and email are required' });
     }
 
-    // TEMPORARILY DISABLED FOR TESTING - Send notification email to shop owner
-    /*
+    // Send notification email to shop owner
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
@@ -95,7 +111,6 @@ app.post('/api/newsletter', async (req, res) => {
         <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
       `
     });
-    */
 
     // Send welcome email to subscriber
     await resend.emails.send({
