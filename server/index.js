@@ -18,7 +18,7 @@ app.use(express.json());
 // Rate limiting for contact form - 3 submissions per hour per IP
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 3, // limit each IP to 3 requests per windowMs
+  max: 10, // limit each IP to 10 requests per windowMs
   message: 'Too many contact form submissions from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -27,7 +27,7 @@ const contactLimiter = rateLimit({
 // Rate limiting for newsletter signup - 2 signups per hour per IP
 const newsletterLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 2, // limit each IP to 2 requests per windowMs
+  max: 5, // limit each IP to 5 requests per windowMs
   message: 'Too many newsletter signup attempts from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
