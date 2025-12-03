@@ -49,7 +49,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     }
 
     // Send notification email to shop owner (commented out during testing)
-    /*await resend.emails.send({
+    await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
       subject: `New Contact Form Submission from ${name}`,
@@ -61,7 +61,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `
-    }); */
+    }); 
 
     // Send auto-reply to customer
     await resend.emails.send({
@@ -99,7 +99,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     }
 
     // Send notification email to shop owner (commented out during testing)
-    /*await resend.emails.send({
+    await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
       subject: `New Newsletter Signup from ${name}`,
@@ -110,7 +110,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
         <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
       `
-    }); */
+    });
 
     // Send welcome email to subscriber
     await resend.emails.send({
