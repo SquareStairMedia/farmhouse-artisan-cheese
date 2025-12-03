@@ -55,7 +55,7 @@ app.post('/api/contact', async (req, res) => {
         <h2>Thank you for reaching out!</h2>
         <p>Dear ${name},</p>
         <p>We've received your message and will get back to you shortly.</p>
-        <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
+        <p>Browse through "Our Collection" online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
         <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
         <br>
         <p>Best regards,</p>
