@@ -29,7 +29,8 @@ app.post('/api/contact', async (req, res) => {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
 
-    // Send notification email to shop owner
+    // TEMPORARILY DISABLED FOR TESTING - Send notification email to shop owner
+    /*
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
@@ -43,10 +44,11 @@ app.post('/api/contact', async (req, res) => {
         <p>${message}</p>
       `
     });
+    */
 
     // Send auto-reply to customer
     await resend.emails.send({
-     from: 'farmhouse-test@radarmagnet.com',
+      from: 'farmhouse-test@radarmagnet.com',
       to: email,
       subject: 'Thank you for contacting Farmhouse Artisan Cheese',
       html: `
@@ -79,7 +81,8 @@ app.post('/api/newsletter', async (req, res) => {
       return res.status(400).json({ error: 'Name and email are required' });
     }
 
-    // Send notification email to shop owner
+    // TEMPORARILY DISABLED FOR TESTING - Send notification email to shop owner
+    /*
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
       to: process.env.OWNER_EMAIL,
@@ -92,6 +95,7 @@ app.post('/api/newsletter', async (req, res) => {
         <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
       `
     });
+    */
 
     // Send welcome email to subscriber
     await resend.emails.send({
