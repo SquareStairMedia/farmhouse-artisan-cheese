@@ -4,12 +4,16 @@
 /blog /notes.html 301
 /faqs /index.html 301
 
+/charcuterie /boards.html 301
+
 /cheeses/soft /cheeses.html 301
 /cheeses/semi-soft /cheeses.html 301
 /cheeses/hard /cheeses.html 301
 /cheeses/blue /cheeses.html 301
 /cheeses/goat /cheeses.html 301
 /cheeses/sheep /cheeses.html 301
+
+/gifts 
 
 /product-category/cheese /cheeses.html 301
 /product-category/gift-boxes /gift-boxes.html 301
@@ -37,3 +41,5 @@
 
 /privacy-policy /index.html 301
 /terms-and-conditions /index.html 301
+
+/* /index.html 301
