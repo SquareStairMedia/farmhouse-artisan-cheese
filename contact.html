@@ -138,6 +138,11 @@
                         });
                         
                         if (response.ok) {
+                            // Track this event in Google Analytics
+                            gtag('event', 'form_submit', {
+                                'event_category': 'Contact',
+                                'event_label': 'Contact Form Submission'
+                            });
                             statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
                             statusDiv.style.color = 'green';
                             document.getElementById('contactForm').reset();

@@ -831,6 +831,11 @@ const closeButton = document.querySelector('.modal-close');
 
 // Open modal
 function openModal() {
+        gtag('event', 'click', {
+        'event_category': 'Button',
+        'event_label': 'Contact Us - ' + document.title
+    });
+    
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }

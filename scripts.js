@@ -113,6 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 if (response.ok) {
+                        gtag('event', 'sign_up', {
+                            'method': 'Newsletter'
+                        });
                     statusDiv.textContent = 'Thank you for subscribing!';
                     statusDiv.style.color = 'green';
                     newsletterForm.reset();
