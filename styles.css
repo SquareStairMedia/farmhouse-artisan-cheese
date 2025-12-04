@@ -1002,6 +1002,7 @@ footer {
         font-size: 2em;
         letter-spacing: 8px;
         margin-bottom: 60px;
+        font-weight: 400;
     }
     
     .feature-content {
@@ -1109,6 +1110,7 @@ footer {
     .section-title {
         font-size: 1.5em;
         letter-spacing: 6px;
+        font-weight: 400;
     }
     
     .feature-image {
