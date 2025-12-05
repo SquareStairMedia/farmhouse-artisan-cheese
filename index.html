@@ -37,6 +37,88 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
     <link rel="stylesheet" href="styles.css">
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://farmhouseartisancheese.com/#organization",
+      "name": "Farmhouse Artisan Cheese",
+      "url": "https://farmhouseartisancheese.com/",
+      "logo": "https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png",
+      "image": "https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png",
+      "sameAs": [
+        "https://www.facebook.com/farmhouseartisancheese/",
+        "https://www.instagram.com/farmhouseartisancheese/",
+        "https://www.google.com/maps/place/Farmhouse+Artisan+Cheese/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://farmhouseartisancheese.com/#website",
+      "url": "https://farmhouseartisancheese.com/",
+      "name": "Farmhouse Artisan Cheese",
+      "publisher": {
+        "@id": "https://farmhouseartisancheese.com/#organization"
+      }
+    },
+    {
+      "@type": "FoodEstablishment",
+      "@id": "https://farmhouseartisancheese.com/#localbusiness",
+      "name": "Farmhouse Artisan Cheese",
+      "url": "https://farmhouseartisancheese.com/",
+      "image": "https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png",
+      "priceRange": "$$",
+      "telephone": "+1-905-582-9600",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "345 Kerr Street",
+        "addressLocality": "Oakville",
+        "addressRegion": "ON",
+        "postalCode": "L6K 3B7",
+        "addressCountry": "CA"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "11:00",
+          "closes": "16:00"
+        }
+      ],
+      "servesCuisine": [
+        "Artisan Cheese",
+        "Charcuterie",
+        "Gourmet Foods",
+        "Local Specialties"
+      ],
+      "parentOrganization": {
+        "@id": "https://farmhouseartisancheese.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
     <header>
@@ -265,7 +347,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Store",
+  "@type": "CheeseShop",
   "name": "Farmhouse Artisan Cheese",
   "image": "https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png",
   "description": "Premium artisan cheese shop in Oakville offering curated selections of local and international cheeses, gourmet charcuterie boards, and specialty food gifts.",
@@ -286,6 +368,10 @@
     "latitude": 43.4441,
     "longitude": -79.6818
   },
+  "hasMap": "https://www.google.com/maps/place/Farmhouse+Artisan+Cheese/",
+  "publisher": {
+  "@id": "https://farmhouseartisancheese.com/#organization"
+},
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
