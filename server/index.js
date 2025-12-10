@@ -51,7 +51,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
-      to: process.env.OWNER_EMAIL,
+      to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -101,7 +101,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
       from: 'farmhouse-test@radarmagnet.com',
-      to: process.env.OWNER_EMAIL,
+      to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
       subject: `New Newsletter Signup from ${name}`,
       html: `
         <h2>New Newsletter Signup</h2>
