@@ -155,9 +155,9 @@
                                 'event_category': 'Contact',
                                 'event_label': 'Contact Form Submission'
                             });
-                            statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
-                            statusDiv.style.color = 'green';
+                            document.getElementById('successModal').classList.add('active');
                             document.getElementById('contactForm').reset();
+                            statusDiv.textContent = '';
                         } else {
                             throw new Error('Failed to send');
                         }
@@ -166,6 +166,18 @@
                         statusDiv.style.color = 'red';
                     }
                 });
+                </script>
+                <script>
+                    function closeSuccessModal() {
+                        document.getElementById('successModal').classList.remove('active');
+                    }
+
+                    // Close on outside click
+                    document.getElementById('successModal').addEventListener('click', function(e) {
+                        if (e.target === this) {
+                            closeSuccessModal();
+                        }
+                    });
                 </script>
             </div>
         </div>
@@ -274,6 +286,11 @@
     </div>
 </div>
 
+<!-- 
+=========================================================================================
+THIS BLOCK IS LIKELY REDUNDANT - CAUSING DUPLICATION OF SUBMISSION CONIRMATION TO CLIENT
+=========================================================================================
+
 <script>
 document.getElementById('contactForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -318,7 +335,11 @@ document.getElementById('successModal').addEventListener('click', function(e) {
         closeSuccessModal();
     }
 });
-</script>
+</script> 
+=========================================================================================
+THIS BLOCK IS LIKELY REDUNDANT - CAUSING DUPLICATION OF SUBMISSION CONIRMATION TO CLIENT
+=========================================================================================
+-->
 
 </body>
 </html>
