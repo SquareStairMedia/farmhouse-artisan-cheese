@@ -50,7 +50,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
-      from: 'farmhouse-test@radarmagnet.com',
+      from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
       subject: `New Contact Form Submission from ${name}`,
       html: `
@@ -65,7 +65,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 
     // Send auto-reply to customer
     await resend.emails.send({
-      from: 'farmhouse-test@radarmagnet.com',
+      from: 'farmhouse-auto-reply@radarmagnet.com',
       to: email,
       subject: 'Thank you for contacting Farmhouse Artisan Cheese',
       html: `
@@ -100,7 +100,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
 
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
-      from: 'farmhouse-test@radarmagnet.com',
+      from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
       subject: `New Newsletter Signup from ${name}`,
       html: `
@@ -114,7 +114,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
 
     // Send welcome email to subscriber
     await resend.emails.send({
-      from: 'farmhouse-test@radarmagnet.com',
+      from: 'farmhouse-auto-reply@radarmagnet.com',
       to: email,
       subject: 'Welcome to Farmhouse Artisan Cheese',
       html: `
