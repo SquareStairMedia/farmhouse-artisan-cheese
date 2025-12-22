@@ -7,7 +7,25 @@ const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
-app.use(helmet());
+app.use(
+  helmet({
+    permissionsPolicy: {
+      features: {
+        camera: [],
+        microphone: [],
+        geolocation: [],
+        payment: [],
+        usb: [],
+        bluetooth: [],
+        accelerometer: [],
+        gyroscope: [],
+        magnetometer: [],
+        fullscreen: [],
+        autoplay: []
+      }
+    }
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 // Initialize Resend
