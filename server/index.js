@@ -7,6 +7,10 @@ const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
+// Security headers configured for current site capabilities.
+// Permissions-Policy is intentionally restrictive.
+// If new browser features or third-party integrations are introduced,
+// this section MUST be reviewed and updated.
 app.use(
   helmet({
     permissionsPolicy: {
