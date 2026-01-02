@@ -5,10 +5,6 @@ const { Resend } = require('resend');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 require('dotenv').config();
-const createsend = require('createsend-node');
-
-const cmAuth = { apiKey: process.env.CAMPAIGN_MONITOR_API_KEY };
-const cmSubscriber = createsend(cmAuth);
 
 const app = express();
 // Security headers configured for current site capabilities.
@@ -126,15 +122,31 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Name and email are required' });
     }
 
-    await cmSubscriber.add(
-  process.env.CAMPAIGN_MONITOR_LIST_ID,
+    const cmResponse = await fetch(
+  `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
   {
-    EmailAddress: email,
-    Name: name,
-    Resubscribe: true,
-    ConsentToTrack: 'Yes'
+    method: 'POST',
+    headers: {
+      'Authorization':
+        'Basic ' +
+        Buffer.from(
+          process.env.CAMPAIGN_MONITOR_API_KEY + ':x'
+        ).toString('base64'),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      EmailAddress: email,
+      Name: name,
+      Resubscribe: true,
+      ConsentToTrack: 'Yes'
+    })
   }
 );
+
+if (!cmResponse.ok) {
+  const errorText = await cmResponse.text();
+  throw new Error(`Campaign Monitor error: ${errorText}`);
+}
 
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
