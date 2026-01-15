@@ -35,14 +35,30 @@ const PORT = process.env.PORT || 3000;
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// HTML escaping function to prevent injection in emails
+function escapeHtml(text) {
+  if (!text) return "";
+  return text.replace(/[&<>"']/g, (char) => {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return map[char];
+  });
+}
+
 // Middleware
-app.use(cors());
-app.use(express.json());
+app.use(cors({ 
+  origin: 'https://farmhouseartisancheese.com'
+}));app.use(express.json());
 
 // Rate limiting for contact form - 3 submissions per hour per IP
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 55, 
+  max: 5, 
   message: 'Too many contact form submissions from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -51,7 +67,7 @@ const contactLimiter = rateLimit({
 // Rate limiting for newsletter signup - 2 signups per hour per IP
 const newsletterLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 55, // limit each IP to 5 requests per windowMs
+  max: 5, // limit each IP to 5 requests per windowMs
   message: 'Too many newsletter signup attempts from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -66,6 +82,11 @@ app.get('/', (req, res) => {
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
+    // Sanitize user input
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message);
 
     // Validate required fields
     if (!name || !email || !message) {
@@ -76,14 +97,14 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `New Contact Form Submission from ${safeName}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
         <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p>${safeMessage}</p>
       `
     }); 
 
@@ -94,7 +115,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       subject: 'Thank you for contacting Farmhouse Artisan Cheese',
       html: `
         <h2>Thank you for reaching out!</h2>
-        <p>Dear ${name},</p>
+        <p>Dear ${safeName},</p>
         <p>We've received your message and will get back to you shortly.</p>
         <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
         <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
@@ -117,7 +138,10 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
     const { name, email, phone, seasonalOfferings } = req.body;
-
+    // Sanitize user input
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
     if (!name || !email) {
       return res.status(400).json({ error: 'Name and email are required' });
     }
@@ -136,7 +160,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     },
     body: JSON.stringify({
       EmailAddress: email,
-      Name: name,
+      Name: safeName,
       Resubscribe: true,
       ConsentToTrack: 'Yes'
     })
@@ -152,12 +176,12 @@ if (!cmResponse.ok) {
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
-      subject: `New Newsletter Signup from ${name}`,
+      subject: `New Newsletter Signup from ${safeName}`,
       html: `
         <h2>New Newsletter Signup</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
         <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
       `
     });
@@ -168,7 +192,7 @@ if (!cmResponse.ok) {
       to: email,
       subject: 'Welcome to Farmhouse Artisan Cheese',
       html: `
-        <h2>Welcome, ${name}!</h2>
+        <h2>Welcome, ${safeName}!</h2>
         <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
         <p>We look forward to providing you with exciting new arrivals, seasonal selections, and special events at our Oakville location.</p>
         <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
