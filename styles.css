@@ -1392,3 +1392,126 @@ footer {
         letter-spacing: 4px;
     }
 }
+
+/* newsletter.html Signup Page */
+.newsletter-signup-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.newsletter-intro p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #666;
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.95em;
+    min-height: 24px;
+}
+
+.form-disclaimer {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.85em;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* Newsletter Hero */
+.newsletter-hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    max-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.newsletter-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.newsletter-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.newsletter-hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding: 40px 20px;
+}
+
+.newsletter-hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 30px;
+    font-weight: 100;
+    letter-spacing: 16px;
+    text-transform: uppercase;
+}
+
+.newsletter-hero p {
+    font-size: 1em;
+    color: #ccc;
+    letter-spacing: 5px;
+    font-weight: 300;
+    text-transform: lowercase;
+}
+
+/* Mobile responsive for newsletter */
+@media (max-width: 768px) {
+    .newsletter-intro p {
+        font-size: 1em;
+    }
+    
+    .newsletter-hero {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .newsletter-hero h1 {
+        font-size: 2em;
+        letter-spacing: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .newsletter-hero p {
+        font-size: 0.9em;
+        letter-spacing: 3px;
+    }
+    
+    .newsletter-hero-content {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsletter-hero h1 {
+        font-size: 1.6em;
+        letter-spacing: 6px;
+    }
+    
+    .newsletter-hero p {
+        font-size: 0.85em;
+        letter-spacing: 2px;
+    }
+}

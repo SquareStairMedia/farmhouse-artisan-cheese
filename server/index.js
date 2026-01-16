@@ -53,9 +53,10 @@ function escapeHtml(text) {
 // Middleware
 app.use(cors({ 
   origin: 'https://farmhouseartisancheese.com'
-}));app.use(express.json());
+}));
+app.use(express.json());
 
-// Rate limiting for contact form - 3 submissions per hour per IP
+// Rate limiting for contact form - 5 submissions per hour per IP
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 5, 
@@ -64,7 +65,7 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Rate limiting for newsletter signup - 2 signups per hour per IP
+// Rate limiting for newsletter signup - 5 signups per hour per IP
 const newsletterLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
   max: 5, // limit each IP to 5 requests per windowMs
