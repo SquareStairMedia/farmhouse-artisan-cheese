@@ -249,6 +249,7 @@
                 <ul>
                     <li><a href="about.html">About</a></li>
                     <li><a href="index.html#collection">Our Collection</a></li>
+                    <!-- <li><a href="notes.html">Notes</a></li> -->
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 </ul>
@@ -275,6 +276,38 @@
             <p>&copy; 2025 Farmhouse Artisan Cheese. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="newsletter-modal" id="newsletterModal">
+    <div class="newsletter-modal-content">
+        <button class="newsletter-modal-close">&times;</button>
+        <h2>Stay Connected</h2>
+        <p>Our newsletter will keep you updated new arrivals, seasonal selections, and special events.</p>
+        <form class="newsletter-form" id="newsletterForm">
+            <div class="form-group">
+                <label for="newsletter-name">Name *</label>
+                <input type="text" id="newsletter-name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="newsletter-email">Email *</label>
+                <input type="email" id="newsletter-email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="newsletter-phone">Phone</label>
+                <input type="tel" id="newsletter-phone" name="phone">
+            </div>
+            
+            <div class="newsletter-checkbox">
+                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
+                <label for="seasonal-offerings">Yes! Please include me in your newsletter and other exciting announcements.</label>
+            </div>
+            
+            <button type="submit" class="newsletter-submit">Subscribe</button>
+            <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
+        </form>
+    </div>
+</div>
 
     <!-- Cookie Consent Banner (PIPEDA Compliant) -->
     <div class="cookie-consent-banner" id="cookieConsentBanner">
