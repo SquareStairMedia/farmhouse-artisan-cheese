@@ -1,3 +1,61 @@
+// Cookie Consent Banner (PIPEDA Compliant)
+document.addEventListener('DOMContentLoaded', function() {
+    const cookieBanner = document.getElementById('cookieConsentBanner');
+    const acceptBtn = document.getElementById('cookieAccept');
+    const declineBtn = document.getElementById('cookieDecline');
+
+    // Check if user has already made a choice
+    const cookieConsent = localStorage.getItem('cookieConsent');
+
+    if (!cookieConsent && cookieBanner) {
+        // Show banner after a short delay for better UX
+        setTimeout(function() {
+            cookieBanner.classList.add('active');
+        }, 1000);
+    } else if (cookieConsent === 'accepted') {
+        // Load analytics if previously accepted
+        loadGoogleAnalytics();
+    }
+
+    // Handle Accept button
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.remove('active');
+            loadGoogleAnalytics();
+        });
+    }
+
+    // Handle Decline button
+    if (declineBtn) {
+        declineBtn.addEventListener('click', function() {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.remove('active');
+        });
+    }
+});
+
+// Function to load Google Analytics after consent
+function loadGoogleAnalytics() {
+    // Only load if not already loaded
+    if (window.gaLoaded) return;
+    window.gaLoaded = true;
+
+    // Load gtag script
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T8DVQVJV9S';
+    document.head.appendChild(script);
+
+    script.onload = function() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-T8DVQVJV9S');
+    };
+}
+
 // Hamburger menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
