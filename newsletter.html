@@ -74,29 +74,29 @@
         <form id="newsletterForm" class="newsletter-form">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="newsletter-name" name="name" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="newsletter-email" name="email" required>
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone (optional)</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="newsletter-phone" name="phone">
             </div>
 
             <div class="newsletter-checkbox">
-                <input type="checkbox" id="seasonalOfferings" name="seasonalOfferings">
-                <label for="seasonalOfferings">
+                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
+                <label for="seasonal-offerings">
                     Yes I'd like to receive updates on seasonal offerings and special releases
                 </label>
             </div>
 
             <button type="submit" class="newsletter-submit">Subscribe</button>
 
-            <p id="newsletterMessage" class="form-message"></p>
+            <p id="newsletterStatus" class="form-message"></p>
 
             <p class="form-disclaimer">
                 We respect your privacy. You can unsubscribe at any time.
@@ -180,6 +180,7 @@
 
 <script type="module" src="scripts.js"></script>
 
+<!-- NOTE: THIS INLINE SCRIPT MAY BE CONFLICTING WITH scripts.js - PLEASE REVIEW
 <script>
 document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -222,7 +223,7 @@ document.getElementById('newsletterForm').addEventListener('submit', async funct
         submitBtn.disabled = false;
     }
 });
-</script>
+</script> -->
 
 <!-- Cookie Consent Banner (PIPEDA Compliant) -->
 <div class="cookie-consent-banner" id="cookieConsentBanner">

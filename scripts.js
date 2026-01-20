@@ -142,12 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+if (newsletterModal) {
     newsletterModal.addEventListener('click', function(e) {
         if (e.target === newsletterModal) {
             newsletterModal.classList.remove('active');
             document.body.style.overflow = '';
         }
     });
+}
     
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', async (e) => {
