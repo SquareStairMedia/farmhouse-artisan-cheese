@@ -127,14 +127,13 @@
         
         /* Responsive */
         @media only screen and (max-width: 680px) {
-            .email-container { width: 100% !important; 
+            .email-container { width: 100% !important; }
             .hero-headline { font-size: 40px !important; letter-spacing: 7px !important; max-width: 100% !important; width: 100% !important; }
             .stack-column { display: block !important; width: 100% !important; max-width: 100% !important; }
             .stack-pr { padding-right: 0 !important; }
             .stack-pl { padding-left: 0 !important; }
             .stack-border-left { border-left: 0 !important; padding-left: 0 !important; }
             .stack-border-right { border-right: 0 !important; padding-right: 0 !important; }
-        }
             .headline-massive { font-size: 38px !important; letter-spacing: 6px !important; }
             .headline-large { font-size: 28px !important; letter-spacing: 5px !important; }
             .headline-medium { font-size: 22px !important; letter-spacing: 3px !important; }
@@ -144,7 +143,7 @@
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #000000;">
-    <singleline label="Email Subject">December Newsletter</singleline>    
+    
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000;">
         <tr>
             <td>
@@ -193,14 +192,14 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td style="position: relative;">
-                                        <img src="https://farmhouseartisancheese.com/assets/images/char-event.png" alt="Farmhouse Artisan Cheese" style="display: block; width: 100%; height: auto; filter: brightness(0.3);">
+                                        <img editable width="680" label="Hero Image" src="https://farmhouseartisancheese.com/assets/images/char-event.png" alt="Farmhouse Artisan Cheese" style="display: block; width: 100%; height: auto; filter: brightness(0.3);">
                                         
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="position: absolute; top: 0; left: 0; height: 100%;">
                                             <tr>
                                                 <td align="center" valign="middle" style="padding: 60px 50px;">
-                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;">issue nº 01</p>
+                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;"><singleline label="Issue Number">issue nº 01</singleline></p>
                                                     <h1 class="hero-headline headline-massive" style="font-size: 62px; font-weight: 100; letter-spacing: 14px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff; max-width: 100%; width: 100%; display: inline-block;">The<br>Farmhouse<br>Gazette</h1>
-                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;">december 2025</p>
+                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;"><singleline label="Month and Year">january 2026</singleline></p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -210,12 +209,13 @@
                         </td>
                     </tr>
                     
-<!-- [if mso]>
+                    <!-- MSO FALLBACK FOR OUTLOOK -->
+                    <!--[if mso]>
                     <tr>
                         <td style="background-color: #000000; padding: 55px 50px; text-align: center;">
                             <p style="margin: 0 0 18px 0; font-size: 14px; font-weight: 300; letter-spacing: 6px; text-transform: lowercase; color: #ffffff;">issue nº 01</p>
                             <h1 style="font-size: 44px; font-weight: 100; letter-spacing: 10px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff;">The<br>Farmhouse<br>Gazette</h1>
-                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">december 2025</p>
+                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">january 2026</p>
                         </td>
                     </tr>
                     <![endif]-->
@@ -227,11 +227,10 @@
                         </td>
                     </tr>
                     
-                    <!-- INTRO FLOW -->
+                    <!-- HERO INTRO -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #333333; max-width: 540px;">Welcome to the December edition of The Farmhouse Gazette.</p>
-                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">December is such a special time of year in our shop. The shelves feel a little cozier, the neighbourhood is full of small seasonal moments, and we enjoy seeing all the familiar faces drop in as families and friends prepare for their winter gatherings.</p>
+                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;"><multiline label="Hero Introduction">Welcome to this month's edition of The Farmhouse Gazette. Add your introductory paragraph here to set the tone for the newsletter.</multiline></p>
                         </td>
                     </tr>
                     
@@ -241,24 +240,13 @@
                         </td>
                     </tr>
                     
-                    <!-- WEBSITE CALLOUT - OFFSET RIGHT -->
-<tr>
-    <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-            <tr>
-                <td class="stack-column stack-pr" style="width: 35%; vertical-align: middle; padding-right: 30px;">
-                  <a href="https://farmhouseartisancheese.com">  
-                  <img src="https://farmhouseartisancheese.com/assets/images/newsletter/website-promo-portrait.png" alt="New Website" width="210" style="display: block; width: 100%; height: auto;"></a>
-                </td>
-                <td class="stack-column stack-border-left" style="width: 65%; padding: 30px 0 30px 40px; border-left: 1px solid #e5e5e5;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #333333;">Exciting news everyone... We have a new website! Our new site offers a much easier way to learn more about us and stay connected with what is happening in the shop. Take a look...</p>
-                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 25px auto 0 auto;">
-        <tr>
-            <td align="center" bgcolor="transparent" style="border: 1px solid #000000;">
-                <a href="https://farmhouseartisancheese.com" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">Visit the Site</a>
-            </td>
-        </tr>
-    </table>
+                    <!-- HERO CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="<singleline label='Hero CTA URL'>https://farmhouseartisancheese.com</singleline>" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;"><singleline label="Hero CTA Text">Visit Us in the Shop</singleline></a>
                                     </td>
                                 </tr>
                             </table>
@@ -284,25 +272,26 @@
                         </td>
                     </tr>
                     
-                    <!-- WHAT'S NEW - FLOWING SECTIONS -->
+                    <!-- ============================================ -->
+                    <!-- SECTION 1: CHEESE HIGHLIGHTS -->
+                    <!-- ============================================ -->
+                    
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h2 class="headline-large" style="font-size: 42px; font-weight: 400; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 30px 0; color: #000000;">What's New<br>This Season</h2>
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 400; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 30px 0; color: #000000;"><singleline label="Section 1 Title">January Cheese<br>Highlights</singleline></h2>
                             
-                            <!-- Winter Arrivals -->
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Winter Arrivals</h3>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 45px 0; color: #333333; max-width: 520px;">New cheeses and pantry items have been coming through the door steadily over the past few weeks. Some are returning favourites, others are small-batch finds that we look forward to sharing each season. If you are putting together a board, hosting friends, or simply bringing home something to enjoy at the end of the week, we are always happy to help you explore what's fresh.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 45px 0; color: #333333; max-width: 520px;"><multiline label="Cheese Highlights Body">Add your cheese highlights content here. Describe the featured cheeses for this month, their origins, flavour profiles, and why customers will love them. This section typically includes 2-3 paragraphs about the seasonal selection.</multiline></p>
                         </td>
                     </tr>
                     
-                    <!-- OFFSET IMAGE - HOLIDAY GIFTWARE -->
+                    <!-- CHEESE HIGHLIGHTS IMAGE - OFFSET RIGHT (matching December layout) -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px 0 0;">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column" style="width: 25%;"></td>
                                     <td class="stack-column" style="width: 75%;">
-                                        <a href="https://farmhouseartisancheese.com/cheeses.html"><img src="https://farmhouseartisancheese.com/assets/images/cheeses-hero-image.png" alt="Holiday Items" width="510" style="display: block; width: 100%; height: auto;"></a>
+                                        <img editable width="510" label="Cheese Highlights Image" src="https://farmhouseartisancheese.com/assets/images/cheeses-hero-image.png" alt="Cheese Highlights" style="display: block; width: 100%; height: auto;">
                                     </td>
                                 </tr>
                             </table>
@@ -315,41 +304,13 @@
                         </td>
                     </tr>
                     
-                    <!-- HOLIDAY GIFTWARE TEXT -->
+                    <!-- CHEESE HIGHLIGHTS CTA -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Holiday Giftware & Pantry Items</h3>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 520px;">Around the shop, you will find simple, thoughtful pieces for the home and table. There are handcrafted mugs, linens, crackers, preserves, honeys, and other small touches that pair naturally with the season. Everything is meant to feel welcoming and easy to enjoy.</p>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 55px;"></div>
-                        </td>
-                    </tr>
-                    
-                    <!-- GIFT BOXES - ASYMMETRIC LAYOUT -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: middle; padding-right: 40px;">
-                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Gift Boxes</h3>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">
-                                        Our gift boxes have become a bit of a tradition for many of our visitors. Each one is put together with a mix of cheeses and pantry items chosen to feel balanced and comforting. They are available in different sizes and are a wonderful gift choice for hosts, neighbours, and family members. We're glad people find them meaningful.
-                                        </p>
-
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">
-                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html?utm_source=newsletter&utm_medium=email&utm_campaign=farmhouse_gazette_december_2025&utm_content=gift_boxes_link"
-                                            style="color:#000000; font-weight:600; text-decoration:underline;">
-                                            Click here to see what's inside...
-                                        </a>
-                                        </p>
-                                    </td>
-                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
-                                      <a href="https://farmhouseartisancheese.com/gift-boxes.html">  
-                                      <img src="https://farmhouseartisancheese.com/assets/images/giftbox-table.png" alt="Gift Box" width="270" style="display: block; width: 100%; height: auto;"></a>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="<singleline label='Cheese Highlights CTA URL'>https://farmhouseartisancheese.com/cheeses.html</singleline>" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;"><singleline label="Cheese Highlights CTA Text">See What's New</singleline></a>
                                     </td>
                                 </tr>
                             </table>
@@ -365,7 +326,7 @@
                     <!-- GREY SECTION BREAK -->
                     <tr>
                         <td style="background-color: #fafafa; padding: 50px 50px;" class="mobile-padding">
-                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0; color: #999999; text-align: center; max-width: 480px; margin: 0 auto;">A neighbourhood moment, a curated experience, and thoughtful details for the season ahead</p>
+                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0; color: #999999; text-align: center; max-width: 480px; margin: 0 auto;"><singleline label="Section Break Quote">A neighbourhood moment, a curated experience, and thoughtful details for the season ahead</singleline></p>
                         </td>
                     </tr>
                     
@@ -375,14 +336,16 @@
                         </td>
                     </tr>
                     
-                    <!-- THIS MONTH IN THE SHOP -->
+                    <!-- ============================================ -->
+                    <!-- SECTION 2: STAFF PICK -->
+                    <!-- ============================================ -->
+                    
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;">This Month<br>in the Shop</h2>
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;"><singleline label="Section 2 Title">Staff Pick</singleline></h2>
                             
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Holiday Hours</h3>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 520px;">Our special store hours for the holidays will be updated regularly on our Social Media pages. Check back regularly to stay up to date!</p>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 520px;">Kerr Village in Oakville has a certain charm in December. The lights go up, the sidewalks feel busy in a cheerful way, and this year we're adding something new inside the shop. The Elf on the Shelf has made his first appearance at Farmhouse Artisan Cheese. If you stop by, take a moment to look for him. Finding the elf comes with a small seasonal surprise, and it has already brought a lot of smiles to visitors of all ages.</p>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;"><singleline label="Staff Pick Subtitle">Team Member's Choice — Product Name</singleline></h3>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 520px;"><multiline label="Staff Pick Body">Add your staff pick content here. Include the team member's name, their chosen product, and why they love it. Share the story behind the product, where it comes from, and how customers can enjoy it. This section typically includes 3-4 paragraphs.</multiline></p>
                         </td>
                     </tr>
                     
@@ -392,16 +355,129 @@
                         </td>
                     </tr>
                     
-                    <!-- CURATED EXPERIENCE - OFFSET LEFT IMAGE -->
+                    <!-- STAFF PICK IMAGE - OFFSET LEFT (matching December "Elf on the Shelf" layout) -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 0 0 50px;">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column" style="width: 70%;">
-                                      <a href="https://farmhouseartisancheese.com/groceries.html">  
-                                      <img src="https://farmhouseartisancheese.com/assets/images/newsletter/elf-on-the-shelf.png" alt="Elf on the Shelf" width="476" style="display: block; width: 100%; height: auto;"></a>
+                                        <img editable width="476" label="Staff Pick Image" src="https://via.placeholder.com/476x320/f5f5f5/999999?text=Staff+Pick+Image" alt="Staff Pick" style="display: block; width: 100%; height: auto;">
                                     </td>
                                     <td class="stack-column" style="width: 30%;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SECTION BREAK LINE -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <div style="width: 50px; height: 1px; background-color: #000000;"></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- ============================================ -->
+                    <!-- SECTION 3: LOOKING AHEAD -->
+                    <!-- ============================================ -->
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;"><singleline label="Section 3 Title">Looking Ahead</singleline></h2>
+                            
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;"><singleline label="Looking Ahead Subtitle">Upcoming Event or Holiday</singleline></h3>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333; max-width: 520px;"><multiline label="Looking Ahead Body">Add your looking ahead content here. This section covers upcoming events, holidays, or seasonal offerings. Let customers know what to expect and how to prepare. This section typically includes 2-3 paragraphs.</multiline></p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 55px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- LOOKING AHEAD - SPLIT LAYOUT (text left, image right - matching December "Gift Boxes" layout) -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: middle; padding-right: 40px;">
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #333333;"><multiline label="Looking Ahead Additional Text">Add any additional details about the upcoming event or promotion here. Include information about ordering, timing, or any special instructions.</multiline></p>
+                                        
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                                    <a href="<singleline label='Looking Ahead CTA URL'>https://farmhouseartisancheese.com/gift-boxes.html</singleline>" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;"><singleline label="Looking Ahead CTA Text">View Gift Boxes</singleline></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
+                                        <img editable width="270" label="Looking Ahead Image" src="https://via.placeholder.com/270x360/f5f5f5/999999?text=Looking+Ahead+Image" alt="Looking Ahead" style="display: block; width: 100%; height: auto;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SECTION BREAK LINE -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <div style="width: 50px; height: 1px; background-color: #000000;"></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- ============================================ -->
+                    <!-- SECTION 4: DID YOU KNOW? -->
+                    <!-- ============================================ -->
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;"><singleline label="Section 4 Title">Did You Know?</singleline></h2>
+                            
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;"><singleline label="Did You Know Subtitle">Educational Topic Title</singleline></h3>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 520px;"><multiline label="Did You Know Body">Add your educational content here. This section shares interesting facts about cheese, pairings, storage tips, or other helpful information. This is an opportunity to educate and engage customers with deeper knowledge about artisan cheese. This section typically includes 3-5 paragraphs.</multiline></p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DID YOU KNOW IMAGE - OFFSET RIGHT (matching Cheese Highlights layout) -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px 0 0;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column" style="width: 25%;"></td>
+                                    <td class="stack-column" style="width: 75%;">
+                                        <img editable width="510" label="Did You Know Image" src="https://via.placeholder.com/510x340/f5f5f5/999999?text=Did+You+Know+Image" alt="Did You Know" style="display: block; width: 100%; height: auto;">
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -413,68 +489,10 @@
                         </td>
                     </tr>
                     
+                    <!-- DID YOU KNOW DISCLAIMER (OPTIONAL) -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Limited Seasonal Selection</h3>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 520px;">Two seasonal favourites have arrived and they won’t be around for long. Champagne Cheddar is luxuriously smooth and creamy, made with real Champagne for a subtle richness that feels instantly celebratory. Alongside it, Five Brothers Reserve, aged 18 months, delivers deep, savoury flavours with notes of caramel and a beautifully firm, crystalline texture. Both cheeses are available only during this season and in very limited quantities, making now the perfect time to enjoy them on your holiday table or to gift to a true cheese lover.</p>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 60px;"></div>
-                        </td>
-                    </tr>
-                    
-                    <!-- SECTION BREAK -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <div style="width: 50px; height: 1px; background-color: #000000;"></div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 60px;"></div>
-                        </td>
-                    </tr>
-                    
-                    <!-- FEATURE HIGHLIGHTS -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 40px 0; color: #000000;">Feature<br>Highlights</h2>
-                        </td>
-                    </tr>
-                    
-                    <!-- ENTERTAINING - SPLIT LAYOUT -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
-                                      <a href="https://farmhouseartisancheese.com/boards.html">  
-                                      <img src="https://farmhouseartisancheese.com/assets/images/charcuterie.jpeg" alt="Entertaining" width="270" style="display: block; width: 100%; height: auto;"></a>
-                                    </td>
-                                    <td class="stack-column stack-pl" style="width: 55%; vertical-align: middle; padding-left: 40px;">
-                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Entertaining Made Simple</h3>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">If you're hosting this month, we can help you bring together a relaxed, inviting board. Many of our customers tell us they enjoy mixing a few favourites with one or two new discoveries. It's an easy way to make gatherings feel special without overthinking the details.</p>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 50px;"></div>
-                        </td>
-                    </tr>
-                    
-                    <!-- THOUGHTFUL GIFTING -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Thoughtful Gifting</h3>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 480px;">Sometimes the best gifts are the ones that feel personal and uncomplicated. A small jar of honey, a beautifully wrapped bar of chocolate, or a curated box with a few favourite cheeses often says more than something grand. We're happy to help you choose whatever feels right for the person you have in mind.</p>
+                            <p style="font-size: 11px; font-weight: 300; font-style: italic; letter-spacing: 0.3px; line-height: 1.7; margin: 0; color: #999999;"><singleline label="Disclaimer (optional)">Disclaimer: This information is intended for educational purposes only and should not replace advice from a qualified professional.</singleline></p>
                         </td>
                     </tr>
                     
@@ -484,7 +502,10 @@
                         </td>
                     </tr>
                     
+                    <!-- ============================================ -->
                     <!-- DARK VISIT SECTION -->
+                    <!-- ============================================ -->
+                    
                     <tr>
                         <td style="background-color: #1a1a1a; padding: 70px 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -493,28 +514,35 @@
                                         <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #ffffff;">Visit Us in<br>Kerr Village</h2>
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #cccccc; max-width: 460px;">You're always welcome to stop in, browse, ask questions, or simply take a look around. The shop is stocked with cheeses from Canada and beyond, as well as a range of items that complement them well.</p>
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #cccccc;">345 Kerr Street, Oakville</p>
-                                        <!-- HOURS BELOW HAVE BEEN REMOVED FOR DECEMBER HOLIDAY EDITION...ADD BACK IN FOR FUTURE EDITIONS -->
-                                        <!-- <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 40px 0; color: #999999;">Mon Closed · Tue–Thu 11–5 · Fri–Sat 10–6 · Sun 11–3</p> -->
-                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 25px auto 0 auto;">
-        <tr>
-            <td align="center" bgcolor="transparent" style="border: 1px solid #ffffff;">
-                <a href="https://farmhouseartisancheese.com/contact.html" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-block; padding: 16px 45px;">Contact Us</a>
-            </td>
-        </tr>
-    </table>
+                                        
+                                        <!-- STORE HOURS -->
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 40px 0; color: #888888;">Mon: Closed · Tue–Thu: 11am–5pm · Fri–Sat: 10am–6pm · Sun: Closed</p>
+                                        
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto;">
+                                            <tr>
+                                                <td align="center" bgcolor="transparent" style="border: 1px solid #ffffff;">
+                                                    <a href="https://farmhouseartisancheese.com/contact.html" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-block; padding: 16px 45px;">Contact Us</a>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     
+                    <!-- ============================================ -->
                     <!-- FOOTER -->
+                    <!-- ============================================ -->
+                    
                     <tr>
                         <td style="background-color: #000000; padding: 50px 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td align="center">
-                                        <img src="https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png" alt="Farmhouse Artisan Cheese" width="190" style="display: block; margin: 0 auto 30px auto; filter: invert(1);">
+                                        <a href="https://www.farmhouseartisancheese.com?utm_source=farmhouse+newsletter+footer+logo&utm_medium=link&utm_id=farmhouse+newsletter">
+                                            <img src="https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png" alt="Farmhouse Artisan Cheese" width="190" style="display: block; margin: 0 auto 30px auto; filter: invert(1);">
+                                        </a>
                                         
                                         <!-- Social Icons -->
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto 30px auto;">
@@ -539,7 +567,12 @@
                                         
                                         <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 20px 0; color: #444444;">You are receiving this email because you subscribed to our newsletter.<br><preferences style="color: #666666; text-decoration: underline;">Update preferences</preferences> or <unsubscribe style="color: #666666; text-decoration: underline;">unsubscribe</unsubscribe></p>
                                         
-                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0; color: #444444;">© 2025 Farmhouse Artisan Cheese. All rights reserved.</p>
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 30px 0; color: #444444;">© 2026 Farmhouse Artisan Cheese. All rights reserved.</p>
+                                        
+                                        <!-- SQUARESTAIR CREDIT -->
+                                        <p style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0; color: #444444;">
+                                            <a href="https://www.squarestairmedia.com?utm_source=farmhouse+newsletter+footer&utm_medium=link&utm_id=farmhouse+newsletter" style="color: #555555; text-decoration: none;">Custom luxury emails by SquareStair Media</a>
+                                        </p>
                                     </td>
                                 </tr>
                             </table>
