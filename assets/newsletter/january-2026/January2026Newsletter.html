@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Farmhouse Artisan Cheese - The Farmhouse Gazette</title>
+    <style>
+        /* Email-safe reset */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        
+        /* Base styles */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: #000000;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            color: #000000;
+        }
+        
+        .email-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        
+        /* Typography */
+        .headline-massive {
+            font-size: 68px;
+            font-weight: 100;
+            letter-spacing: 16px;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin: 0;
+            color: #ffffff;
+        }
+        
+        .headline-large {
+            font-size: 42px;
+            font-weight: 100;
+            letter-spacing: 10px;
+            text-transform: none;
+            line-height: 1.1;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .headline-medium {
+            font-size: 28px;
+            font-weight: 200;
+            letter-spacing: 6px;
+            text-transform: none;
+            line-height: 1.3;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .headline-small {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: none;
+            line-height: 1.4;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .subhead {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: lowercase;
+            line-height: 1.8;
+            margin: 0;
+            color: #999999;
+        }
+        
+        .body-text {
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.9;
+            margin: 0;
+            color: #333333;
+        }
+        
+        .caption {
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            margin: 0;
+            color: #999999;
+        }
+        
+        /* Buttons */
+        .button-minimal {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: transparent;
+            border: 1px solid #000000;
+            color: #000000;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        
+        .button-inverse {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 680px) {
+            .email-container { width: 100% !important; }
+            .hero-headline { font-size: 40px !important; letter-spacing: 7px !important; max-width: 100% !important; width: 100% !important; }
+            .stack-column { display: block !important; width: 100% !important; max-width: 100% !important; }
+            .stack-pr { padding-right: 0 !important; }
+            .stack-pl { padding-left: 0 !important; }
+            .stack-border-left { border-left: 0 !important; padding-left: 0 !important; }
+            .stack-border-right { border-right: 0 !important; padding-right: 0 !important; }
+            .headline-massive { font-size: 38px !important; letter-spacing: 6px !important; }
+            .headline-large { font-size: 28px !important; letter-spacing: 5px !important; }
+            .headline-medium { font-size: 22px !important; letter-spacing: 3px !important; }
+            .mobile-padding { padding: 0 25px !important; }
+            .mobile-hide { display: none !important; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #000000;">
+    <singleline label="Email Subject">January Newsletter</singleline>    
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000;">
+        <tr>
+            <td>
+                
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="email-container" style="max-width: 680px; width: 100%; margin: 0 auto; background-color: #000000;">
+                    
+                    <!-- TOP SPACER -->
+                    <tr>
+                        <td style="height: 40px;"></td>
+                    </tr>
+                    
+                    <!-- HEADER - BRAND LOCKUP (ICON + WORDMARK) -->
+                    <tr>
+                        <td align="center" style="padding: 0 40px;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                                <tr>
+                                    <td style="padding-right: 15px; vertical-align: middle;">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/FH-Logo.png" alt="FH" width="45" height="45" style="display: block; filter: invert(1);">
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <p style="margin: 0; font-size: 15px; font-weight: 200; color: #ffffff; letter-spacing: 11px; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Farmhouse Artisan Cheese</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="height: 30px;"></td>
+                    </tr>
+                    
+                    <!-- WEB VERSION -->
+                    <tr>
+                        <td align="center" style="padding: 0 40px;">
+                            <webversion><p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: #666666; margin: 0;">View in browser</p></webversion>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="height: 50px;"></td>
+                    </tr>
+                    
+                    <!-- HERO IMAGE -->
+                    <tr>
+                        <td style="position: relative;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="position: relative;">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/char-event.png" alt="Farmhouse Artisan Cheese" style="display: block; width: 100%; height: auto; filter: brightness(0.3);">
+                                        
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="position: absolute; top: 0; left: 0; height: 100%;">
+                                            <tr>
+                                                <td align="center" valign="middle" style="padding: 60px 50px;">
+                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;">issue nº 02</p>
+                                                    <h1 class="hero-headline headline-massive" style="font-size: 62px; font-weight: 100; letter-spacing: 14px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff; max-width: 100%; width: 100%; display: inline-block;">The<br>Farmhouse<br>Gazette</h1>
+                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;">january 2026</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+<!-- [if mso]>
+                    <tr>
+                        <td style="background-color: #000000; padding: 55px 50px; text-align: center;">
+                            <p style="margin: 0 0 18px 0; font-size: 14px; font-weight: 300; letter-spacing: 6px; text-transform: lowercase; color: #ffffff;">issue nº 02</p>
+                            <h1 style="font-size: 44px; font-weight: 100; letter-spacing: 10px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff;">The<br>Farmhouse<br>Gazette</h1>
+                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">january 2026</p>
+                        </td>
+                    </tr>
+                    <![endif]-->
+
+                    <!-- WHITE SECTION BEGINS -->
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- INTRO TEXT -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #333333; max-width: 540px;">Welcome to the January edition of The Farmhouse Gazette.</p>
+                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">January is one of our favourite months in the shop. Things quiet down, we bring in new cheeses, and there's more time to talk, to really help you find something you'll love. Here are a few things we're particularly excited about right now.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- VISIT US CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">Visit us in the shop</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SECTION BREAK -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <div style="width: 50px; height: 1px; background-color: #000000;"></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- JANUARY CHEESE HIGHLIGHTS -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;">January<br>Cheese Highlights</h2>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">After a (very) busy holiday season, we're back, fully stocked with all your favourites, including several cheeses that disappeared quickly in December and have finally made their return. Grey Owl from Quebec is back with its fresh, delicate texture and subtle ash line, bright, creamy, and endlessly snackable. From the United Kingdom, Abbotsgold brings rich, buttery comfort with just enough depth to keep things interesting, while Smoked Red Fox delivers its signature crumbly texture and bold, smoky sharpness that fans know and love. And from Switzerland, Raclette has returned just in time for winter evenings; smooth, savoury, and made for melting, whether over potatoes or alongside a simple board.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Even though it's January, these cheeses are perfect for slow evenings by the fire, a quiet night in, or an impromptu cheese board just because. Chosen for comfort, depth, and versatility, they're just as fitting for a Tuesday night as they are when friends drop by unexpectedly.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Quantities are limited and our selection changes often, so if something catches your eye… we'd say don't wait.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- CHEESE IMAGE - OFFSET RIGHT -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 0 0 50px;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column" style="width: 70%;">
+                                        <a href="https://farmhouseartisancheese.com/cheeses.html">
+                                            <img src="https://farmhouseartisancheese.com/assets/images/cheeses-hero-image.png" alt="January Cheeses" width="476" style="display: block; width: 100%; height: auto;">
+                                        </a>
+                                    </td>
+                                    <td class="stack-column" style="width: 30%;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SEE OUR CHEESES CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com/cheeses.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">See our cheeses</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- GREY SUBHEAD SECTION -->
+                    <tr>
+                        <td style="background-color: #fafafa; padding: 50px 50px;" class="mobile-padding">
+                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0; color: #999999; text-align: center; max-width: 480px; margin: 0 auto;">a neighbourhood moment, a curated experience, and thoughtful details for the season ahead</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- STAFF PICK -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">Staff Pick</h2>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">Allie's Choice - Sprucewood Shortbread</h3>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">This month, Allie is shining the spotlight on one of her all-time favourites: Sprucewood Savoury Shortbread Cookies, the perfect snack for curling up by the fire with a glass of wine, alongside your favourite cheese board, or simply on its own with good company.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Sprucewood is a proudly Canadian, artisan bakery based out of Cobourg, Ontario. What started from a passionate chef sharing his savoury shortbread creations with catering clients has grown into a beloved small-batch shortbread brand found in fine food shops and specialty stores across the region.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Allie loves Sprucewood shortbread for a few reasons: it's rich, buttery, and undeniably flavourful, with a savoury depth that pairs beautifully with cheeses, charcuterie, and even soups. These shortbreads blur the line between cracker and cookie; sturdy enough for cheese, flavourful enough to enjoy on their own, and always a hit when entertaining (or not sharing).</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SHORTBREAD IMAGE -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <a href="https://farmhouseartisancheese.com/groceries.html">
+                                <img src="https://farmhouseartisancheese.com/assets/newsletter/january-2026/shortbread.png" alt="Sprucewood Shortbread" style="display: block; width: 100%; height: auto;">
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SHORTBREAD VARIETIES -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">We carry their savoury shortbread selection, including:</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333;"><strong>Canadian Cheddar</strong> - The original rich, sharp, buttery savoury shortbread made with 4-year old Canadian cheddar.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333;"><strong>Aged Cheddar & Roasted Garlic</strong> - A bold, flavour-packed twist with roasted garlic and aged cheddar.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333;"><strong>Spicy Cheddar</strong> - Cheddar with a gentle kick of cayenne for warmth and spice.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333;"><strong>Herbes de Provence & Aged Cheddar</strong> - A more delicate, aromatic cheddar shortbread with a classic herb blend.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Small-batch and made with care, they don't stay around long. If you see your favourite, grab it! It's that perfect blend of comfort and gourmet that turns a quiet evening into something special.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- VALENTINE'S DAY - SPLIT LAYOUT (IMAGE RIGHT) -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 40px 0; color: #000000;">Looking Ahead</h2>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: middle; padding-right: 40px;">
+                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Valentine's Day</h3>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Valentine's Day is coming up, and we're taking orders for charcuterie boards and gift boxes for the occasion. Whether you're planning something quiet at home or looking for a thoughtful gift to share, we'll help you choose cheeses and pairings that feel right. Nothing overdone, just good food and good company.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 15px 0 0 0; color: #333333;">We do recommend planning ahead, as things get picked over closer to the day.</p>
+                                    </td>
+                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
+                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html">
+                                            <img src="https://farmhouseartisancheese.com/assets/images/giftbox-table.png" alt="Valentine's Gift Boxes" width="270" style="display: block; width: 100%; height: auto;">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- VIEW GIFT BOXES CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">View gift boxes</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DID YOU KNOW - LACTOSE SECTION -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">Did You Know?</h2>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">The Truth About Lactose & Cheese</h3>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Many people assume that cheese and lactose don't mix, but the reality is more nuanced. Lactose is the natural sugar found in milk, yet not all cheeses contain it in significant amounts. During cheesemaking, most lactose is removed with the whey, and the remainder continues to break down as the cheese ages.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">This means that aged cheeses are naturally very low in lactose. Aged cheddars, alpine-style cheeses like Gruyère and Raclette, and hard cheeses such as Parmesan or Pecorino are often well tolerated by people with lactose sensitivity. The longer a cheese ages, the less lactose it typically contains.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">It's not just cow's milk cheeses that are low in lactose. Goat's milk naturally contains slightly less lactose than cow's milk, and many people find goat cheeses easier to digest. Fresh goat cheeses still have some lactose, but aged varieties, like a mellow Crottin or Tomme de Chèvre are very low in lactose and gentle on the stomach.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Sheep's milk cheeses are another excellent option for lactose-sensitive cheese lovers. Sheep milk naturally contains a slightly different composition of lactose, protein, and fat, which makes it easier to digest for some people. Cheeses like Manchego, Pecorino Sardo, or Ossau-Iraty are not only rich and flavorful but are also naturally low in lactose once aged.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Even with this good news, it's important to remember that fresh cheeses, whether from cow, goat, or sheep milk contain more lactose because they haven't had time to age and break down the sugar.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">So, if you've been avoiding cheese because of lactose, don't give up just yet. Many of our cheeses, from aged cow's milk cheddars to goat and sheep milk varieties, may still be very enjoyable and easily digestible. And as always, we're happy to guide you to the ones that work best for your taste and tolerance.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- CHEESE IMAGE -->
+                    <tr>
+                        <td style="background-color: #ffffff; text-align: center;">
+                            <img src="https://farmhouseartisancheese.com/assets/newsletter/portrait-orientation-test-image.png" alt="Cheese Selection" style="display: block; margin: 0 auto; max-width: 400px; width: 100%; height: auto;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- CHEESES TO TRY LIST -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h4 class="headline-small" style="font-size: 18px; font-weight: 300; letter-spacing: 3px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">Cheeses to Try:</h4>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Grey Owl</strong> (cow, Quebec) – soft, creamy, and mild</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Abbotsgold</strong> (cow, UK) – rich, buttery, and comforting</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Smoked Red Fox</strong> (cow, UK) – bold, crumbly, and smoky</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Raclette</strong> (cow, Switzerland) – smooth, meltable, and perfect for winter</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Morbier</strong> (cow, France) – semi-soft, slightly tangy, low in lactose</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Manchego</strong> (sheep, Spain) – firm, nutty, and naturally low in lactose</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.7; margin: 0 0 30px 0; color: #333333; max-width: 540px;"><strong>Tomme de Chèvre</strong> (goat, France) – mellow, creamy, and gentle on digestion</p>
+                            
+                            <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.6; margin: 0; color: #999999; max-width: 540px;">Disclaimer: This information is intended for educational purposes only and should not replace advice from a qualified medical professional. Individuals with lactose intolerance or other dietary concerns should consult their healthcare provider before making changes to their diet.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DARK VISIT SECTION -->
+                    <tr>
+                        <td style="background-color: #1a1a1a; padding: 70px 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #ffffff;">Visit Us in<br>Kerr Village</h2>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #cccccc; max-width: 460px;">Whether you're planning ahead or just browsing, you're welcome anytime. January is a beautiful time to wander through the shop without the holiday rush.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #cccccc;">345 Kerr Street, Oakville</p>
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 40px 0; color: #999999;">Mon: Closed · Tue–Thu: 11am–5pm<br>Fri–Sat: 10am–6pm · Sun: Closed</p>
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 25px auto 0 auto;">
+                                            <tr>
+                                                <td align="center" bgcolor="transparent" style="border: 1px solid #ffffff;">
+                                                    <a href="https://farmhouseartisancheese.com/contact.html" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-block; padding: 16px 45px;">Contact Us</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- FOOTER -->
+                    <tr>
+                        <td style="background-color: #000000; padding: 50px 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png" alt="Farmhouse Artisan Cheese" width="190" style="display: block; margin: 0 auto 30px auto; filter: invert(1);">
+                                        
+                                        <!-- Social Icons -->
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto 30px auto;">
+                                            <tr>
+                                                <td style="padding: 0 12px;">
+                                                    <a href="https://www.instagram.com/farmhouseartisancheese/">
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" width="22" height="22" style="display: block; filter: invert(1); opacity: 0.5;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 12px;">
+                                                    <a href="https://www.facebook.com/farmhouseartisancheese/">
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" width="22" height="22" style="display: block; filter: invert(1); opacity: 0.5;">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 10px 0; color: #666666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="83eaede5ecc3e5e2f1eeebecf6f0e6e2f1f7eaf0e2ede0ebe6e6f0e6ade0ecee">[email&#160;protected]</a></p>
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 30px 0; color: #666666;">(905) 582-9600</p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 20px 0; color: #666666;">Warmly,<br>The Farmhouse Artisan Cheese Team</p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 20px 0; color: #444444;">You are receiving this email because you subscribed to our newsletter.<br><preferences style="color: #666666; text-decoration: underline;">Update preferences</preferences> or <unsubscribe style="color: #666666; text-decoration: underline;">unsubscribe</unsubscribe></p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0; color: #444444;">© 2026 Farmhouse Artisan Cheese. All rights reserved.</p>
+
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 15px 0 0 0; color: #444444;">
+                                        <a href="https://squarestairmedia.com" target="_blank" style="color: #666666; text-decoration: none;">CUSTOM LUXURY EMAIL DESIGN BY SQUARESTAIR MEDIA</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #000000; height: 40px;"></td>
+               
