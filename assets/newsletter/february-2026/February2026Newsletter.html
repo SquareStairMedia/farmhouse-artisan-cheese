@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <title>Farmhouse Artisan Cheese - The Farmhouse Gazette</title>
+    <style>
+        /* Email-safe reset */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+        
+        /* Base styles */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background-color: #000000;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            color: #000000;
+        }
+        
+        .email-container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        
+        /* Typography */
+        .headline-massive {
+            font-size: 68px;
+            font-weight: 100;
+            letter-spacing: 16px;
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin: 0;
+            color: #ffffff;
+        }
+        
+        .headline-large {
+            font-size: 42px;
+            font-weight: 100;
+            letter-spacing: 10px;
+            text-transform: none;
+            line-height: 1.1;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .headline-medium {
+            font-size: 28px;
+            font-weight: 200;
+            letter-spacing: 6px;
+            text-transform: none;
+            line-height: 1.3;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .headline-small {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: none;
+            line-height: 1.4;
+            margin: 0;
+            color: #000000;
+        }
+        
+        .subhead {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: lowercase;
+            line-height: 1.8;
+            margin: 0;
+            color: #999999;
+        }
+        
+        .body-text {
+            font-size: 16px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            line-height: 1.9;
+            margin: 0;
+            color: #333333;
+        }
+        
+        .caption {
+            font-size: 11px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            margin: 0;
+            color: #999999;
+        }
+        
+        /* Buttons */
+        .button-minimal {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: transparent;
+            border: 1px solid #000000;
+            color: #000000;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        
+        .button-inverse {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: transparent;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+        
+        /* Responsive */
+        @media only screen and (max-width: 680px) {
+            .email-container { width: 100% !important; }
+            .hero-headline { font-size: 40px !important; letter-spacing: 7px !important; max-width: 100% !important; width: 100% !important; }
+            .stack-column { display: block !important; width: 100% !important; max-width: 100% !important; }
+            .stack-pr { padding-right: 0 !important; }
+            .stack-pl { padding-left: 0 !important; }
+            .stack-border-left { border-left: 0 !important; padding-left: 0 !important; }
+            .stack-border-right { border-right: 0 !important; padding-right: 0 !important; }
+            .headline-massive { font-size: 38px !important; letter-spacing: 6px !important; }
+            .headline-large { font-size: 28px !important; letter-spacing: 5px !important; }
+            .headline-medium { font-size: 22px !important; letter-spacing: 3px !important; }
+            .mobile-padding { padding-left: 25px !important; padding-right: 25px !important; }
+            .mobile-hide { display: none !important; }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #000000;">
+    <singleline label="Email Subject">February Newsletter</singleline>    
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000;">
+        <tr>
+            <td>
+                
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="email-container" style="max-width: 680px; width: 100%; margin: 0 auto; background-color: #000000;">
+                    
+                    <!-- TOP SPACER -->
+                    <tr>
+                        <td style="height: 40px;"></td>
+                    </tr>
+                    
+                    <!-- HEADER - BRAND LOCKUP (ICON + WORDMARK) -->
+                    <tr>
+                        <td align="center" style="padding: 0 40px;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto;">
+                                <tr>
+                                    <td style="padding-right: 15px; vertical-align: middle;">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/FH-Logo.png" alt="FH" width="45" height="45" style="display: block; filter: invert(1);">
+                                    </td>
+                                    <td style="vertical-align: middle;">
+                                        <p style="margin: 0; font-size: 15px; font-weight: 200; color: #ffffff; letter-spacing: 11px; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">Farmhouse Artisan Cheese</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="height: 30px;"></td>
+                    </tr>
+                    
+                    <!-- WEB VERSION -->
+                    <tr>
+                        <td align="center" style="padding: 0 40px;">
+                            <webversion><p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: #666666; margin: 0;">View in browser</p></webversion>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="height: 50px;"></td>
+                    </tr>
+                    
+                    <!-- HERO IMAGE -->
+                    <tr>
+                        <td style="position: relative;">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td style="position: relative;">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/char1.jpg" alt="Farmhouse Artisan Cheese" style="display: block; width: 100%; height: auto; filter: brightness(0.3);">
+                                        
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="position: absolute; top: 0; left: 0; height: 100%;">
+                                            <tr>
+                                                <td align="center" valign="middle" style="padding: 60px 50px;">
+                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;">issue nº 03</p>
+                                                    <h1 class="hero-headline headline-massive" style="font-size: 62px; font-weight: 100; letter-spacing: 14px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff; max-width: 100%; width: 100%; display: inline-block;">The<br>Farmhouse<br>Gazette</h1>
+                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;">february 2026</p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+<!-- [if mso]>
+                    <tr>
+                        <td style="background-color: #000000; padding: 55px 50px; text-align: center;">
+                            <p style="margin: 0 0 18px 0; font-size: 14px; font-weight: 300; letter-spacing: 6px; text-transform: lowercase; color: #ffffff;">issue nº 03</p>
+                            <h1 style="font-size: 44px; font-weight: 100; letter-spacing: 10px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff;">The<br>Farmhouse<br>Gazette</h1>
+                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">february 2026</p>
+                        </td>
+                    </tr>
+                    <![endif]-->
+
+                    <!-- WHITE SECTION BEGINS -->
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- INTRO TEXT -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">February is all about sharing a little love, and we can't think of a better way than with cheese. Whether you're planning a cozy date night, putting together the perfect appetizer spread, or simply treating yourself to something special, this is the season for indulgent flavours and beautiful pairings. We've brought in some exciting new cheeses and romantic accompaniments, and we're always here to help you find the perfect match. Discover what's making our hearts melt in the shop this month.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- VISIT US CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">Visit us in the shop</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SECTION BREAK -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <div style="width: 50px; height: 1px; background-color: #000000;"></div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- FEBRUARY CHEESE HIGHLIGHTS -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;">February<br>Cheese Highlights</h2>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">February brings a beautiful lineup of cheeses we're especially excited to share, perfect for cozy nights in and Valentine's-worthy boards alike.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Oveja Champagne ros&#233; is turning heads with its rosy rind and classic Spanish sheep's milk richness inside: firm, nutty, and wonderfully savoury with just the right touch of sweetness.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">From Alberta, Grizzly is a standout aged Gouda, matured for 18 months into a deeply caramelized, buttery cheese with those irresistible crunchy crystals that make every bite feel like a little indulgence.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">And from Quebec, La B&#234;te &#224; S&#233;guin is a true showstopper &#8212; a Camembert-style cheese with a soft, bloomy rind and a creamy, luscious centre that becomes beautifully runny as it warms. Expect rich, buttery flavours with delicate earthy notes, a hint of mushroom, and that irresistible silky texture that begs to be scooped up with warm bread or enjoyed slowly with a glass of wine. In fact, according to St&#233;phane, it's one of the best Camembert-style cheeses he's ever had &#8212; high praise from a French cheesemonger.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">We're also featuring Apolline aux Fleurs, a stunning French cheese delicately coated in dried flowers. As beautiful as it is delicious, it offers a creamy, gentle flavour with a subtle floral finish &#8212; a perfect centerpiece for a Valentine's board or an elegant winter treat.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">These cheeses were chosen for their warmth, depth, and versatility, equally at home on a romantic spread, a casual gathering, or simply as a midweek treat when you want something a little special.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Quantities are limited and our selection is always changing, so if one of these catches your eye&#8230; don't wait too long.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- CHEESE IMAGE -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px; text-align: center;" class="mobile-padding">
+                            <a href="https://farmhouseartisancheese.com/cheeses.html">
+                                <img src="https://farmhouseartisancheese.com/assets/newsletter/february-2026/cheese-hilights2.jpg" alt="February Cheeses" style="display: block; margin: 0 auto; max-width: 400px; width: 100%; height: auto;">
+                            </a>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- SEE OUR CHEESES CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com/cheeses.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">See what's new in the shop</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- GREY SUBHEAD SECTION -->
+                    <tr>
+                        <td style="background-color: #fafafa; padding: 50px 50px;" class="mobile-padding">
+                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0; color: #999999; text-align: center; max-width: 480px; margin: 0 auto;">a shared board, a deeper understanding, and something special on the horizon</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- STAFF PICK -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">Staff Pick</h2>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 30px 0; color: #000000;">Raea's Choice - Mary's Muffins</h3>
+                        </td>
+                    </tr>
+                    
+                    <!-- STAFF PICK - EDITORIAL LAYOUT WITH PORTRAIT IMAGE -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column" style="width: 40%; vertical-align: top; padding-right: 30px;">
+                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/february-2026/marys-muffins2.jpg" alt="Mary's Muffins" style="display: block; width: 100%; height: auto;">
+                                    </td>
+                                    <td class="stack-column" style="width: 60%; vertical-align: top;">
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333;">This month, Raea's pick is a sweet new addition to our frozen section: Mary's Muffins.</p>
+                                        
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333;">If you know Kerr Street, chances are you already know Mary. Her muffins have become a local favourite over the years, made with care, quality ingredients, and that unmistakable homemade touch. We're so excited to now carry her products at Farmhouse Artisan Cheese.</p>
+                                        
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Mary's approach is simple and thoughtful: small-batch baking, real ingredients, and a commitment to doing things the right way, no shortcuts, just honest, comforting food made with love.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 30px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- STAFF PICK CONTINUED -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Each muffin is prepared with the same attention and warmth that has made her such a beloved part of the Oakville community.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Available in our frozen section, they're perfect to have on hand for an easy weekend treat, a cozy afternoon snack, or a little something sweet alongside your cheese board (yes, it works!).</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Stop by to discover why Raea, and so many Oakvillians can't get enough of Mary's Muffins.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DID YOU KNOW - WASHED RIND VS BLOOMY RIND -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">Did You Know?</h2>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">Cheese 101: Washed Rind vs. Bloomy Rind</h3>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Cheese lovers often hear terms like &#8220;washed rind&#8221; and &#8220;bloomy rind,&#8221; but what do they really mean, and how do they affect flavour, texture, and aroma? Let's break it down.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 30px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- BLOOMY RIND -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h4 class="headline-small" style="font-size: 18px; font-weight: 300; letter-spacing: 3px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">Bloomy Rind Cheeses</h4>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Bloomy rind cheeses are coated with a white, edible mold (usually Penicillium candidum) that gives them their soft, velvety exterior. Think Camembert-style or Brie-style cheeses.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Appearance &amp; Texture:</strong> White and fluffy on the outside, creamy and often buttery on the inside.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Flavour:</strong> Mild, delicate, and approachable, sometimes with subtle earthy or mushroom notes as they age.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Examples:</strong> La B&#234;te &#224; S&#233;guin, Brie de Meaux, Riopelle, D&#233;lice de Bourgogne.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;"><strong>How to Serve:</strong> Bring to room temperature for 20&#8211;30 minutes before serving to fully unlock the creamy texture and subtle flavours. Serve on a simple wooden board or ceramic plate with fresh bread, crackers, or fruit for a balanced presentation.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Bloomy rind cheeses are often the go-to for people new to artisan cheese, soft, comforting, and perfect for spreading on bread or crackers.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- WASHED RIND -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h4 class="headline-small" style="font-size: 18px; font-weight: 300; letter-spacing: 3px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">Washed Rind Cheeses</h4>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Washed rind cheeses, on the other hand, are periodically &#8220;washed&#8221; with a brine, wine, beer, or other liquids during aging. This encourages the growth of orange or reddish bacteria (Brevibacterium linens) on the surface.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Appearance &amp; Texture:</strong> Often orange or reddish, sometimes sticky to the touch. Interiors can range from soft and creamy to firm, depending on the cheese.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Flavour:</strong> More pronounced than bloomy rinds &#8212; often savoury, earthy, nutty, or slightly tangy. Some are quite bold and aromatic, making them a memorable centrepiece on any board.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Examples:</strong> Taleggio, 14 Arpents, Chemin Br&#251;l&#233;, Gruy&#232;re AOP.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;"><strong>How to Serve:</strong> Bring to room temperature for 30&#8211;45 minutes to allow the flavours to fully develop. Washed rind cheeses pair beautifully with rustic boards, nuts, charcuterie, or fruit preserves, which help balance their intensity and create a visually appealing spread.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Washed rind cheeses tend to have a stronger smell than their taste &#8212; don't be intimidated! Their aroma can be pungent, but the flavours are usually rich, creamy, and satisfying.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 50px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DID YOU KNOW IMAGE -->
+                    <tr>
+                        <td style="background-color: #ffffff; text-align: center; padding: 0 50px;" class="mobile-padding">
+                            <img src="https://farmhouseartisancheese.com/assets/newsletter/february-2026/cheese-hilights1.jpg" alt="Washed Rind and Bloomy Rind Cheeses" style="display: block; margin: 0 auto; max-width: 400px; width: 100%; height: auto;">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- IN SUMMARY -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h4 class="headline-small" style="font-size: 18px; font-weight: 300; letter-spacing: 3px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">In Summary</h4>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #333333; max-width: 540px;"><strong>Bloomy Rind:</strong> soft, white mold, mild and creamy, approachable.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;"><strong>Washed Rind:</strong> washed with liquid, orange/reddish rind, more aromatic, savoury, and complex.</p>
+                            
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Both styles bring something special to the table, from a delicate, buttery wedge to a bold, flavourful centrepiece. The next time you're building a board, try combining the two: a bloomy cheese for creaminess, a washed rind for depth, and maybe even a nutty aged cheese to round it out. Your taste buds will thank you.</p>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- LOOKING AHEAD TO MARCH - SPLIT LAYOUT (IMAGE RIGHT) -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 40px 0; color: #000000;">Looking Ahead</h2>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: middle; padding-right: 40px;">
+                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Looking Ahead to March</h3>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">March always feels like a month of transition; longer days, a hint of spring in the air, and plenty of reasons to gather around good food. With March Break, St. Patrick's Day, and Easter just around the corner, the coming weeks tend to fill up with family meals, casual celebrations, and shared moments at the table.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">In the shop, we'll be taking orders for charcuterie and cheese boards for these occasions, along with our gift boxes that make a thoughtful addition when visiting friends or hosting loved ones. It's a simple way to bring something special, whether it's for a holiday weekend or a last-minute gathering.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">We're also looking forward to the arrival of new hostess gifts and specialty items as we move into the spring season that we can't wait to share.</p>
+                                    </td>
+                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
+                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html">
+                                            <img src="https://farmhouseartisancheese.com/assets/newsletter/giftbox-table.jpg" alt="Gift Boxes" width="270" style="display: block; width: 100%; height: auto;">
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 40px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- VIEW GIFT BOXES CTA -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
+                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">View gift boxes</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 70px;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- DARK VISIT SECTION -->
+                    <tr>
+                        <td style="background-color: #1a1a1a; padding: 70px 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #ffffff;">Visit Us in<br>Kerr Village</h2>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 10px 0; color: #cccccc; max-width: 460px;">Whether you're planning ahead or just browsing, you're welcome anytime.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 25px 0; color: #cccccc;">345 Kerr Street, Oakville</p>
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 40px 0; color: #999999;">Mon: Closed · Tue–Thu: 11am–5pm<br>Fri–Sat: 10am–6pm · Sun: Closed</p>
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 25px auto 0 auto;">
+                                            <tr>
+                                                <td align="center" bgcolor="transparent" style="border: 1px solid #ffffff;">
+                                                    <a href="https://farmhouseartisancheese.com/contact.html" target="_blank" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #ffffff; text-decoration: none; display: inline-block; padding: 16px 45px;">Contact Us</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <!-- FOOTER -->
+                    <tr>
+                        <td style="background-color: #000000; padding: 50px 50px;" class="mobile-padding">
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <img src="https://farmhouseartisancheese.com/assets/images/Farmhouse-Artisan-Cheese-Logo.png" alt="Farmhouse Artisan Cheese" width="190" style="display: block; margin: 0 auto 30px auto; filter: invert(1);">
+                                        
+                                        <!-- Social Icons -->
+                                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="margin: 0 auto 30px auto;">
+                                            <tr>
+                                                <td style="padding: 0 12px;">
+                                                    <a href="https://www.instagram.com/farmhouseartisancheese/">
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" width="22" height="22" style="display: block; filter: invert(1); opacity: 0.5;">
+                                                    </a>
+                                                </td>
+                                                <td style="padding: 0 12px;">
+                                                    <a href="https://www.facebook.com/farmhouseartisancheese/">
+                                                        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook" width="22" height="22" style="display: block; filter: invert(1); opacity: 0.5;">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 10px 0; color: #666666;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99f0f7fff6d9fff8ebf4f1f6eceafcf8ebedf0eaf8f7faf1fcfceafcb7faf6f4">[email&#160;protected]</a></p>
+                                        <p class="caption" style="font-size: 11px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; line-height: 1.6; margin: 0 0 30px 0; color: #666666;">(905) 582-9600</p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 20px 0; color: #666666;">Warmly,<br>The Farmhouse Artisan Cheese Team</p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0 0 20px 0; color: #444444;">You are receiving this email because you subscribed to our newsletter.<br><preferences style="color: #666666; text-decoration: underline;">Update preferences</preferences> or <unsubscribe style="color: #666666; text-decoration: underline;">unsubscribe</unsubscribe></p>
+                                        
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0; color: #444444;">© 2026 Farmhouse Artisan Cheese. All rights reserved.</p>
+
+                                        <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 15px 0 0 0; color: #444444;">
+                                        <a href="https://squarestairmedia.com" target="_blank" style="color: #666666; text-decoration: none;">CUSTOM LUXURY EMAIL DESIGN BY SQUARESTAIR MEDIA</a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
