@@ -283,6 +283,7 @@
     .blog-content h2 {
         font-size: 1.5em;
         letter-spacing: 6px;
+        font-weight: 300;
     }
     
     .blog-pullquote {
