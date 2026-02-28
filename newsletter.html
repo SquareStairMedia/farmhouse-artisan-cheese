@@ -72,19 +72,25 @@
         </div>
 
         <form id="newsletterForm" class="newsletter-form">
+            <!-- Honeypot field: hidden from real users, bots fill it automatically -->
+            <div style="display:none !important; position:absolute; left:-9999px;" aria-hidden="true">
+                <label for="newsletter-honeypot">Website</label>
+                <input type="text" id="newsletter-honeypot" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="newsletter-name" name="name" required>
+                <input type="text" id="newsletter-name" name="name" required maxlength="100">
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="newsletter-email" name="email" required>
+                <input type="email" id="newsletter-email" name="email" required maxlength="254">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone (optional)</label>
-                <input type="tel" id="newsletter-phone" name="phone">
+                <input type="tel" id="newsletter-phone" name="phone" maxlength="20">
             </div>
 
             <div class="newsletter-checkbox">

@@ -35,6 +35,11 @@ const PORT = process.env.PORT || 3000;
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// Basic email format validation
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 // HTML escaping function to prevent injection in emails
 function escapeHtml(text) {
   if (!text) return "";
@@ -82,17 +87,33 @@ app.get('/', (req, res) => {
 // Contact form endpoint with rate limiting
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
-    // Sanitize user input
-    const safeName = escapeHtml(name);
-    const safeEmail = escapeHtml(email);
-    const safePhone = escapeHtml(phone);
-    const safeMessage = escapeHtml(message);
+    const { name, email, phone, message, website } = req.body;
+
+    // Honeypot check: bots fill hidden fields, humans never see them
+    if (website) {
+      return res.json({ success: true, message: 'Email sent successfully' });
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
+
+    // Email format validation
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ error: 'Please enter a valid email address' });
+    }
+
+    // Input length limits
+    if (name.length > 100 || email.length > 254 || (phone && phone.length > 20) || message.length > 2000) {
+      return res.status(400).json({ error: 'One or more fields exceed the maximum allowed length' });
+    }
+
+    // Sanitize user input
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = escapeHtml(message);
 
     // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
@@ -138,14 +159,32 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Newsletter signup endpoint with rate limiting
 app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
-    const { name, email, phone, seasonalOfferings } = req.body;
+    const { name, email, phone, seasonalOfferings, website } = req.body;
+
+    // Honeypot check: bots fill hidden fields, humans never see them
+    if (website) {
+      return res.json({ success: true, message: 'Newsletter signup successful' });
+    }
+
+    // Validate required fields
+    if (!name || !email) {
+      return res.status(400).json({ error: 'Name and email are required' });
+    }
+
+    // Email format validation
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ error: 'Please enter a valid email address' });
+    }
+
+    // Input length limits
+    if (name.length > 100 || email.length > 254 || (phone && phone.length > 20)) {
+      return res.status(400).json({ error: 'One or more fields exceed the maximum allowed length' });
+    }
+
     // Sanitize user input
     const safeName = escapeHtml(name);
     const safeEmail = escapeHtml(email);
     const safePhone = escapeHtml(phone);
-    if (!name || !email) {
-      return res.status(400).json({ error: 'Name and email are required' });
-    }
 
     const cmResponse = await fetch(
   `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
