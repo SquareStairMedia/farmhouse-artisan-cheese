@@ -223,7 +223,7 @@
     .blog-header h1 {
         font-size: 2.5em;
         letter-spacing: 8px;
-        font-weight: 300;
+        font-weight: 400;
     }
 }
 
@@ -235,7 +235,7 @@
     .blog-header h1 {
         font-size: 2em;
         letter-spacing: 6px;
-        font-weight: 300;
+        font-weight: 400;
     }
     
     .blog-featured-image {
@@ -277,7 +277,7 @@
     .blog-header h1 {
         font-size: 1.5em;
         letter-spacing: 4px;
-        font-weight: 300;
+        font-weight: 400;
     }
     
     .blog-content h2 {
