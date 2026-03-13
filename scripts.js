@@ -197,6 +197,7 @@ if (newsletterModal) {
 
 });
 
+// FAQ Page Accordion Toggle
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
