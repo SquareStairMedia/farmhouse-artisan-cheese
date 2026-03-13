@@ -194,4 +194,17 @@ if (newsletterModal) {
             }
         });
     }
+
+});
+
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        
+        button.setAttribute('aria-expanded', !isExpanded);
+        answer.style.maxHeight = isExpanded ? '0' : answer.scrollHeight + 'px';
+        icon.textContent = isExpanded ? '+' : '−';
+    });
 });
