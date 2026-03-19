@@ -138,6 +138,40 @@
                 letter-spacing: 4px;
             }
         }
+
+        /* Hero image text override */
+.page-hero--image {
+    position: relative;
+    padding: 0;
+    background: none;
+}
+
+.page-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.page-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1;
+}
+
+.page-hero--image .page-hero__content {
+    position: relative;
+    z-index: 2;
+    padding: 120px 8%;
+}
+
+.page-hero--image h1,
+.page-hero--image p {
+    color: #fff;
+}
     </style>
 
     <script type="application/ld+json">
@@ -349,12 +383,12 @@
     </nav>
 </header>
 
-<section class="page-hero">
+<!-- <section class="page-hero">
     <h1>Frequently Asked Questions</h1>
     <p>Everything you need to know about visiting our shop and exploring artisan cheese.</p>
-</section>
+</section> -->
 
-<!-- Hero Image option (currently not used)
+<!-- Hero Image option (may or may not use) -->
 <section class="page-hero page-hero--image">
     <div class="page-hero__overlay"></div>
     <img src="./assets/images/exterior.webp" alt="Farmhouse Artisan Cheese storefront at 345 Kerr Street, Oakville" class="page-hero__bg">
@@ -362,7 +396,7 @@
         <h1>Frequently Asked Questions</h1>
         <p>Everything you need to know about visiting our shop and exploring artisan cheese.</p>
     </div>
-</section> -->
+</section>
 
 <section class="faq-section">
     <div class="faq-container">
