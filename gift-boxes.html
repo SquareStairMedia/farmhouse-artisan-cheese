@@ -479,25 +479,204 @@
             .carousel-container {
                 height: 300px;
             }
-            
+
             .carousel-btn {
                 font-size: 2em;
                 padding: 5px 15px;
             }
-            
+
             .carousel-btn.prev {
                 left: 10px;
             }
-            
+
             .carousel-btn.next {
                 right: 10px;
             }
-            
+
             .carousel-caption {
                 font-size: 0.75em;
                 padding: 8px 20px;
                 letter-spacing: 2px;
             }
+        }
+
+        /* Modal subtitle */
+        .modal-subtitle {
+            font-size: 0.88em;
+            color: #888;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin: -24px 0 32px;
+        }
+
+        #giftBoxFormWrap > h2 {
+            margin-bottom: 12px;
+        }
+
+        /* Box Selection */
+        .box-selection-section {
+            margin-bottom: 28px;
+        }
+
+        .box-selection-label {
+            display: block;
+            margin-bottom: 14px;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #000;
+        }
+
+        .box-option {
+            border: 1px solid #e5e5e5;
+            padding: 18px 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            user-select: none;
+        }
+
+        .box-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .box-option:hover {
+            border-color: #bbb;
+        }
+
+        .box-option.selected {
+            border-color: #000;
+            background: #fafafa;
+        }
+
+        .box-option-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .box-indicator {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            flex-shrink: 0;
+            position: relative;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .box-option.selected .box-indicator {
+            background: #000;
+            border-color: #000;
+        }
+
+        .box-option.selected .box-indicator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .box-option-name {
+            flex: 1;
+            font-size: 0.8em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #000;
+        }
+
+        .box-option-price {
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .box-option-detail {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #eee;
+        }
+
+        .box-option-detail > label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            color: #666;
+        }
+
+        .qty-input {
+            width: 80px;
+            padding: 10px 12px;
+            border: 1px solid #e5e5e5;
+            background: #fff;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 0.9em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            -moz-appearance: textfield;
+        }
+
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .qty-input:focus {
+            outline: none;
+            border-color: #000;
+            background: #fff;
+        }
+
+        .executive-note {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            margin: 0;
+        }
+
+        /* Inline form error */
+        .form-error {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: #fff8f8;
+            border-left: 2px solid #c00;
+            font-size: 0.82em;
+            color: #c00;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        /* Order confirmation */
+        .modal-confirmation {
+            padding: 20px 0 10px;
+            text-align: center;
+        }
+
+        .modal-confirmation p {
+            font-size: 0.95em;
+            line-height: 2;
+            color: #555;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            max-width: 380px;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -650,7 +829,7 @@
             <h3 style="font-size: 1.4em; margin-bottom: 20px; letter-spacing: 4px; font-weight: 300;">Custom Boxes</h3>
             <p style="color: #ccc; line-height: 2; margin-bottom: 15px;">We'll build a personalized box according to your budget and selections. Perfect for special occasions.</p>
             <p style="font-size: 0.9em; color: #999; margin-bottom: 40px;"><em>Minimum 2 business days required for orders.</em></p>
-            <button class="contact-cta-button" style="border-color: #fff;">Contact Us</button>
+            <button class="contact-cta-button order-gift-box-btn" style="border-color: #fff;">Order Gift Boxes</button>
         </div>
     </div>
 </section>
@@ -661,9 +840,6 @@
         </div>
         <p style="max-width: 900px; margin: 40px auto 0; font-size: 1.1em; line-height: 2; color: #666; letter-spacing: 1px; font-weight: 300;">Customize your gift box, place an order, and create a gift that looks stunning—and tastes even better.</p>
         <div class="quote-author">— Farmhouse Artisan Cheese</div>
-        <div style="text-align: center; margin-top: 50px;">
-            <button class="contact-cta-button">Contact Us</button>
-        </div>
     </section>
 
     <footer>
@@ -762,155 +938,198 @@
     </div>
 </div>
 
-<!-- Modal -->
-<div class="order-modal" id="orderModal">
+<!-- Gift Box Order Modal -->
+<div class="order-modal" id="giftBoxModal">
     <div class="modal-content">
-        <button class="modal-close">&times;</button>
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message *</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-button">Send Message</button>
-            <div id="formStatus" style="margin-top: 20px; text-align: center;"></div>
-        </form>
+        <button class="modal-close" id="giftBoxModalClose">&times;</button>
 
-        <!-- <script>
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value
-            };
-            
-            const statusDiv = document.getElementById('formStatus');
-            statusDiv.textContent = 'Sending...';
-            
-            try {
-                const response = await fetch('https://farmhouse-backend.onrender.com/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                
-                if (response.ok) {
-                    statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
-                    statusDiv.style.color = 'green';
-                    document.getElementById('contactForm').reset();
-                } else {
-                    throw new Error('Failed to send');
-                }
-            } catch (error) {
-                statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
-                statusDiv.style.color = 'red';
-            }
-        });
-        </script> -->
+        <div id="giftBoxFormWrap">
+            <h2>Order Gift Boxes</h2>
+            <p class="modal-subtitle">Select your gift boxes below and submit your order. A member of our team will be in touch within 24–48 hours to confirm the details.</p>
+
+            <form id="giftBoxForm" class="order-form">
+                <!-- Honeypot: hidden from humans, filled by bots -->
+                <input type="text" id="gb-website" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+
+                <div class="form-group">
+                    <label for="gb-name">Name *</label>
+                    <input type="text" id="gb-name" name="name" required maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="gb-email">Email *</label>
+                    <input type="email" id="gb-email" name="email" required maxlength="254">
+                </div>
+
+                <div class="form-group">
+                    <label for="gb-phone">Phone *</label>
+                    <input type="tel" id="gb-phone" name="phone" required maxlength="20">
+                </div>
+
+                <div class="box-selection-section">
+                    <span class="box-selection-label">Select Gift Box(es) *</span>
+
+                    <div class="box-option" data-box-name="The Discovery">
+                        <div class="box-option-header">
+                            <span class="box-indicator"></span>
+                            <span class="box-option-name">The Discovery</span>
+                            <span class="box-option-price">$79 + tax</span>
+                        </div>
+                        <div class="box-option-detail" style="display:none;">
+                            <label>Quantity</label>
+                            <input type="number" class="qty-input" min="1" max="99" value="1">
+                        </div>
+                    </div>
+
+                    <div class="box-option" data-box-name="The Master">
+                        <div class="box-option-header">
+                            <span class="box-indicator"></span>
+                            <span class="box-option-name">The Master</span>
+                            <span class="box-option-price">$159 + tax</span>
+                        </div>
+                        <div class="box-option-detail" style="display:none;">
+                            <label>Quantity</label>
+                            <input type="number" class="qty-input" min="1" max="99" value="1">
+                        </div>
+                    </div>
+
+                    <div class="box-option" data-box-name="The Executive">
+                        <div class="box-option-header">
+                            <span class="box-indicator"></span>
+                            <span class="box-option-name">The Executive</span>
+                            <span class="box-option-price">Custom Pricing</span>
+                        </div>
+                        <div class="box-option-detail" style="display:none;">
+                            <p class="executive-note">A member of our team will discuss pricing and details with you directly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-error" id="giftBoxError" style="display:none;"></div>
+
+                <button type="submit" class="modal-submit">Submit Order</button>
+            </form>
+        </div>
+
+        <div id="giftBoxConfirmation" class="modal-confirmation" style="display:none;">
+            <h2>Order Received</h2>
+            <p>Thank you for your order. A member of our team will be in touch within 24–48 hours to confirm the details.</p>
+        </div>
     </div>
 </div>
 
 <script>
-// Get elements
-const modal = document.getElementById('orderModal');
-const contactButtons = document.querySelectorAll('.contact-cta-button');
-const closeButton = document.querySelector('.modal-close');
+(function () {
+    const modal = document.getElementById('giftBoxModal');
+    const orderBtns = document.querySelectorAll('.order-gift-box-btn');
+    const closeBtn = document.getElementById('giftBoxModalClose');
+    const form = document.getElementById('giftBoxForm');
+    const formWrap = document.getElementById('giftBoxFormWrap');
+    const confirmation = document.getElementById('giftBoxConfirmation');
+    const errorDiv = document.getElementById('giftBoxError');
 
-// Open modal
-function openModal() {
+    function openModal() {
         gtag('event', 'click', {
-        'event_category': 'Button',
-        'event_label': 'Contact Us - ' + document.title
-    });
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-// Close modal
-function closeModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Event listeners for contact buttons
-contactButtons.forEach(button => {
-    button.addEventListener('click', openModal);
-});
-
-closeButton.addEventListener('click', closeModal);
-
-// Close on outside click
-modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        closeModal();
-    }
-});
-
-// Close on Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-        closeModal();
-    }
-});
-
-// Form submit
-document.querySelector('#contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
-    };
-    
-    const statusDiv = document.getElementById('formStatus');
-    statusDiv.textContent = 'Sending...';
-    
-    try {
-        const response = await fetch('https://farmhouse-backend.onrender.com/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            'event_category': 'Button',
+            'event_label': 'Order Gift Boxes - ' + document.title
         });
-        
-        if (response.ok) {
-            gtag('event', 'form_submit', {
-                'event_category': 'Contact',
-                'event_label': 'Contact Form Submission - ' + document.title
-            });
-            statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
-            statusDiv.style.color = 'green';
-            document.getElementById('contactForm').reset();
-            setTimeout(closeModal, 2000); // Close modal after 2 seconds
-        } else {
-            throw new Error('Failed to send');
-        }
-    } catch (error) {
-        statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
-        statusDiv.style.color = 'red';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
-});
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    orderBtns.forEach(btn => btn.addEventListener('click', openModal));
+    closeBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+
+    // Box card selection toggle
+    document.querySelectorAll('.box-option').forEach(function (option) {
+        option.addEventListener('click', function (e) {
+            if (e.target.tagName === 'INPUT') return;
+            const isSelected = this.classList.toggle('selected');
+            const detail = this.querySelector('.box-option-detail');
+            if (detail) detail.style.display = isSelected ? 'block' : 'none';
+            if (isSelected) {
+                const qty = this.querySelector('.qty-input');
+                if (qty && !qty.value) qty.value = '1';
+            }
+        });
+    });
+
+    // Form submission
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorDiv.style.display = 'none';
+
+        const name = document.getElementById('gb-name').value.trim();
+        const email = document.getElementById('gb-email').value.trim();
+        const phone = document.getElementById('gb-phone').value.trim();
+        const honeypot = document.getElementById('gb-website').value;
+
+        const selectedBoxes = [];
+        document.querySelectorAll('.box-option.selected').forEach(function (option) {
+            const boxName = option.dataset.boxName;
+            const qtyInput = option.querySelector('.qty-input');
+            selectedBoxes.push({
+                name: boxName,
+                qty: qtyInput ? parseInt(qtyInput.value, 10) || 1 : null
+            });
+        });
+
+        if (!name || !email || !phone) {
+            errorDiv.textContent = 'Please fill in all required fields.';
+            errorDiv.style.display = 'block';
+            return;
+        }
+        if (selectedBoxes.length === 0) {
+            errorDiv.textContent = 'Please select at least one gift box.';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        const submitBtn = form.querySelector('.modal-submit');
+        submitBtn.textContent = 'Sending…';
+        submitBtn.disabled = true;
+
+        try {
+            const response = await fetch('https://farmhouse-backend.onrender.com/api/gift-box-order', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, phone, boxes: selectedBoxes, website: honeypot })
+            });
+
+            if (response.ok) {
+                gtag('event', 'form_submit', {
+                    'event_category': 'Order',
+                    'event_label': 'Gift Box Order - ' + document.title
+                });
+                formWrap.style.display = 'none';
+                confirmation.style.display = 'block';
+            } else {
+                const data = await response.json().catch(function () { return {}; });
+                errorDiv.textContent = data.error || 'Something went wrong. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        } catch (err) {
+            errorDiv.textContent = 'Something went wrong. Please try again.';
+            errorDiv.style.display = 'block';
+        } finally {
+            submitBtn.textContent = 'Submit Order';
+            submitBtn.disabled = false;
+        }
+    });
+}());
 </script>
 
 <script>

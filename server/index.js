@@ -79,6 +79,15 @@ const newsletterLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Rate limiting for gift box orders - 5 submissions per hour per IP
+const giftBoxLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 5,
+  message: 'Too many gift box order submissions from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // Health check endpoint
 app.get('/', (req, res) => {
   res.json({ status: 'Farmhouse Artisan Cheese API is running' });
@@ -249,6 +258,120 @@ if (!cmResponse.ok) {
   } catch (error) {
     console.error('Error processing newsletter signup:', error);
     res.status(500).json({ error: 'Failed to process signup' });
+  }
+});
+
+// Gift box order endpoint with rate limiting
+app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
+  try {
+    const { name, email, phone, boxes, website } = req.body;
+
+    // Honeypot check: bots fill hidden fields, humans never see them
+    if (website) {
+      return res.json({ success: true, message: 'Order received' });
+    }
+
+    // Validate required fields
+    if (!name || !email || !phone) {
+      return res.status(400).json({ error: 'Name, email, and phone are required' });
+    }
+
+    // Email format validation
+    if (!isValidEmail(email)) {
+      return res.status(400).json({ error: 'Please enter a valid email address' });
+    }
+
+    // Input length limits
+    if (name.length > 100 || email.length > 254 || phone.length > 20) {
+      return res.status(400).json({ error: 'One or more fields exceed the maximum allowed length' });
+    }
+
+    // Validate box selection
+    if (!Array.isArray(boxes) || boxes.length === 0) {
+      return res.status(400).json({ error: 'Please select at least one gift box' });
+    }
+
+    const allowedBoxes = ['The Discovery', 'The Master', 'The Executive'];
+    for (const box of boxes) {
+      if (!box.name || !allowedBoxes.includes(box.name)) {
+        return res.status(400).json({ error: 'Invalid gift box selection' });
+      }
+      if (box.name !== 'The Executive') {
+        const qty = parseInt(box.qty, 10);
+        if (isNaN(qty) || qty < 1 || qty > 99) {
+          return res.status(400).json({ error: `Invalid quantity for ${box.name}` });
+        }
+      }
+    }
+
+    // Sanitize user input
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+
+    // Build order summary table for store notification email
+    const orderRows = boxes.map(box => {
+      if (box.name === 'The Executive') {
+        return `<tr>
+          <td style="padding: 10px 16px 10px 0;"><strong>${escapeHtml(box.name)}</strong></td>
+          <td style="padding: 10px 16px 10px 0;">Custom Pricing</td>
+          <td style="padding: 10px 0; color: #666;">Team to discuss directly</td>
+        </tr>`;
+      }
+      const price = box.name === 'The Discovery' ? '$79 + tax' : '$159 + tax';
+      return `<tr>
+        <td style="padding: 10px 16px 10px 0;"><strong>${escapeHtml(box.name)}</strong></td>
+        <td style="padding: 10px 16px 10px 0;">${price}</td>
+        <td style="padding: 10px 0;">Qty: ${parseInt(box.qty, 10)}</td>
+      </tr>`;
+    }).join('');
+
+    // Send notification email to shop owner
+    await resend.emails.send({
+      from: 'farmhouse-auto-reply@radarmagnet.com',
+      to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
+      subject: `New Gift Box Order from ${safeName}`,
+      html: `
+        <h2>New Gift Box Order</h2>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
+        <h3>Order Summary</h3>
+        <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
+          <thead>
+            <tr style="border-bottom: 1px solid #e5e5e5;">
+              <th style="text-align: left; padding: 8px 16px 8px 0; font-weight: 600;">Box</th>
+              <th style="text-align: left; padding: 8px 16px 8px 0; font-weight: 600;">Price</th>
+              <th style="text-align: left; padding: 8px 0; font-weight: 600;">Details</th>
+            </tr>
+          </thead>
+          <tbody>${orderRows}</tbody>
+        </table>
+      `
+    });
+
+    // Send warm auto-reply to customer
+    await resend.emails.send({
+      from: 'farmhouse-auto-reply@radarmagnet.com',
+      to: email,
+      subject: 'Your Gift Box Order — Farmhouse Artisan Cheese',
+      html: `
+        <h2>Thank you, ${safeName}!</h2>
+        <p>We've received your gift box order and a member of our team will be in touch within 24–48 hours to confirm the details.</p>
+        <p>If you have any questions in the meantime, you're always welcome to reach us by phone at (905) 582-9600, or stop by our shop on Kerr Street in Oakville.</p>
+        <p>We look forward to curating something wonderful for you.</p>
+        <br>
+        <p>Warmly,</p>
+        <p><strong>Farmhouse Artisan Cheese</strong></p>
+        <p>345 Kerr Street, Oakville, ON L6K 3B7</p>
+        <p>(905) 582-9600</p>
+      `
+    });
+
+    res.json({ success: true, message: 'Order received' });
+  } catch (error) {
+    console.error('Error processing gift box order:', error);
+    res.status(500).json({ error: 'Failed to process order' });
   }
 });
 
