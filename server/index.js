@@ -56,8 +56,10 @@ function escapeHtml(text) {
 }
 
 // Middleware
-app.use(cors({ 
-  origin: 'https://farmhouseartisancheese.com'
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production'
+    ? 'https://farmhouseartisancheese.com'
+    : ['https://farmhouseartisancheese.com', 'http://127.0.0.1:5500', 'http://localhost:5500']
 }));
 app.use(express.json());
 
