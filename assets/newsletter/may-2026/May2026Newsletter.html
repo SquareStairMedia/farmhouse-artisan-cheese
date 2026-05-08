@@ -8,7 +8,7 @@
     <style>
         /* Email-safe reset */
         body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; }
         img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
 
         /* Base styles */
@@ -130,6 +130,7 @@
             .email-container { width: 100% !important; }
             .hero-headline { font-size: 40px !important; letter-spacing: 7px !important; max-width: 100% !important; width: 100% !important; }
             .stack-column { display: block !important; width: 100% !important; max-width: 100% !important; }
+            .stack-first { order: -1; }
             .stack-pr { padding-right: 0 !important; }
             .stack-pl { padding-left: 0 !important; }
             .stack-border-left { border-left: 0 !important; padding-left: 0 !important; }
@@ -139,16 +140,17 @@
             .headline-medium { font-size: 22px !important; letter-spacing: 3px !important; }
             .mobile-padding { padding-left: 25px !important; padding-right: 25px !important; }
             .mobile-hide { display: none !important; }
+            .mobile-top-pad { padding-top: 20px !important; }
         }
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #000000;">
     <singleline label="Email Subject">The Farmhouse Gazette &#8212; May 2026</singleline>
 
-    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000;">
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000; border-collapse: collapse;">
         <tr>
             <td>
-                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="email-container" style="max-width: 680px; width: 100%; margin: 0 auto; background-color: #000000;">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="email-container" style="max-width: 680px; width: 100%; margin: 0 auto; background-color: #000000; border-collapse: collapse;">
 
                     <!-- TOP SPACER -->
                     <tr>
@@ -278,6 +280,13 @@
                         </td>
                     </tr>
 
+                    <!-- CHEESE HIGHLIGHT SUBHEADING -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">Fleur du Maquis</h3>
+                        </td>
+                    </tr>
+
                     <!-- CHEESE HIGHLIGHT - IMAGE LEFT, TEXT RIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
@@ -286,8 +295,7 @@
                                     <td class="stack-column" style="width: 42%; vertical-align: top; padding-right: 35px;">
                                         <img src="https://farmhouseartisancheese.com/assets/newsletter/may-2026/fleur-du-maquis.jpg" alt="Fleur du Maquis sheep&#8217;s milk cheese from Corsica" style="display: block; width: 100%; height: auto;">
                                     </td>
-                                    <td class="stack-column" style="width: 58%; vertical-align: top;">
-                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">Fleur du Maquis</h3>
+                                    <td class="stack-column mobile-top-pad" style="width: 58%; vertical-align: top;">
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">This month&#8217;s highlight is Fleur du Maquis, a truly distinctive sheep&#8217;s milk cheese from Corsica that brings both character and beauty to the table.</p>
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Its name &#8212; &#8220;flower of the maquis&#8221; &#8212; comes from the fragrant herbs that cover its rind, a reflection of the wild Corsican landscape where it&#8217;s made. Coated in rosemary, juniper berries, and other aromatic botanicals, this cheese is as striking visually as it is in flavour.</p>
                                     </td>
@@ -356,17 +364,16 @@
                         </td>
                     </tr>
 
-                    <!-- STAFF PICK - TEXT LEFT, IMAGE RIGHT -->
+                    <!-- STAFF PICK ROW 1: TEXT LEFT, IMAGE RIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td class="stack-column stack-pr" style="width: 60%; vertical-align: top; padding-right: 30px;">
+                                    <td class="stack-column stack-pr" style="width: 58%; vertical-align: top; padding-right: 30px;">
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">This month, St&#233;phane is reaching for something that brings a taste of the French coast to any table: Groix Nature Rillettes.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">Crafted in Brittany, France, these artisanal rillettes are made with high-quality fish and simple, carefully selected ingredients. The texture is smooth and spreadable, with a delicate richness that feels both indulgent and refined.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">What makes Groix Nature particularly special is its focus on sustainability and craftsmanship. The fish is responsibly sourced, and each recipe is designed to highlight the natural flavour of the ingredients: never overworked, never overly seasoned, just clean, balanced, and deeply satisfying.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Crafted in Brittany, France, these artisanal rillettes are made with high-quality fish and simple, carefully selected ingredients. The texture is smooth and spreadable, with a delicate richness that feels both indulgent and refined.</p>
                                     </td>
-                                    <td class="stack-column" style="width: 40%; vertical-align: top;">
+                                    <td class="stack-column" style="width: 42%; vertical-align: top;">
                                         <img src="https://farmhouseartisancheese.com/assets/newsletter/may-2026/rillettes3.jpg" alt="Groix Nature rillettes served on crackers with olives" style="display: block; width: 100%; height: auto;">
                                     </td>
                                 </tr>
@@ -376,14 +383,15 @@
 
                     <tr>
                         <td style="background-color: #ffffff;">
-                            <div style="height: 30px;"></div>
+                            <div style="height: 25px;"></div>
                         </td>
                     </tr>
 
-                    <!-- STAFF PICK CONTINUED -->
+                    <!-- STAFF PICK ROW 2: FULL WIDTH -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">Manon at our store also loves them for their versatility. Served on fresh bread, alongside a cheese board, or as part of a light aperitif, they add something unexpected and elegant, a coastal touch that elevates any spread.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">What makes Groix Nature particularly special is its focus on sustainability and craftsmanship. The fish is responsibly sourced, and each recipe is designed to highlight the natural flavour of the ingredients: never overworked, never overly seasoned, just clean, balanced, and deeply satisfying.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">St&#233;phane loves them for their versatility. Served on fresh bread, alongside a cheese board, or as part of a light aperitif, they add something unexpected and elegant, a coastal touch that elevates any spread.</p>
                             <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">A simple pleasure, done exceptionally well.</p>
                         </td>
                     </tr>
@@ -401,16 +409,22 @@
                         </td>
                     </tr>
 
+                    <!-- DID YOU KNOW SUBHEADING -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">The Hidden World of the Cheese Cave</h3>
+                        </td>
+                    </tr>
+
                     <!-- DID YOU KNOW - IMAGE LEFT, TEXT RIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column" style="width: 40%; vertical-align: top; padding-right: 35px;">
-                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/may-2026/cheese-cave.jpg" alt="A cheese cave with wheels aging on wooden shelves" style="display: block; width: 100%; height: auto;">
+                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/may-2026/cheese-cave.jpg" alt="A cheese cave with wheels aging on wooden shelves" style="display: block; width: 100%; height: 280px; object-fit: cover; object-position: center center;">
                                     </td>
-                                    <td class="stack-column" style="width: 60%; vertical-align: top;">
-                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 20px 0; color: #000000;">The Hidden World of the Cheese Cave</h3>
+                                    <td class="stack-column mobile-top-pad" style="width: 60%; vertical-align: top;">
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">While most cheese shops proudly display their wares in refrigerated cases, the real magic happens in spaces most customers will never see: the cheese cave.</p>
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">These carefully controlled environments are where cheese transforms from simple curds into the complex, flavour-packed treasures we love. It&#8217;s a process that can&#8217;t be rushed, and it&#8217;s guided by the skilled hands of affineurs, the cheese world&#8217;s most patient artists&#8230; <a href="https://farmhouseartisancheese.com/BlogPages/cheese-caves.html" target="_blank" style="color: #000000; text-decoration: none; font-weight: bold; font-style: italic;">(read more)</a></p>
                                     </td>
@@ -432,24 +446,36 @@
                         </td>
                     </tr>
 
+                    <!-- LOOKING AHEAD ROW 1: TEXT LEFT, IMAGE RIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
-                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: middle; padding-right: 40px;">
-                                        <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 15px 0; color: #000000;">Looking Ahead&#8230;</h3>
+                                    <td class="stack-column stack-pr" style="width: 55%; vertical-align: top; padding-right: 40px;">
                                         <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">With Mother&#8217;s Day just around the corner, we&#8217;re also preparing a selection of custom gift boxes, thoughtfully curated to make gifting simple and special. Whether it&#8217;s a small gesture or something more indulgent, it&#8217;s a meaningful way to celebrate with great food.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">In the shop, we&#8217;ll be focusing on seasonal favourites, picnic-ready selections, and plenty of inspiration for summer entertaining. Our charcuterie boards and gift boxes continue to be an easy way to bring something beautiful to the table.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">June brings the full arrival of summer, patio season, outdoor gatherings, and long, relaxed evenings with friends and family. It&#8217;s a time for lighter cheeses, fresh pairings, and easy, beautiful boards that come together without effort.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">We&#8217;re looking forward to everything June will bring.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">In the shop, we&#8217;ll be focusing on seasonal favourites, picnic-ready selections, and plenty of inspiration for summer entertaining. Our charcuterie boards and gift boxes continue to be an easy way to bring something beautiful to the table.</p>
                                     </td>
-                                    <td class="stack-column" style="width: 45%; vertical-align: middle;">
+                                    <td class="stack-column stack-first" style="width: 45%; vertical-align: top;">
                                         <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank">
                                             <img src="https://farmhouseartisancheese.com/assets/newsletter/may-2026/mothers-day-gift-box.jpg" alt="Mother&#8217;s Day Gift Box" style="display: block; width: 100%; height: auto;">
                                         </a>
                                     </td>
                                 </tr>
                             </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style="background-color: #ffffff;">
+                            <div style="height: 25px;"></div>
+                        </td>
+                    </tr>
+
+                    <!-- LOOKING AHEAD ROW 2: FULL WIDTH -->
+                    <tr>
+                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333; max-width: 540px;">June brings the full arrival of summer, patio season, outdoor gatherings, and long, relaxed evenings with friends and family. It&#8217;s a time for lighter cheeses, fresh pairings, and easy, beautiful boards that come together without effort.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">We&#8217;re looking forward to everything June will bring.</p>
                         </td>
                     </tr>
 
@@ -535,7 +561,7 @@
                                         <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 0; color: #444444;">&#169; 2026 Farmhouse Artisan Cheese. All rights reserved.</p>
 
                                         <p class="caption" style="font-size: 9px; font-weight: 300; letter-spacing: 2px; line-height: 1.8; margin: 15px 0 0 0; color: #444444;">
-                                        <a href="https://squarestairmedia.com/?utm_source=Farmhouse+Newsletter&utm_medium=Footer+Link" target="_blank" style="color: #666666; text-decoration: none;">CUSTOM LUXURY EMAIL DESIGN BY SQUARESTAIR MEDIA</a></p>
+                                        <a href="https://squarestairmedia.com" target="_blank" style="color: #666666; text-decoration: none;">CUSTOM LUXURY EMAIL DESIGN BY SQUARESTAIR MEDIA</a></p>
                                     </td>
                                 </tr>
                             </table>
