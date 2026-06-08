@@ -146,7 +146,7 @@
 </head>
 <body style="margin: 0; padding: 0; background-color: #000000;">
 
-    <singleline label="Email Subject">The Farmhouse Gazette &#8212; June 2026</singleline>
+    <singleline label="Email Subject">The Farmhouse Gazette &#8212; [MONTH_YEAR]</singleline>
 
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #000000; border-collapse: collapse;">
         <tr>
@@ -199,9 +199,9 @@
                                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="position: absolute; top: 0; left: 0; height: 100%;">
                                             <tr>
                                                 <td align="center" valign="middle" style="padding: 60px 50px;">
-                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;">issue n&#186; 07</p>
+                                                    <p style="margin: 0 0 25px 0; font-size: 13px; font-weight: 300; color: #999999; letter-spacing: 6px; text-transform: lowercase;">issue n&#186; [ISSUE_NUMBER]</p>
                                                     <h1 class="hero-headline headline-massive" style="font-size: 62px; font-weight: 100; letter-spacing: 14px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff; max-width: 100%; width: 100%; display: inline-block;">The<br>Farmhouse<br>Gazette</h1>
-                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;">june 2026</p>
+                                                    <p style="margin: 25px 0 0 0; font-size: 13px; font-weight: 300; color: #cccccc; letter-spacing: 4px; text-transform: lowercase;">[MONTH_YEAR_LOWER]</p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -214,9 +214,9 @@
 <!-- [if mso]>
                     <tr>
                         <td style="background-color: #000000; padding: 55px 50px; text-align: center;">
-                            <p style="margin: 0 0 18px 0; font-size: 14px; font-weight: 300; letter-spacing: 6px; text-transform: lowercase; color: #ffffff;">issue n&#186; 07</p>
+                            <p style="margin: 0 0 18px 0; font-size: 14px; font-weight: 300; letter-spacing: 6px; text-transform: lowercase; color: #ffffff;">issue n&#186; [ISSUE_NUMBER]</p>
                             <h1 style="font-size: 44px; font-weight: 100; letter-spacing: 10px; text-transform: uppercase; line-height: 1.05; margin: 0; color: #ffffff;">The<br>Farmhouse<br>Gazette</h1>
-                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">june 2026</p>
+                            <p style="margin: 18px 0 0 0; font-size: 14px; font-weight: 300; letter-spacing: 4px; text-transform: lowercase; color: #ffffff;">[MONTH_YEAR_LOWER]</p>
                         </td>
                     </tr>
                     <![endif]-->
@@ -231,7 +231,7 @@
                     <!-- INTRO TEXT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">There&#8217;s something about warm evenings that makes us want to gather. Friends on the patio, family at the cottage, neighbours dropping by for a glass of wine. The best part? You don&#8217;t need complicated recipes or hours of preparation. A thoughtfully composed cheese board does all the work for you. This month, we&#8217;re sharing everything we&#8217;ve learned about outdoor entertaining with cheese, from which varieties hold their shape in the heat to how to build a board that looks effortless but impresses everyone.</p>
+                            <p class="body-text" style="font-size: 17px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">[INTRO_COPY]</p>
                         </td>
                     </tr>
 
@@ -273,16 +273,18 @@
                         </td>
                     </tr>
 
+                    <!-- ===================== SWAP BELOW EACH MONTH ===================== -->
+
                     <!-- CHEESE HIGHLIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;">June<br>Cheese Highlight</h2>
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 35px 0; color: #000000;">[MONTH_FULL]<br>Cheese Highlight</h2>
                         </td>
                     </tr>
 
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">Appenzeller Cors&#233;</h3>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">[CHEESE_NAME]</h3>
                         </td>
                     </tr>
 
@@ -292,11 +294,11 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column" style="width: 42%; vertical-align: top; padding-right: 35px;">
-                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/june-2026/appenzeller.jpeg" alt="Appenzeller Cors&#233;, a Swiss alpine cheese with a distinctive herbal rind" style="display: block; width: 100%; height: auto;">
+                                        <img src="[CHEESE_IMAGE_URL]" alt="[CHEESE_IMAGE_ALT]" style="display: block; width: 100%; height: auto;">
                                     </td>
                                     <td class="stack-column mobile-top-pad" style="width: 58%; vertical-align: top;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">This month&#8217;s highlight is Appenzeller Cors&#233;, one of Switzerland&#8217;s most celebrated cheeses and a favourite among those who appreciate bold, complex flavours.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Produced in the Appenzell region of northeastern Switzerland, this cheese has been crafted for more than 700 years using traditional methods. What makes it truly unique is its secret herbal brine, used to wash the wheels during ageing. While the exact recipe remains closely guarded, it&#8217;s this process that gives Appenzeller its distinctive character and depth.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">[CHEESE_COPY_P1]</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">[CHEESE_COPY_P2]</p>
                                     </td>
                                 </tr>
                             </table>
@@ -311,8 +313,8 @@
 
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">The Cors&#233; version is aged longer than the Classic, developing a firmer texture and a richer flavour profile. Expect notes of roasted nuts, warm butter, herbs, and a savoury finish that lingers beautifully on the palate. Despite its intensity, it remains remarkably balanced and approachable.</p>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">This is a cheese that shines on a board, pairs beautifully with charcuterie, and rewards slow enjoyment. If you&#8217;re looking to discover a new favourite this summer, Appenzeller Cors&#233; is a wonderful place to start.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">[CHEESE_COPY_P3]</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">[CHEESE_COPY_P4]</p>
                         </td>
                     </tr>
 
@@ -327,7 +329,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
-                                        <a href="https://farmhouseartisancheese.com/cheeses.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">Explore our cheeses</a>
+                                        <a href="[CHEESE_CTA_URL]" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">[CHEESE_CTA_LABEL]</a>
                                     </td>
                                 </tr>
                             </table>
@@ -343,7 +345,7 @@
                     <!-- SUBHEAD BAND -->
                     <tr>
                         <td style="background-color: #fafafa; padding: 50px 50px;" class="mobile-padding">
-                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0 auto; color: #999999; text-align: center; max-width: 480px;">the board is set, the wine is poured, summer has finally arrived</p>
+                            <p class="subhead" style="font-size: 13px; font-weight: 300; letter-spacing: 5px; text-transform: lowercase; line-height: 1.8; margin: 0 auto; color: #999999; text-align: center; max-width: 480px;">[PULL_QUOTE]</p>
                         </td>
                     </tr>
 
@@ -353,54 +355,25 @@
                         </td>
                     </tr>
 
-                    <!-- JUNE IN THE SHOP -->
+                    <!-- STAFF PICK -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">June in the Shop</h2>
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 30px 0; color: #000000;">Father&#8217;s Day Favourites</h3>
+                            <h2 class="headline-large" style="font-size: 42px; font-weight: 100; letter-spacing: 10px; text-transform: none; line-height: 1.1; margin: 0 0 20px 0; color: #000000;">Staff Pick</h2>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 30px 0; color: #000000;">[STAFF_NAME]&#8217;s Choice: [STAFF_PRODUCT_NAME]</h3>
                         </td>
                     </tr>
 
-                    <!-- PRODUCT 1: TEXT LEFT, IMAGE RIGHT -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                <tr>
-                                    <td class="stack-column stack-pr" style="width: 58%; vertical-align: top; padding-right: 30px;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">Our Father&#8217;s Day Board has been created especially for the occasion, featuring a curated selection of cheeses, charcuterie, and accompaniments chosen to deliver big flavour and effortless entertaining.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Everything a dad needs for a perfect afternoon: bold flavours, quality ingredients, and nothing to prepare beyond opening the box.</p>
-                                    </td>
-                                    <td class="stack-column" style="width: 42%; vertical-align: top;">
-                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/june-2026/dads-board.jpeg" alt="Father&#8217;s Day Board with cheeses, charcuterie and accompaniments" style="display: block; width: 100%; height: auto;">
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 50px;"></div>
-                        </td>
-                    </tr>
-
-                    <!-- PRODUCT 2: TEXT LEFT, IMAGE RIGHT -->
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">For the Dad Who Likes It Bold</h3>
-                        </td>
-                    </tr>
-
+                    <!-- TEXT LEFT, IMAGE RIGHT -->
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column stack-pr" style="width: 58%; vertical-align: top; padding-right: 30px;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">For dads who enjoy a little heat, our Spicy Father&#8217;s Day Bag is filled with bold and flavourful favourites that bring just the right amount of kick.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Whether he&#8217;s celebrating at the table, enjoying a long weekend at the cottage, or simply treating himself to something with a bit of fire, this one&#8217;s for him.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">[STAFF_COPY_P1]</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">[STAFF_COPY_P2]</p>
                                     </td>
                                     <td class="stack-column" style="width: 42%; vertical-align: top;">
-                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/june-2026/gift-bag.jpeg" alt="Spicy Father&#8217;s Day Gift Bag with bold flavoured products" style="display: block; width: 100%; height: auto;">
+                                        <img src="[STAFF_IMAGE_URL]" alt="[STAFF_IMAGE_ALT]" style="display: block; width: 100%; height: auto;">
                                     </td>
                                 </tr>
                             </table>
@@ -409,31 +382,15 @@
 
                     <tr>
                         <td style="background-color: #ffffff;">
-                            <div style="height: 30px;"></div>
+                            <div style="height: 25px;"></div>
                         </td>
                     </tr>
 
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Whether you&#8217;re celebrating around the table, bringing a gift to a family gathering, or simply treating Dad to something delicious, we&#8217;ve got you covered.</p>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="background-color: #ffffff;">
-                            <div style="height: 40px;"></div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                                <tr>
-                                    <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
-                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">View gift boxes</a>
-                                    </td>
-                                </tr>
-                            </table>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">[STAFF_COPY_P3]</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 20px 0; color: #333333; max-width: 540px;">[STAFF_COPY_P4]</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">[STAFF_COPY_P5]</p>
                         </td>
                     </tr>
 
@@ -452,7 +409,7 @@
 
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">Five Heat-Proof Cheeses for Confident Outdoor Hosting</h3>
+                            <h3 class="headline-small" style="font-size: 20px; font-weight: 300; letter-spacing: 4px; text-transform: none; line-height: 1.4; margin: 0 0 25px 0; color: #000000;">[DYK_SUBHEADING]</h3>
                         </td>
                     </tr>
 
@@ -462,11 +419,11 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column" style="width: 40%; vertical-align: top; padding-right: 35px;">
-                                        <img src="https://farmhouseartisancheese.com/assets/newsletter/june-2026/outdoor-cheese-board.jpg" alt="A cheese board set outdoors on a summer patio table" style="display: block; width: 100%; height: 280px; object-fit: cover; object-position: center center;">
+                                        <img src="[DYK_IMAGE_URL]" alt="[DYK_IMAGE_ALT]" style="display: block; width: 100%; height: 280px; object-fit: cover; object-position: center center;">
                                     </td>
                                     <td class="stack-column mobile-top-pad" style="width: 60%; vertical-align: top;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">One question we hear constantly this time of year: which cheeses won&#8217;t melt into a puddle on a patio table?</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">The good news is that many of our favourite cheeses are remarkably forgiving in warm weather. We&#8217;ve written a full guide covering five styles we recommend for outdoor settings, chosen for their ability to hold their shape and their flavour, even when things heat up&#8230; <a href="https://farmhouseartisancheese.com/BlogPages/heat-proof-cheeses.html" target="_blank" style="color: #000000; text-decoration: none; font-weight: bold; font-style: italic;">(read more)</a></p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 18px 0; color: #333333;">[DYK_COPY_P1]</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">[DYK_COPY_P2] <a href="[DYK_READ_MORE_URL]" target="_blank" style="color: #000000; text-decoration: none; font-weight: bold; font-style: italic;">(read more)</a></p>
                                     </td>
                                 </tr>
                             </table>
@@ -492,12 +449,12 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tr>
                                     <td class="stack-column stack-pr" style="width: 55%; vertical-align: top; padding-right: 40px;">
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">Canada Day and the July long weekend are just around the corner, and we&#8217;re already thinking ahead to help you plan.</p>
-                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">Whether you&#8217;re hosting at the cottage, bringing something to a friend&#8217;s gathering, or celebrating quietly at home, we can help you pull together boards and selections that travel well and taste even better.</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333;">[LOOKING_AHEAD_COPY_P1]</p>
+                                        <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333;">[LOOKING_AHEAD_COPY_P2]</p>
                                     </td>
                                     <td class="stack-column stack-first" style="width: 45%; vertical-align: top;">
-                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank">
-                                            <img src="https://farmhouseartisancheese.com/assets/newsletter/giftbox-table.jpg" alt="Farmhouse Artisan Cheese gift box" style="display: block; width: 100%; height: auto;">
+                                        <a href="[LOOKING_AHEAD_IMAGE_HREF]" target="_blank">
+                                            <img src="[LOOKING_AHEAD_IMAGE_URL]" alt="[LOOKING_AHEAD_IMAGE_ALT]" style="display: block; width: 100%; height: auto;">
                                         </a>
                                     </td>
                                 </tr>
@@ -513,8 +470,8 @@
 
                     <tr>
                         <td style="background-color: #ffffff; padding: 0 50px;" class="mobile-padding">
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333; max-width: 540px;">Stop by anytime this month to talk through your plans. We&#8217;re happy to recommend cheeses that pack well for road trips, suggest quantities for larger gatherings, and help you choose accompaniments that won&#8217;t wilt in the heat.</p>
-                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">Our gift boxes also make wonderful hostess gifts when you&#8217;re visiting friends at the cottage.</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0 0 15px 0; color: #333333; max-width: 540px;">[LOOKING_AHEAD_COPY_P3]</p>
+                            <p class="body-text" style="font-size: 16px; font-weight: 300; letter-spacing: 0.5px; line-height: 1.9; margin: 0; color: #333333; max-width: 540px;">[LOOKING_AHEAD_COPY_P4]</p>
                         </td>
                     </tr>
 
@@ -529,7 +486,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td align="left" bgcolor="transparent" style="border: 1px solid #000000;">
-                                        <a href="https://farmhouseartisancheese.com/gift-boxes.html" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">View gift boxes</a>
+                                        <a href="[LOOKING_AHEAD_CTA_URL]" target="_blank" class="button-minimal" style="font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #000000; text-decoration: none; display: inline-block; padding: 16px 45px;">[LOOKING_AHEAD_CTA_LABEL]</a>
                                     </td>
                                 </tr>
                             </table>
@@ -541,6 +498,8 @@
                             <div style="height: 70px;"></div>
                         </td>
                     </tr>
+
+                    <!-- ===================== NOTHING BELOW CHANGES MONTH TO MONTH ===================== -->
 
                     <!-- DARK VISIT SECTION -->
                     <tr>
