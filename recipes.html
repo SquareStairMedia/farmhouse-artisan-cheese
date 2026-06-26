@@ -469,9 +469,179 @@
 
             .recipe-content h2 { font-size: 1.1em; letter-spacing: 3px; }
         }
+
+        /* ─── Print header (hidden on screen) ──────────────────── */
+        .print-header { display: none; }
+
+        /* ─── Recipe actions ────────────────────────────────────── */
+        .recipe-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0 4px;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 8px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .recipe-print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border: 1px solid #000;
+            background: transparent;
+            color: #000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.6em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-print-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .recipe-share {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .recipe-share-label {
+            font-size: 0.6em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #444;
+            font-weight: 300;
+        }
+
+        .recipe-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #444;
+            padding: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .recipe-social-btn.pinterest-btn:hover { color: #E60023; }
+        .recipe-social-btn.facebook-btn:hover { color: #1877F2; }
+
+        /* ─── Print styles ──────────────────────────────────────── */
+        @media print {
+            @page {
+                margin: 1.5cm 1.8cm;
+            }
+
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #fff !important;
+            }
+
+            header, footer, .category-hero, .recipes-intro, .recipe-toc,
+            .recipes-closing, .back-to-top, .recipe-actions,
+            #cookieConsentBanner, #newsletterModal, .newsletter-cta {
+                display: none !important;
+            }
+
+            .recipes-body {
+                background: #fff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .print-header {
+                display: none !important;
+            }
+
+            .recipe-section {
+                display: none !important;
+            }
+
+            .recipe-section.print-active {
+                display: flex !important;
+                align-items: stretch !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                border-top: none !important;
+                gap: 36px;
+                break-before: avoid !important;
+                page-break-before: avoid !important;
+            }
+
+            .recipe-section.print-active .recipe-image {
+                position: static !important;
+                flex: 0 0 40%;
+            }
+
+            .recipe-section.print-active .recipe-image img {
+                width: 100% !important;
+                height: 100% !important;
+                max-height: none !important;
+                object-fit: cover !important;
+                display: block;
+                border: none;
+                margin: 0;
+            }
+
+            .recipe-section.print-active .recipe-content {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .recipe-section.print-active .recipe-content h2 {
+                font-size: 15pt !important;
+                letter-spacing: 4px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .recipe-section.print-active .recipe-meta {
+                margin-bottom: 16px !important;
+            }
+
+            .recipe-section.print-active .recipe-intro-text {
+                font-size: 0.82em !important;
+                margin-bottom: 16px !important;
+            }
+
+            .recipe-section.print-active .recipe-block-label {
+                margin-bottom: 8px !important;
+                padding-bottom: 6px !important;
+            }
+
+            .recipe-section.print-active .ingredients-list li,
+            .recipe-section.print-active .method-list li {
+                font-size: 0.8em !important;
+                padding-top: 4px !important;
+                padding-bottom: 4px !important;
+            }
+
+            .recipe-section.print-active .farmhouse-tip {
+                margin-bottom: 0 !important;
+            }
+
+            .recipe-section.print-active .recipe-actions { display: none !important; }
+
+            .recipe-section.print-active.image-right .recipe-image { order: 0 !important; }
+            .recipe-section.print-active.image-right .recipe-content { order: 0 !important; }
+        }
     </style>
 </head>
 <body id="top">
+    <div class="print-header">
+        <p class="print-header-name">Farmhouse Artisan Cheese</p>
+        <p class="print-header-sub">farmhouseartisancheese.com &middot; Kerr Village, Oakville</p>
+    </div>
     <header>
         <nav>
             <a href="index.html" class="logo-container">
@@ -635,6 +805,22 @@
                     <p>Look for tomatoes that feel heavy for their size and smell fragrant at the stem. This is a simple dish, so the quality of each ingredient really shines.</p>
                 </div>
 
+                <div class="recipe-actions">
+                    <button class="recipe-print-btn" onclick="printRecipe('burrata')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('burrata', 'assets/recipes/images/recipe-burrata.png', 'Burrata with Heirloom Tomatoes, Basil and Peach — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('burrata')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
                 <a href="#top" class="back-to-top">Back to top</a>
             </div>
         </article>
@@ -699,6 +885,22 @@
 
                 <div class="farmhouse-tip">
                     <p>A cheddar with a little age gives these fritters more character. Ask us for one with a nutty, savoury finish that melts well.</p>
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="recipe-print-btn" onclick="printRecipe('fritters')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('fritters', 'assets/recipes/images/recipe-aged-cheddar.png', 'Summer Corn and Aged Cheddar Fritters — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('fritters')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -766,6 +968,22 @@
                     <p>If you are new to blue cheese, start with a milder, creamier style. It gives the dish richness without overwhelming the other flavours.</p>
                 </div>
 
+                <div class="recipe-actions">
+                    <button class="recipe-print-btn" onclick="printRecipe('steak-salad')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('steak-salad', 'assets/recipes/images/recipe-blue-cheese.png', 'Blue Cheese Steak Salad with Cherry Tomatoes and Crispy Potatoes — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('steak-salad')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
+                </div>
+
                 <a href="#top" class="back-to-top">Back to top</a>
             </div>
         </article>
@@ -826,6 +1044,22 @@
 
                 <div class="farmhouse-tip">
                     <p>Comt&eacute; is a lovely cheese to keep on hand because it works well both for cooking and for a simple cheese board. Its nutty flavour is easy to enjoy, but still feels special.</p>
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="recipe-print-btn" onclick="printRecipe('galette')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('galette', 'assets/recipes/images/recipe-comte.png', 'Comt&eacute; and Summer Vegetable Galette — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('galette')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -946,6 +1180,53 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function printRecipe(recipeId) {
+            var section = document.getElementById(recipeId);
+            section.classList.add('print-active');
+            window.addEventListener('afterprint', function cleanup() {
+                section.classList.remove('print-active');
+                window.removeEventListener('afterprint', cleanup);
+            });
+            window.print();
+        }
+
+        function shareToFacebook(recipeId) {
+            var url = encodeURIComponent(window.location.origin + window.location.pathname + '#' + recipeId);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'noopener,width=620,height=400');
+        }
+
+        function shareToPinterest(recipeId, imagePath, description) {
+            var url = encodeURIComponent(window.location.origin + window.location.pathname + '#' + recipeId);
+            var img = encodeURIComponent(window.location.origin + '/' + imagePath);
+            var desc = encodeURIComponent(description);
+            window.open('https://pinterest.com/pin/create/button/?url=' + url + '&media=' + img + '&description=' + desc, '_blank', 'noopener,width=750,height=550');
+        }
+
+        function copyRecipeLink(recipeId) {
+            var url = window.location.origin + window.location.pathname + '#' + recipeId;
+            var btn = document.querySelector('[data-recipe-copy="' + recipeId + '"]');
+            function showCopied() {
+                if (btn) {
+                    var orig = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(function() { btn.textContent = orig; }, 2000);
+                }
+            }
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(showCopied);
+            } else {
+                var el = document.createElement('textarea');
+                el.value = url;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showCopied();
+            }
+        }
+    </script>
 
     <!-- Cookie Consent Banner (PIPEDA Compliant) -->
     <div class="cookie-consent-banner" id="cookieConsentBanner">
