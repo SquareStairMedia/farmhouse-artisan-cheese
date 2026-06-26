@@ -12,6 +12,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    font-size: 18px;
 }
 
 body {
@@ -329,7 +330,7 @@ nav {
 
 .page-hero p {
     font-size: 1.1em;
-    color: #666;
+    color: #444;
     letter-spacing: 2px;
     font-weight: 300;
     max-width: 800px;
@@ -474,7 +475,7 @@ nav {
 }
 
 .feature-content p {
-    color: #666;
+    color: #444;
     line-height: 2;
     font-size: 0.95em;
     font-weight: 300;
@@ -590,7 +591,7 @@ nav {
     letter-spacing: 4px;
     text-transform: uppercase;
     font-style: normal;
-    color: #666;
+    color: #444;
 }
 
 /* ============================================
@@ -621,7 +622,7 @@ nav {
 .contact-info p {
     font-size: 1em;
     line-height: 2;
-    color: #666;
+    color: #444;
     margin-bottom: 20px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -760,7 +761,7 @@ footer {
     text-align: center;
     padding-top: 50px;
     border-top: 1px solid #222;
-    color: #666;
+    color: #aaa;
     font-size: 0.75em;
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -1229,7 +1230,7 @@ footer {
 .success-content p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: #666;
+    color: #444;
     margin-bottom: 40px;
 }
 
@@ -1316,7 +1317,7 @@ footer {
     border: none;
     font-size: 2.5em;
     font-weight: 100;
-    color: #999;
+    color: #555;
     cursor: pointer;
     transition: color 0.3s ease;
     line-height: 1;
@@ -1337,7 +1338,7 @@ footer {
 
 .newsletter-modal-content p {
     text-align: center;
-    color: #666;
+    color: #444;
     margin-bottom: 40px;
     line-height: 1.8;
 }
@@ -1442,7 +1443,7 @@ footer {
 .newsletter-intro p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: #666;
+    color: #444;
 }
 
 .form-message {
@@ -1456,7 +1457,7 @@ footer {
     text-align: center;
     margin-top: 30px;
     font-size: 0.85em;
-    color: #888;
+    color: #555;
     line-height: 1.6;
 }
 
@@ -1620,7 +1621,7 @@ footer {
 .faq-answer p {
     padding: 0 0 25px 0;
     line-height: 1.8;
-    color: #666;
+    color: #444;
     font-weight: 300;
 }
 
@@ -1651,7 +1652,7 @@ footer {
 .faq-closing p {
     font-size: 1.1em;
     line-height: 1.8;
-    color: #666;
+    color: #444;
     margin-bottom: 40px;
     max-width: 700px;
     margin-left: auto;
@@ -1765,7 +1766,7 @@ footer {
     font-size: 0.9em;
     font-weight: 300;
     line-height: 1.8;
-    color: #999;
+    color: #ccc;
     letter-spacing: 1px;
     margin: 0;
 }

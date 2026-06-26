@@ -11,7 +11,7 @@
 
 .blog-meta {
     font-size: 0.7em;
-    color: #999;
+    color: #444;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -32,7 +32,7 @@
 
 .blog-excerpt {
     font-size: 1.15em;
-    color: #666;
+    color: #444;
     letter-spacing: 1px;
     font-weight: 300;
     max-width: 800px;
@@ -65,7 +65,7 @@
 .blog-content p {
     font-size: 1.1em;
     line-height: 2;
-    color: #666;
+    color: #444;
     margin-bottom: 35px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -121,7 +121,7 @@
 .blog-content ul li {
     font-size: 1.1em;
     line-height: 2;
-    color: #666;
+    color: #444;
     margin-bottom: 20px;
     font-weight: 300;
     letter-spacing: 1px;
@@ -142,7 +142,7 @@
 .blog-disclaimer {
     font-size: 0.95em;
     line-height: 1.8;
-    color: #999;
+    color: #444;
     margin-top: 60px;
     padding-top: 40px;
     border-top: 1px solid #e5e5e5;
@@ -183,7 +183,7 @@
     font-size: 0.7em;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #999;
+    color: #444;
     margin-bottom: 10px;
 }
 
@@ -192,7 +192,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     font-weight: 300;
-    color: #666;
+    color: #444;
     line-height: 1.4;
 }
 

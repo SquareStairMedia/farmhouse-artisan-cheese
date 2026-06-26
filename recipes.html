@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Summer recipes from the Farmhouse Artisan Cheese counter in Oakville. Simple, seasonal dishes built around artisan cheese.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://farmhouseartisancheese.com/recipes.html">
+    <meta property="og:title" content="Summer Recipes from the Farmhouse Cheese Counter">
+    <meta property="og:description" content="Simple, seasonal recipes built around the artisan cheeses you'll find at our counter in Kerr Village, Oakville.">
+    <meta property="og:image" content="https://farmhouseartisancheese.com/assets/images/social-sharing.png">
+    <meta property="og:site_name" content="Farmhouse Artisan Cheese">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://farmhouseartisancheese.com/recipes.html">
+    <meta name="twitter:title" content="Summer Recipes from the Farmhouse Cheese Counter">
+    <meta name="twitter:description" content="Simple, seasonal recipes built around the artisan cheeses you'll find at our counter in Kerr Village, Oakville.">
+    <meta name="twitter:image" content="https://farmhouseartisancheese.com/assets/images/social-sharing.png">
+    <link rel="canonical" href="https://farmhouseartisancheese.com/recipes.html">
+
+    <title>Summer Recipes - Farmhouse Artisan Cheese</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+    <style>
+        /* ─── Hero ─────────────────────────────────────────────── */
+        .category-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .category-hero-images {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+        }
+
+        .category-hero-images img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.55);
+        }
+
+        .category-hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 40px;
+        }
+
+        .category-hero-content .recipe-eyebrow {
+            font-size: 0.65em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: #ccc;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .category-hero h1 {
+            font-size: 4em;
+            font-weight: 100;
+            letter-spacing: 16px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .category-hero p {
+            font-size: 1.1em;
+            color: #ccc;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* ─── Intro section ─────────────────────────────────────── */
+        .recipes-intro {
+            padding: 100px 8% 60px;
+            background: #fff;
+        }
+
+        .recipes-intro-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .recipes-intro-inner p {
+            font-size: 1.05em;
+            font-weight: 300;
+            line-height: 1.9;
+            color: #444;
+            letter-spacing: 0.3px;
+        }
+
+        /* ─── Table of contents ─────────────────────────────────── */
+        .recipe-toc {
+            padding: 60px 8% 80px;
+            background: #fff;
+        }
+
+        .recipe-toc-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .toc-card {
+            border: 1px solid #e5e5e5;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .toc-card:hover {
+            border-color: #000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .toc-card-image {
+            flex: 0 0 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .toc-card-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .toc-card:hover .toc-card-image img {
+            transform: scale(1.06);
+        }
+
+        .toc-card-text {
+            padding: 20px 24px;
+            flex: 1;
+        }
+
+        .toc-number {
+            font-size: 0.6em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #555;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .toc-card-text h3 {
+            font-size: 0.8em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #000;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .toc-card-text p {
+            font-size: 0.78em;
+            font-weight: 300;
+            color: #444;
+            line-height: 1.6;
+            letter-spacing: 0.2px;
+            margin: 0;
+        }
+
+        /* ─── Recipe sections ───────────────────────────────────── */
+        .recipes-body {
+            background: #fafafa;
+            padding: 0 8%;
+        }
+
+        .recipe-section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 0;
+            border-top: 1px solid #e5e5e5;
+            display: flex;
+            gap: 70px;
+            align-items: flex-start;
+        }
+
+        .recipe-section:first-child {
+            border-top: none;
+        }
+
+        .recipe-image {
+            flex: 0 0 44%;
+        }
+
+        @media (min-width: 769px) {
+            .recipe-image {
+                position: sticky;
+                top: 120px;
+            }
+        }
+
+        .recipe-image img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .recipe-section.image-right .recipe-image {
+            order: 2;
+        }
+
+        .recipe-section.image-right .recipe-content {
+            order: 1;
+        }
+
+        .recipe-content {
+            flex: 1;
+        }
+
+        .recipe-number {
+            font-size: 0.6em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #555;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .recipe-content h2 {
+            font-size: 1.6em;
+            font-weight: 100;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #000;
+            line-height: 1.3;
+            margin-bottom: 24px;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 36px;
+            flex-wrap: wrap;
+        }
+
+        .recipe-meta-item {
+            font-size: 0.65em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #444;
+        }
+
+        .recipe-meta-item strong {
+            display: block;
+            color: #000;
+            font-weight: 400;
+            margin-bottom: 3px;
+        }
+
+        .recipe-intro-text {
+            font-size: 0.9em;
+            font-weight: 300;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 36px;
+            letter-spacing: 0.2px;
+        }
+
+        .recipe-block-label {
+            font-size: 0.62em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #000;
+            font-weight: 400;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .recipe-sublabel {
+            font-size: 0.62em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #444;
+            font-weight: 300;
+            margin: 20px 0 10px;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px 0;
+        }
+
+        .ingredients-list li {
+            font-size: 0.85em;
+            font-weight: 300;
+            color: #444;
+            line-height: 1.7;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            letter-spacing: 0.2px;
+        }
+
+        .ingredients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .method-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 36px 0;
+            counter-reset: method-counter;
+        }
+
+        .method-list li {
+            font-size: 0.85em;
+            font-weight: 300;
+            color: #444;
+            line-height: 1.8;
+            padding: 10px 0 10px 36px;
+            border-bottom: 1px solid #f0f0f0;
+            letter-spacing: 0.2px;
+            position: relative;
+            counter-increment: method-counter;
+        }
+
+        .method-list li:last-child {
+            border-bottom: none;
+        }
+
+        .method-list li::before {
+            content: counter(method-counter);
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 0.75em;
+            color: #555;
+            letter-spacing: 1px;
+            font-weight: 300;
+        }
+
+        .farmhouse-tip {
+            background: #fff;
+            border-left: 2px solid #e5e5e5;
+            padding: 16px 20px;
+            margin-bottom: 40px;
+        }
+
+        .farmhouse-tip p {
+            font-size: 0.82em;
+            font-weight: 300;
+            font-style: italic;
+            color: #444;
+            line-height: 1.7;
+            margin: 0;
+            letter-spacing: 0.2px;
+        }
+
+        .back-to-top {
+            display: block;
+            text-align: center;
+            font-size: 0.6em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #555;
+            text-decoration: none;
+            padding-top: 24px;
+            border-top: 1px solid #e5e5e5;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            color: #000;
+        }
+
+        /* ─── Closing note ──────────────────────────────────────── */
+        .recipes-closing {
+            padding: 80px 8%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .recipes-closing-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .recipes-closing-inner p {
+            font-size: 0.9em;
+            font-weight: 300;
+            line-height: 1.9;
+            color: #444;
+            letter-spacing: 0.2px;
+        }
+
+        /* ─── Responsive ────────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .category-hero h1 { font-size: 3em; letter-spacing: 10px; }
+
+            .recipe-section {
+                gap: 50px;
+            }
+
+            .recipe-content h2 {
+                font-size: 1.35em;
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .category-hero { height: 50vh; }
+            .category-hero h1 { font-size: 2em; letter-spacing: 8px; }
+            .category-hero p { font-size: 0.95em; }
+
+            .recipes-intro { padding: 70px 5% 40px; }
+
+            .recipe-toc { padding: 40px 5% 60px; }
+            .recipe-toc-inner { grid-template-columns: 1fr; }
+
+            .toc-card-image { flex: 0 0 80px; height: 80px; }
+
+            .recipes-body { padding: 0 5%; }
+
+            .recipe-section {
+                flex-direction: column;
+                padding: 60px 0;
+                gap: 36px;
+            }
+
+            .recipe-section.image-right .recipe-image,
+            .recipe-section.image-right .recipe-content {
+                order: 0;
+            }
+
+            .recipe-image img {
+                height: 260px;
+            }
+
+            .recipe-content h2 {
+                font-size: 1.2em;
+                letter-spacing: 4px;
+            }
+
+            .recipe-meta { gap: 20px; }
+
+            .recipes-closing { padding: 60px 5%; }
+        }
+
+        @media (max-width: 480px) {
+            .category-hero h1 { font-size: 1.5em; letter-spacing: 6px; }
+            .category-hero-content .recipe-eyebrow { font-size: 0.6em; letter-spacing: 4px; }
+
+            .toc-card-image { flex: 0 0 70px; height: 70px; }
+            .toc-card-text { padding: 14px 16px; }
+            .toc-card-text h3 { font-size: 0.75em; }
+
+            .recipe-content h2 { font-size: 1.1em; letter-spacing: 3px; }
+        }
+    </style>
+</head>
+<body id="top">
+    <header>
+        <nav>
+            <a href="index.html" class="logo-container">
+                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
+                <span class="logo-text">Farmhouse Artisan Cheese</span>
+            </a>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li class="dropdown">
+                    <span class="dropdown-trigger">Collection</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="cheeses.html">Cheeses</a></li>
+                        <li><a href="boards.html">Cheese &amp; Charcuterie Boards</a></li>
+                        <li><a href="groceries.html">Fine Groceries</a></li>
+                        <li><a href="gifts.html">Boutique Gifts</a></li>
+                        <li><a href="gift-boxes.html">Gift Boxes</a></li>
+                        <li><a href="housemade.html">Housemade</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <span class="dropdown-trigger">Notes</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="notes.html">Blog</a></li>
+                        <li><a href="archives.html">Archives</a></li>
+                        <li><a href="recipes.html">Recipes</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="category-hero">
+        <div class="category-hero-images">
+            <img src="./assets/images/pairings.jpeg" alt="Summer recipes from Farmhouse Artisan Cheese">
+        </div>
+        <div class="category-hero-content">
+            <p class="recipe-eyebrow">From the counter</p>
+            <h1>Recipes</h1>
+            <p>Summer cooking, built around artisan cheese</p>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="recipes-intro">
+        <div class="recipes-intro-inner">
+            <p>Summer cooking at its best is generous, unhurried, and built around things worth sharing. These four recipes are designed around the cheeses you will find at our counter in Kerr Village: each one approachable to prepare, and open to adaptation. Browse the full list below, or jump directly to the one that catches your eye.</p>
+        </div>
+    </section>
+
+    <!-- Table of contents -->
+    <section class="recipe-toc">
+        <div class="recipe-toc-inner">
+
+            <a href="#burrata" class="toc-card">
+                <div class="toc-card-image">
+                    <img src="./assets/recipes/images/recipe-burrata.png" alt="Burrata with heirloom tomatoes, basil and peach">
+                </div>
+                <div class="toc-card-text">
+                    <span class="toc-number">01</span>
+                    <h3>Burrata with Heirloom Tomatoes, Basil &amp; Peach</h3>
+                    <p>Light and fresh with almost no cooking required. A ten-minute dish that feels like a proper occasion.</p>
+                </div>
+            </a>
+
+            <a href="#fritters" class="toc-card">
+                <div class="toc-card-image">
+                    <img src="./assets/recipes/images/recipe-aged-cheddar.png" alt="Summer corn and aged cheddar fritters">
+                </div>
+                <div class="toc-card-text">
+                    <span class="toc-number">02</span>
+                    <h3>Summer Corn &amp; Aged Cheddar Fritters</h3>
+                    <p>Crisp edges, tender centres, and a nutty aged cheddar that gives sweet summer corn real depth.</p>
+                </div>
+            </a>
+
+            <a href="#steak-salad" class="toc-card">
+                <div class="toc-card-image">
+                    <img src="./assets/recipes/images/recipe-blue-cheese.png" alt="Blue cheese steak salad with cherry tomatoes and crispy potatoes">
+                </div>
+                <div class="toc-card-text">
+                    <span class="toc-number">03</span>
+                    <h3>Blue Cheese Steak Salad with Cherry Tomatoes &amp; Crispy Potatoes</h3>
+                    <p>A hearty dinner salad with grilled steak, crispy potatoes, and just enough blue cheese to tie it together.</p>
+                </div>
+            </a>
+
+            <a href="#galette" class="toc-card">
+                <div class="toc-card-image">
+                    <img src="./assets/recipes/images/recipe-comte.png" alt="Comte and summer vegetable galette">
+                </div>
+                <div class="toc-card-text">
+                    <span class="toc-number">04</span>
+                    <h3>Comt&eacute; &amp; Summer Vegetable Galette</h3>
+                    <p>A rustic free-form tart built on buttery dough, summer vegetables, and the quiet depth of a good Comt&eacute;.</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Recipes -->
+    <div class="recipes-body">
+
+        <!-- Recipe 01: Burrata -->
+        <article class="recipe-section" id="burrata">
+            <div class="recipe-image">
+                <img src="./assets/recipes/images/recipe-burrata.png" alt="Burrata with heirloom tomatoes, fresh basil and sliced peach on a serving plate">
+            </div>
+            <div class="recipe-content">
+                <span class="recipe-number">Recipe 01</span>
+                <h2>Burrata with Heirloom Tomatoes, Basil &amp; Peach</h2>
+
+                <div class="recipe-meta">
+                    <div class="recipe-meta-item">
+                        <strong>Best for</strong>
+                        Easy entertaining, patio lunches, first-course sharing
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Serves</strong>
+                        4
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Time</strong>
+                        10 minutes
+                    </div>
+                </div>
+
+                <p class="recipe-intro-text">Creamy, delicate burrata is made for summer. Its soft centre pairs beautifully with ripe tomatoes and sweet peaches, creating a dish that feels special without being complicated.</p>
+
+                <p class="recipe-block-label">Ingredients</p>
+                <ul class="ingredients-list">
+                    <li>1 ball burrata</li>
+                    <li>2 cups heirloom tomatoes, sliced</li>
+                    <li>1 ripe peach, thinly sliced</li>
+                    <li>Fresh basil leaves</li>
+                    <li>2 tablespoons extra virgin olive oil</li>
+                    <li>1 tablespoon balsamic glaze or aged balsamic vinegar</li>
+                    <li>Flaky sea salt</li>
+                    <li>Freshly cracked black pepper</li>
+                    <li>Optional: toasted sourdough or crisp crackers for serving</li>
+                </ul>
+
+                <p class="recipe-block-label">Method</p>
+                <ol class="method-list">
+                    <li>Arrange the tomatoes and peach slices on a serving plate.</li>
+                    <li>Place the burrata in the centre and gently tear it open just before serving.</li>
+                    <li>Drizzle with olive oil and balsamic.</li>
+                    <li>Finish with basil, flaky salt, and black pepper.</li>
+                    <li>Serve with toasted sourdough or your favourite crisp crackers.</li>
+                </ol>
+
+                <div class="farmhouse-tip">
+                    <p>Look for tomatoes that feel heavy for their size and smell fragrant at the stem. This is a simple dish, so the quality of each ingredient really shines.</p>
+                </div>
+
+                <a href="#top" class="back-to-top">Back to top</a>
+            </div>
+        </article>
+
+        <!-- Recipe 02: Fritters -->
+        <article class="recipe-section image-right" id="fritters">
+            <div class="recipe-image">
+                <img src="./assets/recipes/images/recipe-aged-cheddar.png" alt="Crispy summer corn and aged cheddar fritters served with herb yogurt">
+            </div>
+            <div class="recipe-content">
+                <span class="recipe-number">Recipe 02</span>
+                <h2>Summer Corn &amp; Aged Cheddar Fritters</h2>
+
+                <div class="recipe-meta">
+                    <div class="recipe-meta-item">
+                        <strong>Best for</strong>
+                        Casual dinners, cottage weekends, family-style meals
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Serves</strong>
+                        4
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Time</strong>
+                        25 minutes
+                    </div>
+                </div>
+
+                <p class="recipe-intro-text">Aged cheddar brings depth and a savoury finish to sweet summer corn. These fritters are crisp at the edges, tender in the middle, and lovely with a simple herb yogurt on the side.</p>
+
+                <p class="recipe-block-label">Ingredients</p>
+                <p class="recipe-sublabel">For the fritters</p>
+                <ul class="ingredients-list">
+                    <li>2 cups fresh corn kernels</li>
+                    <li>1 cup grated aged cheddar</li>
+                    <li>2 eggs</li>
+                    <li>1/2 cup flour</li>
+                    <li>2 green onions, finely sliced</li>
+                    <li>2 tablespoons chopped parsley or chives</li>
+                    <li>1/2 teaspoon baking powder</li>
+                    <li>Salt and pepper</li>
+                    <li>Olive oil or neutral oil, for frying</li>
+                </ul>
+                <p class="recipe-sublabel">For serving</p>
+                <ul class="ingredients-list">
+                    <li>1/2 cup plain yogurt or sour cream</li>
+                    <li>1 tablespoon chopped chives</li>
+                    <li>Squeeze of lemon juice</li>
+                    <li>Pinch of salt</li>
+                </ul>
+
+                <p class="recipe-block-label">Method</p>
+                <ol class="method-list">
+                    <li>In a bowl, combine corn, aged cheddar, eggs, flour, green onions, herbs, baking powder, salt, and pepper.</li>
+                    <li>Stir until the mixture holds together.</li>
+                    <li>Heat a thin layer of oil in a skillet over medium heat.</li>
+                    <li>Spoon small portions of batter into the pan and flatten slightly.</li>
+                    <li>Cook for 2 to 3 minutes per side, until golden and cooked through.</li>
+                    <li>Stir together the yogurt, chives, lemon juice, and salt.</li>
+                    <li>Serve fritters warm with the herb yogurt.</li>
+                </ol>
+
+                <div class="farmhouse-tip">
+                    <p>A cheddar with a little age gives these fritters more character. Ask us for one with a nutty, savoury finish that melts well.</p>
+                </div>
+
+                <a href="#top" class="back-to-top">Back to top</a>
+            </div>
+        </article>
+
+        <!-- Recipe 03: Blue Cheese Steak Salad -->
+        <article class="recipe-section" id="steak-salad">
+            <div class="recipe-image">
+                <img src="./assets/recipes/images/recipe-blue-cheese.png" alt="Blue cheese steak salad with cherry tomatoes, crispy potatoes and arugula on a platter">
+            </div>
+            <div class="recipe-content">
+                <span class="recipe-number">Recipe 03</span>
+                <h2>Blue Cheese Steak Salad with Cherry Tomatoes &amp; Crispy Potatoes</h2>
+
+                <div class="recipe-meta">
+                    <div class="recipe-meta-item">
+                        <strong>Best for</strong>
+                        Dinner salads, summer grilling, hearty entertaining
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Serves</strong>
+                        4
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Time</strong>
+                        35 minutes
+                    </div>
+                </div>
+
+                <p class="recipe-intro-text">Blue cheese brings a bold, savoury richness to this summer salad. A little goes a long way, adding depth to grilled steak, ripe tomatoes, and crisp potatoes.</p>
+
+                <p class="recipe-block-label">Ingredients</p>
+                <ul class="ingredients-list">
+                    <li>150 g blue cheese, crumbled</li>
+                    <li>1 flank steak or striploin steak</li>
+                    <li>4 cups mixed greens or arugula</li>
+                    <li>2 cups cherry tomatoes, halved</li>
+                    <li>2 cups baby potatoes, cooked and halved</li>
+                    <li>2 tablespoons olive oil</li>
+                    <li>Salt and pepper</li>
+                </ul>
+                <p class="recipe-sublabel">For the dressing</p>
+                <ul class="ingredients-list">
+                    <li>3 tablespoons olive oil</li>
+                    <li>1 tablespoon red wine vinegar</li>
+                    <li>1 teaspoon Dijon mustard</li>
+                    <li>1 teaspoon honey</li>
+                    <li>Salt and pepper</li>
+                </ul>
+
+                <p class="recipe-block-label">Method</p>
+                <ol class="method-list">
+                    <li>Toss cooked potatoes with olive oil, salt, and pepper.</li>
+                    <li>Roast or pan-fry until golden and crisp.</li>
+                    <li>Season steak with salt and pepper, then grill or sear to your preferred doneness.</li>
+                    <li>Let steak rest for 5 to 10 minutes before slicing.</li>
+                    <li>Whisk together all dressing ingredients.</li>
+                    <li>Arrange greens, tomatoes, crispy potatoes, and sliced steak on a platter.</li>
+                    <li>Scatter blue cheese over top.</li>
+                    <li>Drizzle with dressing just before serving.</li>
+                </ol>
+
+                <div class="farmhouse-tip">
+                    <p>If you are new to blue cheese, start with a milder, creamier style. It gives the dish richness without overwhelming the other flavours.</p>
+                </div>
+
+                <a href="#top" class="back-to-top">Back to top</a>
+            </div>
+        </article>
+
+        <!-- Recipe 04: Comte Galette -->
+        <article class="recipe-section image-right" id="galette">
+            <div class="recipe-image">
+                <img src="./assets/recipes/images/recipe-comte.png" alt="Comte and summer vegetable galette with zucchini, tomato and fresh thyme">
+            </div>
+            <div class="recipe-content">
+                <span class="recipe-number">Recipe 04</span>
+                <h2>Comt&eacute; &amp; Summer Vegetable Galette</h2>
+
+                <div class="recipe-meta">
+                    <div class="recipe-meta-item">
+                        <strong>Best for</strong>
+                        Rustic entertaining, weekend lunches, seasonal dinners
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Serves</strong>
+                        6
+                    </div>
+                    <div class="recipe-meta-item">
+                        <strong>Time</strong>
+                        50 minutes
+                    </div>
+                </div>
+
+                <p class="recipe-intro-text">Comt&eacute; is a firm French cheese with nutty, buttery notes and a beautiful melt. It adds quiet depth to this free-form summer galette filled with zucchini, tomato, and herbs.</p>
+
+                <p class="recipe-block-label">Ingredients</p>
+                <ul class="ingredients-list">
+                    <li>1 sheet pie dough or galette dough</li>
+                    <li>1 cup grated Comt&eacute;</li>
+                    <li>1 small zucchini, thinly sliced</li>
+                    <li>1 tomato, thinly sliced</li>
+                    <li>1/2 small red onion, thinly sliced</li>
+                    <li>1 tablespoon Dijon mustard</li>
+                    <li>1 tablespoon olive oil</li>
+                    <li>1 egg, beaten</li>
+                    <li>Fresh thyme</li>
+                    <li>Salt and pepper</li>
+                </ul>
+
+                <p class="recipe-block-label">Method</p>
+                <ol class="method-list">
+                    <li>Preheat oven to 400&deg;F.</li>
+                    <li>Roll dough onto a parchment-lined baking sheet.</li>
+                    <li>Spread Dijon mustard over the centre, leaving a 2-inch border.</li>
+                    <li>Sprinkle grated Comt&eacute; over the mustard.</li>
+                    <li>Layer zucchini, tomato, and red onion on top.</li>
+                    <li>Drizzle with olive oil and season with thyme, salt, and pepper.</li>
+                    <li>Fold the edges of the dough over the filling.</li>
+                    <li>Brush the crust with beaten egg.</li>
+                    <li>Bake for 30 to 35 minutes, until golden and bubbling.</li>
+                    <li>Let rest for 10 minutes before slicing.</li>
+                </ol>
+
+                <div class="farmhouse-tip">
+                    <p>Comt&eacute; is a lovely cheese to keep on hand because it works well both for cooking and for a simple cheese board. Its nutty flavour is easy to enjoy, but still feels special.</p>
+                </div>
+
+                <a href="#top" class="back-to-top">Back to top</a>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Closing note -->
+    <section class="recipes-closing">
+        <div class="recipes-closing-inner">
+            <p>These recipes are meant to be flexible. Our cheese selection changes often, and that is part of the pleasure of shopping from a curated counter. If a recipe catches your eye, visit us in Kerr Village and we will help you choose the right cheese for the dish, whether you are planning a quiet summer dinner or a table full of friends.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="newsletter-cta">
+            <button class="newsletter-button" id="newsletterButton">Receive Our Newsletter</button>
+        </div>
+        <div class="footer-content">
+            <div class="footer-section footer-logo">
+                <div>
+                    <a href="index.html">
+                        <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese">
+                    </a>
+                    <div style="margin-top: 30px;">
+                        <div style="display: flex; gap: 20px; align-items: center;">
+                            <a href="https://www.facebook.com/farmhouseartisancheese/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="opacity: 0.8; transition: opacity 0.3s ease; display: block;">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="https://www.instagram.com/farmhouseartisancheese/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="opacity: 0.8; transition: opacity 0.3s ease; display: block;">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                        <p style="margin-top: 20px; color: #ccc; font-size: 0.9em; font-weight: 300; letter-spacing: 1px;">info@farmhouseartisancheese.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Navigate</h3>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#collection">Our Collection</a></li>
+                    <li><a href="notes.html">Blog</a></li>
+                    <li><a href="archives.html">Archives</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Location</h3>
+                <p>345 Kerr Street<br>
+                Oakville, ON L6K 3B7<br>
+                (905) 582-9600<br>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>
+                Mon: Closed<br>
+                Tue&ndash;Thu: 11am&ndash;5pm<br>
+                Fri: 10am&ndash;6pm<br>
+                Sat: 10am&ndash;6pm<br>
+                Sun: Closed
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                &copy; 2026 Farmhouse Artisan Cheese. All rights reserved.
+                <span style="margin-left: 6px;">
+                    <a
+                        href="https://www.squarestairmedia.com?utm_source=farmhousefooter&utm_medium=link&utm_id=farmhouse"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style="color: inherit; text-decoration: none;"
+                    >
+                        | Powered by SquareStair Media
+                    </a>
+                </span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+
+    <!-- Newsletter Modal -->
+    <div class="newsletter-modal" id="newsletterModal">
+        <div class="newsletter-modal-content">
+            <button class="newsletter-modal-close">&times;</button>
+            <h2>Stay Connected</h2>
+            <p>Be the first to hear about new arrivals, seasonal selections, and special events.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <div class="form-group">
+                    <label for="newsletter-name">Name *</label>
+                    <input type="text" id="newsletter-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="newsletter-email">Email *</label>
+                    <input type="email" id="newsletter-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="newsletter-phone">Phone</label>
+                    <input type="tel" id="newsletter-phone" name="phone">
+                </div>
+                <div class="newsletter-checkbox">
+                    <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
+                    <label for="seasonal-offerings">Yes! Please include me in your newsletter and other exciting announcements.</label>
+                </div>
+                <button type="submit" class="newsletter-submit">Subscribe</button>
+                <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cookie Consent Banner (PIPEDA Compliant) -->
+    <div class="cookie-consent-banner" id="cookieConsentBanner">
+        <div class="cookie-consent-content">
+            <div class="cookie-consent-text">
+                <h3>Cookie Notice</h3>
+                <p>We use cookies to analyze site traffic and improve your experience. By clicking "Accept", you consent to our use of cookies in accordance with Canadian privacy laws (PIPEDA).</p>
+            </div>
+            <div class="cookie-consent-buttons">
+                <button class="cookie-consent-btn accept" id="cookieAccept">Accept</button>
+                <button class="cookie-consent-btn" id="cookieDecline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
