@@ -577,24 +577,27 @@
             }
 
             .recipe-section.print-active {
-                display: flex !important;
+                display: block !important;
                 padding: 0 !important;
                 border-top: none !important;
-                gap: 40px;
             }
 
             .recipe-section.print-active .recipe-image {
                 position: static !important;
-                flex: 0 0 42%;
+                float: left;
+                width: 42%;
+                margin-right: 5%;
+                margin-bottom: 16px;
             }
 
             .recipe-section.print-active .recipe-image img {
                 height: auto !important;
-                max-height: 260px;
+                max-height: 280px;
             }
 
-            .recipe-section.print-active.image-right .recipe-image { order: 0 !important; }
-            .recipe-section.print-active.image-right .recipe-content { order: 0 !important; }
+            .recipe-section.print-active .recipe-content {
+                overflow: hidden;
+            }
         }
     </style>
 </head>
