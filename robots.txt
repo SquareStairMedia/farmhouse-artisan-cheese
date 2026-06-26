@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /BACKUPcontact.html
+Disallow: /BACKUPboards.html
+Disallow: /BACKUPindex.html
+Disallow: /SANDBOX.html
+Disallow: /faqBACKUP.html
+Disallow: /google87a8085b5cde78a6.html
+Disallow: /assets/images/newsletter/
+Disallow: /assets/newsletter/campaign-monitor/
+Disallow: /assets/newsletter/Master/
 
 Sitemap: https://farmhouseartisancheese.com/sitemap.xml
