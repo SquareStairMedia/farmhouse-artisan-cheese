@@ -469,9 +469,110 @@
 
             .recipe-content h2 { font-size: 1.1em; letter-spacing: 3px; }
         }
+
+        /* ─── Print header (hidden on screen) ──────────────────── */
+        .print-header { display: none; }
+
+        /* ─── Recipe actions ────────────────────────────────────── */
+        .recipe-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 0 4px;
+            border-top: 1px solid #e5e5e5;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .recipe-action-btn {
+            font-size: 0.62em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+            padding: 0;
+            transition: color 0.2s ease;
+        }
+
+        .recipe-action-btn:hover { color: #000; }
+
+        .recipe-action-sep {
+            color: #bbb;
+            font-size: 0.8em;
+            line-height: 1;
+        }
+
+        /* ─── Print styles ──────────────────────────────────────── */
+        @media print {
+            header, footer, .category-hero, .recipes-intro, .recipe-toc,
+            .recipes-closing, .back-to-top, .recipe-actions,
+            #cookieConsentBanner, #newsletterModal, .newsletter-cta {
+                display: none !important;
+            }
+
+            body, .recipes-body {
+                background: #fff !important;
+                padding: 0 !important;
+            }
+
+            .print-header {
+                display: block !important;
+                padding: 0 0 20px 0;
+                border-bottom: 1px solid #000;
+                margin-bottom: 28px;
+            }
+
+            .print-header-name {
+                font-size: 14pt;
+                font-weight: 300;
+                letter-spacing: 6px;
+                text-transform: uppercase;
+                color: #000;
+                margin-bottom: 4px;
+            }
+
+            .print-header-sub {
+                font-size: 8pt;
+                letter-spacing: 2px;
+                color: #444;
+                text-transform: uppercase;
+            }
+
+            .recipe-section {
+                display: none !important;
+            }
+
+            .recipe-section.print-active {
+                display: flex !important;
+                padding: 0 !important;
+                border-top: none !important;
+                gap: 40px;
+            }
+
+            .recipe-section.print-active .recipe-image {
+                position: static !important;
+                flex: 0 0 42%;
+            }
+
+            .recipe-section.print-active .recipe-image img {
+                height: auto !important;
+                max-height: 260px;
+            }
+
+            .recipe-section.print-active.image-right .recipe-image { order: 0 !important; }
+            .recipe-section.print-active.image-right .recipe-content { order: 0 !important; }
+        }
     </style>
 </head>
 <body id="top">
+    <div class="print-header">
+        <p class="print-header-name">Farmhouse Artisan Cheese</p>
+        <p class="print-header-sub">farmhouseartisancheese.com &middot; Kerr Village, Oakville</p>
+    </div>
     <header>
         <nav>
             <a href="index.html" class="logo-container">
@@ -635,6 +736,16 @@
                     <p>Look for tomatoes that feel heavy for their size and smell fragrant at the stem. This is a simple dish, so the quality of each ingredient really shines.</p>
                 </div>
 
+                <div class="recipe-actions">
+                    <button class="recipe-action-btn" onclick="printRecipe('burrata')">Print recipe</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToFacebook('burrata')">Share on Facebook</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToPinterest('burrata', 'assets/recipes/images/recipe-burrata.png', 'Burrata with Heirloom Tomatoes, Basil and Peach — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" data-recipe-copy="burrata" onclick="copyRecipeLink('burrata')">Copy link</button>
+                </div>
+
                 <a href="#top" class="back-to-top">Back to top</a>
             </div>
         </article>
@@ -699,6 +810,16 @@
 
                 <div class="farmhouse-tip">
                     <p>A cheddar with a little age gives these fritters more character. Ask us for one with a nutty, savoury finish that melts well.</p>
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="recipe-action-btn" onclick="printRecipe('fritters')">Print recipe</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToFacebook('fritters')">Share on Facebook</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToPinterest('fritters', 'assets/recipes/images/recipe-aged-cheddar.png', 'Summer Corn and Aged Cheddar Fritters — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" data-recipe-copy="fritters" onclick="copyRecipeLink('fritters')">Copy link</button>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -766,6 +887,16 @@
                     <p>If you are new to blue cheese, start with a milder, creamier style. It gives the dish richness without overwhelming the other flavours.</p>
                 </div>
 
+                <div class="recipe-actions">
+                    <button class="recipe-action-btn" onclick="printRecipe('steak-salad')">Print recipe</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToFacebook('steak-salad')">Share on Facebook</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToPinterest('steak-salad', 'assets/recipes/images/recipe-blue-cheese.png', 'Blue Cheese Steak Salad with Cherry Tomatoes and Crispy Potatoes — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" data-recipe-copy="steak-salad" onclick="copyRecipeLink('steak-salad')">Copy link</button>
+                </div>
+
                 <a href="#top" class="back-to-top">Back to top</a>
             </div>
         </article>
@@ -826,6 +957,16 @@
 
                 <div class="farmhouse-tip">
                     <p>Comt&eacute; is a lovely cheese to keep on hand because it works well both for cooking and for a simple cheese board. Its nutty flavour is easy to enjoy, but still feels special.</p>
+                </div>
+
+                <div class="recipe-actions">
+                    <button class="recipe-action-btn" onclick="printRecipe('galette')">Print recipe</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToFacebook('galette')">Share on Facebook</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" onclick="shareToPinterest('galette', 'assets/recipes/images/recipe-comte.png', 'Comt&eacute; and Summer Vegetable Galette — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
+                    <span class="recipe-action-sep">&middot;</span>
+                    <button class="recipe-action-btn" data-recipe-copy="galette" onclick="copyRecipeLink('galette')">Copy link</button>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -946,6 +1087,53 @@
             </form>
         </div>
     </div>
+
+    <script>
+        function printRecipe(recipeId) {
+            var section = document.getElementById(recipeId);
+            section.classList.add('print-active');
+            window.addEventListener('afterprint', function cleanup() {
+                section.classList.remove('print-active');
+                window.removeEventListener('afterprint', cleanup);
+            });
+            window.print();
+        }
+
+        function shareToFacebook(recipeId) {
+            var url = encodeURIComponent(window.location.origin + window.location.pathname + '#' + recipeId);
+            window.open('https://www.facebook.com/sharer/sharer.php?u=' + url, '_blank', 'noopener,width=620,height=400');
+        }
+
+        function shareToPinterest(recipeId, imagePath, description) {
+            var url = encodeURIComponent(window.location.origin + window.location.pathname + '#' + recipeId);
+            var img = encodeURIComponent(window.location.origin + '/' + imagePath);
+            var desc = encodeURIComponent(description);
+            window.open('https://pinterest.com/pin/create/button/?url=' + url + '&media=' + img + '&description=' + desc, '_blank', 'noopener,width=750,height=550');
+        }
+
+        function copyRecipeLink(recipeId) {
+            var url = window.location.origin + window.location.pathname + '#' + recipeId;
+            var btn = document.querySelector('[data-recipe-copy="' + recipeId + '"]');
+            function showCopied() {
+                if (btn) {
+                    var orig = btn.textContent;
+                    btn.textContent = 'Copied';
+                    setTimeout(function() { btn.textContent = orig; }, 2000);
+                }
+            }
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(showCopied);
+            } else {
+                var el = document.createElement('textarea');
+                el.value = url;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showCopied();
+            }
+        }
+    </script>
 
     <!-- Cookie Consent Banner (PIPEDA Compliant) -->
     <div class="cookie-consent-banner" id="cookieConsentBanner">
