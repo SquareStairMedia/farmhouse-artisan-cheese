@@ -477,34 +477,64 @@
         .recipe-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 20px 0 4px;
+            justify-content: space-between;
+            padding: 24px 0 4px;
             border-top: 1px solid #e5e5e5;
             margin-top: 8px;
             flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .recipe-action-btn {
-            font-size: 0.62em;
-            letter-spacing: 2px;
+        .recipe-print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border: 1px solid #000;
+            background: transparent;
+            color: #000;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.6em;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-print-btn:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .recipe-share {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .recipe-share-label {
+            font-size: 0.6em;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #444;
+            font-weight: 300;
+        }
+
+        .recipe-social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: none;
             border: none;
             cursor: pointer;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-weight: 300;
-            padding: 0;
+            color: #444;
+            padding: 4px;
             transition: color 0.2s ease;
         }
 
-        .recipe-action-btn:hover { color: #000; }
-
-        .recipe-action-sep {
-            color: #bbb;
-            font-size: 0.8em;
-            line-height: 1;
-        }
+        .recipe-social-btn.pinterest-btn:hover { color: #E60023; }
+        .recipe-social-btn.facebook-btn:hover { color: #1877F2; }
 
         /* ─── Print styles ──────────────────────────────────────── */
         @media print {
@@ -737,13 +767,19 @@
                 </div>
 
                 <div class="recipe-actions">
-                    <button class="recipe-action-btn" onclick="printRecipe('burrata')">Print recipe</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToFacebook('burrata')">Share on Facebook</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToPinterest('burrata', 'assets/recipes/images/recipe-burrata.png', 'Burrata with Heirloom Tomatoes, Basil and Peach — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" data-recipe-copy="burrata" onclick="copyRecipeLink('burrata')">Copy link</button>
+                    <button class="recipe-print-btn" onclick="printRecipe('burrata')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('burrata', 'assets/recipes/images/recipe-burrata.png', 'Burrata with Heirloom Tomatoes, Basil and Peach — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('burrata')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -813,13 +849,19 @@
                 </div>
 
                 <div class="recipe-actions">
-                    <button class="recipe-action-btn" onclick="printRecipe('fritters')">Print recipe</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToFacebook('fritters')">Share on Facebook</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToPinterest('fritters', 'assets/recipes/images/recipe-aged-cheddar.png', 'Summer Corn and Aged Cheddar Fritters — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" data-recipe-copy="fritters" onclick="copyRecipeLink('fritters')">Copy link</button>
+                    <button class="recipe-print-btn" onclick="printRecipe('fritters')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('fritters', 'assets/recipes/images/recipe-aged-cheddar.png', 'Summer Corn and Aged Cheddar Fritters — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('fritters')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -888,13 +930,19 @@
                 </div>
 
                 <div class="recipe-actions">
-                    <button class="recipe-action-btn" onclick="printRecipe('steak-salad')">Print recipe</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToFacebook('steak-salad')">Share on Facebook</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToPinterest('steak-salad', 'assets/recipes/images/recipe-blue-cheese.png', 'Blue Cheese Steak Salad with Cherry Tomatoes and Crispy Potatoes — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" data-recipe-copy="steak-salad" onclick="copyRecipeLink('steak-salad')">Copy link</button>
+                    <button class="recipe-print-btn" onclick="printRecipe('steak-salad')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('steak-salad', 'assets/recipes/images/recipe-blue-cheese.png', 'Blue Cheese Steak Salad with Cherry Tomatoes and Crispy Potatoes — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('steak-salad')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
@@ -960,13 +1008,19 @@
                 </div>
 
                 <div class="recipe-actions">
-                    <button class="recipe-action-btn" onclick="printRecipe('galette')">Print recipe</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToFacebook('galette')">Share on Facebook</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" onclick="shareToPinterest('galette', 'assets/recipes/images/recipe-comte.png', 'Comt&eacute; and Summer Vegetable Galette — a summer recipe from Farmhouse Artisan Cheese in Oakville.')">Save to Pinterest</button>
-                    <span class="recipe-action-sep">&middot;</span>
-                    <button class="recipe-action-btn" data-recipe-copy="galette" onclick="copyRecipeLink('galette')">Copy link</button>
+                    <button class="recipe-print-btn" onclick="printRecipe('galette')">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                        Print
+                    </button>
+                    <div class="recipe-share">
+                        <span class="recipe-share-label">Share</span>
+                        <button class="recipe-social-btn pinterest-btn" onclick="shareToPinterest('galette', 'assets/recipes/images/recipe-comte.png', 'Comt&eacute; and Summer Vegetable Galette — a summer recipe from Farmhouse Artisan Cheese in Oakville.')" aria-label="Save to Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                        </button>
+                        <button class="recipe-social-btn facebook-btn" onclick="shareToFacebook('galette')" aria-label="Share on Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <a href="#top" class="back-to-top">Back to top</a>
