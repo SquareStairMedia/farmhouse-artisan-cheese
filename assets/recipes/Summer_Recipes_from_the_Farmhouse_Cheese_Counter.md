@@ -2,7 +2,7 @@
 
 Summer cooking should feel generous, colourful, and easy to share. These recipes are built around artisan cheese as the centrepiece, with seasonal produce, simple preparation, and a little room for discovery.
 
-Each one highlights a different cheese style, from creamy burrata to bold blue cheese. If you'd like help choosing a specific wheel, wedge, or pairing, our team is always happy to guide you in the shop.
+Each one highlights a different cheese style, from creamy burrata to savoury halloumi. If you’d like help choosing a specific wheel, wedge, or pairing, our team is always happy to guide you in the shop.
 
 **1\. Burrata with Heirloom Tomatoes, Basil & Peach**
 
@@ -52,7 +52,101 @@ Serve with toasted sourdough or your favourite crisp crackers.
 
 *Look for tomatoes that feel heavy for their size and smell fragrant at the stem. This is a simple dish, so the quality of each ingredient really shines.*
 
-**2\. Summer Corn & Aged Cheddar Fritters**
+**2\. Grilled Halloumi with Watermelon, Mint & Cucumber**
+
+Cheese spotlight: Halloumi
+
+Best for: BBQs, picnics, warm-weather grazing boards
+
+Serves: 4
+
+Time: 15 minutes
+
+Halloumi is a wonderful grilling cheese because it holds its shape over heat. The result is golden and savoury on the outside, pleasantly chewy inside, and especially good with juicy watermelon.
+
+**Ingredients**
+
+250 g halloumi, sliced into thick pieces
+
+3 cups watermelon, cubed
+
+1 cup cucumber, sliced
+
+¼ cup fresh mint leaves
+
+1 tablespoon olive oil
+
+Juice of ½ lemon
+
+Freshly cracked black pepper
+
+Optional: pinch of chili flakes
+
+**Method**
+
+Pat the halloumi dry with a paper towel.
+
+Heat a grill pan or BBQ to medium-high.
+
+Brush the halloumi lightly with olive oil and grill for 1–2 minutes per side, until golden.
+
+Arrange watermelon, cucumber, and mint on a platter.
+
+Add the warm halloumi on top.
+
+Finish with lemon juice, black pepper, and chili flakes if using.
+
+**Farmhouse Tip**
+
+*Serve the halloumi while it’s still warm. That’s when the texture is at its best and the salty notes contrast beautifully with the watermelon.*
+
+**3\. Whipped Goat Cheese with Lemon, Honey & Summer Berries**
+
+Cheese spotlight: Fresh goat cheese / chèvre
+
+Best for: Brunch, afternoon snacks, light desserts
+
+Serves: 4–6
+
+Time: 10 minutes
+
+Fresh goat cheese has a bright, tangy character that works beautifully with honey and berries. Whipping it creates a soft, spreadable texture that feels elegant but takes only a few minutes.
+
+**Ingredients**
+
+200 g fresh goat cheese
+
+2 tablespoons plain Greek yogurt or cream cheese
+
+1 tablespoon honey, plus more for drizzling
+
+Zest of 1 lemon
+
+1 cup fresh berries
+
+Fresh thyme or mint
+
+Pinch of sea salt
+
+Crostini, crackers, or sliced baguette for serving
+
+**Method**
+
+Add goat cheese, yogurt or cream cheese, honey, lemon zest, and salt to a bowl.
+
+Whip with a hand mixer or whisk until smooth and creamy.
+
+Spoon onto a small serving plate or shallow bowl.
+
+Top with berries, herbs, and an extra drizzle of honey.
+
+Serve with crostini, crackers, or baguette.
+
+**Farmhouse Tip**
+
+*For a more savoury version, swap the berries for roasted cherry tomatoes and finish with olive oil instead of honey.*
+
+**4\. Summer Corn & Aged Cheddar Fritters**
 
 Cheese spotlight: Aged cheddar
 
@@ -116,7 +210,67 @@ Serve fritters warm with the herb yogurt.
 
 *A cheddar with a little age gives these fritters more character. Ask us for one with a nutty, savoury finish that melts well.*
 
-**3\. Blue Cheese Steak Salad with Cherry Tomatoes & Crispy Potatoes**
+**5\. Feta, Zucchini & Herb Tart**
+
+Cheese spotlight: Feta
+
+Best for: Lunches, garden parties, make-ahead entertaining
+
+Serves: 6
+
+Time: 40 minutes
+
+Salty, crumbly feta balances beautifully with tender zucchini and fresh herbs. Using puff pastry keeps this tart simple, while still feeling polished enough for guests.
+
+**Ingredients**
+
+1 sheet puff pastry, thawed
+
+1 cup crumbled feta
+
+1 medium zucchini, thinly sliced
+
+½ cup ricotta or cream cheese
+
+1 egg, beaten
+
+1 tablespoon olive oil
+
+1 tablespoon chopped dill
+
+1 tablespoon chopped parsley
+
+Zest of ½ lemon
+
+Black pepper
+
+**Method**
+
+Preheat oven to 400°F.
+
+Roll puff pastry onto a parchment-lined baking sheet.
+
+Score a 1-inch border around the pastry, being careful not to cut all the way through.
+
+Mix ricotta or cream cheese with lemon zest, herbs, and black pepper.
+
+Spread the mixture inside the border.
+
+Layer zucchini slices over top and scatter with feta.
+
+Brush the pastry edges with beaten egg.
+
+Drizzle zucchini lightly with olive oil.
+
+Bake for 22–28 minutes, until golden and crisp.
+
+Let cool slightly before slicing.
+
+**Farmhouse Tip**
+
+*This tart is delicious warm or at room temperature, which makes it a helpful option when you’re hosting and want to prepare something ahead of time.*
+
+**6\. Blue Cheese Steak Salad with Cherry Tomatoes & Crispy Potatoes**
 
 Cheese spotlight: Blue cheese
 
@@ -176,9 +330,9 @@ Drizzle with dressing just before serving.
 
 **Farmhouse Tip**
 
-*If you're new to blue cheese, start with a milder, creamier style. It gives the dish richness without overwhelming the other flavours.*
+*If you’re new to blue cheese, start with a milder, creamier style. It gives the dish richness without overwhelming the other flavours.*
 
-**4\. Comté & Summer Vegetable Galette**
+**7\. Comté & Summer Vegetable Galette**
 
 Cheese spotlight: Comté
 
@@ -240,6 +394,6 @@ Let rest for 10 minutes before slicing.
 
 **A Note from Farmhouse**
 
-These recipes are meant to be flexible. Our cheese selection changes often, and that's part of the pleasure of shopping from a curated counter.
+These recipes are meant to be flexible. Our cheese selection changes often, and that’s part of the pleasure of shopping from a curated counter.
 
-If a recipe catches your eye, visit us in Kerr Village and we'll help you choose the right cheese for the dish, whether you're planning a quiet summer dinner or a table full of friends.
+If a recipe catches your eye, visit us in Kerr Village and we’ll help you choose the right cheese for the dish, whether you’re planning a quiet summer dinner or a table full of friends.
