@@ -577,27 +577,68 @@
             }
 
             .recipe-section.print-active {
-                display: block !important;
+                display: flex !important;
+                align-items: stretch !important;
                 padding: 0 !important;
                 border-top: none !important;
+                gap: 36px;
             }
 
             .recipe-section.print-active .recipe-image {
                 position: static !important;
-                float: left;
-                width: 42%;
-                margin-right: 5%;
-                margin-bottom: 16px;
+                flex: 0 0 40%;
             }
 
             .recipe-section.print-active .recipe-image img {
-                height: auto !important;
-                max-height: 280px;
+                width: 100% !important;
+                height: 100% !important;
+                max-height: none !important;
+                object-fit: cover !important;
+                display: block;
+                border: none;
+                margin: 0;
             }
 
             .recipe-section.print-active .recipe-content {
-                overflow: hidden;
+                flex: 1;
+                min-width: 0;
             }
+
+            .recipe-section.print-active .recipe-content h2 {
+                font-size: 15pt !important;
+                letter-spacing: 4px !important;
+                margin-bottom: 12px !important;
+            }
+
+            .recipe-section.print-active .recipe-meta {
+                margin-bottom: 16px !important;
+            }
+
+            .recipe-section.print-active .recipe-intro-text {
+                font-size: 0.82em !important;
+                margin-bottom: 16px !important;
+            }
+
+            .recipe-section.print-active .recipe-block-label {
+                margin-bottom: 8px !important;
+                padding-bottom: 6px !important;
+            }
+
+            .recipe-section.print-active .ingredients-list li,
+            .recipe-section.print-active .method-list li {
+                font-size: 0.8em !important;
+                padding-top: 4px !important;
+                padding-bottom: 4px !important;
+            }
+
+            .recipe-section.print-active .farmhouse-tip {
+                margin-bottom: 0 !important;
+            }
+
+            .recipe-section.print-active .recipe-actions { display: none !important; }
+
+            .recipe-section.print-active.image-right .recipe-image { order: 0 !important; }
+            .recipe-section.print-active.image-right .recipe-content { order: 0 !important; }
         }
     </style>
 </head>
