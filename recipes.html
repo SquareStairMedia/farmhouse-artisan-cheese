@@ -538,15 +538,26 @@
 
         /* ─── Print styles ──────────────────────────────────────── */
         @media print {
+            @page {
+                margin: 1.5cm 1.8cm;
+            }
+
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: #fff !important;
+            }
+
             header, footer, .category-hero, .recipes-intro, .recipe-toc,
             .recipes-closing, .back-to-top, .recipe-actions,
             #cookieConsentBanner, #newsletterModal, .newsletter-cta {
                 display: none !important;
             }
 
-            body, .recipes-body {
+            .recipes-body {
                 background: #fff !important;
                 padding: 0 !important;
+                margin: 0 !important;
             }
 
             .print-header {
@@ -580,8 +591,11 @@
                 display: flex !important;
                 align-items: stretch !important;
                 padding: 0 !important;
+                margin: 0 !important;
                 border-top: none !important;
                 gap: 36px;
+                break-before: avoid !important;
+                page-break-before: avoid !important;
             }
 
             .recipe-section.print-active .recipe-image {
