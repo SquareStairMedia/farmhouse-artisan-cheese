@@ -5,7 +5,7 @@
 **Method:** Static extraction + path resolution against the actual file tree (site is a Render `static_site`, served from repo root, so repo path == URL path).
 **Totals:** 1,564 URL-bearing attributes scanned · 71 resolved to targets that do not exist.
 
-**Nothing has been fixed. This is report-only.**
+**Status:** Report-only, with one exception — §1.1 (the 9 blog footer-logo links) has since been fixed. Every other finding below is still outstanding.
 
 ---
 
@@ -23,7 +23,9 @@ Severity key: **P1** = live 404 on an indexable page · **P2** = live broken ass
 
 ## 1. P1 — Broken internal links (real 404s on indexable pages)
 
-### 1.1 Blog footer logo links to a page that does not exist — 9 pages
+### 1.1 Blog footer logo links to a page that does not exist — 9 pages ✅ FIXED
+
+> **Resolved.** All 9 footer logos now use `../index.html`. The table below records the original state. If your Semrush crawl predates this fix, expect these 9 to appear in its report and not in a fresh scan.
 
 Every blog post's footer logo links to a bare `index.html`. Because these pages live in `/BlogPages/`, the browser resolves this to `/BlogPages/index.html`, which does not exist. The site nav on these same pages correctly uses `../index.html` — only the footer logo is wrong.
 
@@ -193,11 +195,11 @@ So you can positively rule these out when reconciling:
 
 | Category | Live/indexable | Not crawled (robots-disallowed) | Total |
 |---|---|---|---|
-| P1 broken links (404) | 11 | 1 | 12 |
+| P1 broken links (404) | 11 → **2 after §1.1 fix** | 1 | 12 → **3** |
 | P2 broken images | 4 | 15 | 19 |
 | P3 wrong-but-working relative paths | 13 | 3 | 16 |
 | P3 empty `href="#"` | 5 | 3 | 8 |
 | Non-canonical homepage links | ~110 | — | ~110 |
 | Orphan / crawl-gap pages | 15 | — | 15 |
 
-**Bottom line:** 12 genuine broken links and 4 genuine broken images on live pages. Everything else is consistency and crawlability. If Semrush reports substantially more than ~15 broken internal items, the extra volume is almost certainly the non-canonical `/index.html` links (§4.1) or the JS-only archive (§5.1) rather than new defects.
+**Bottom line:** 12 genuine broken links and 4 genuine broken images on live pages, of which the 9 in §1.1 are now fixed — leaving 3 broken links and 4 broken images outstanding. Everything else is consistency and crawlability. If Semrush reports substantially more than ~15 broken internal items, the extra volume is almost certainly the non-canonical `/index.html` links (§4.1) or the JS-only archive (§5.1) rather than new defects.
