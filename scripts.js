@@ -170,7 +170,8 @@ if (newsletterModal) {
                 email: document.getElementById('newsletter-email').value,
                 phone: document.getElementById('newsletter-phone').value,
                 seasonalOfferings: document.getElementById('seasonal-offerings').checked,
-                website: document.getElementById('newsletter-honeypot').value
+                website: document.getElementById('newsletter-honeypot').value,
+                ...(window.formSecurity ? window.formSecurity.fields('newsletterForm') : {})
             };
             
             const statusDiv = document.getElementById('newsletterStatus');
@@ -190,6 +191,7 @@ if (newsletterModal) {
                     statusDiv.textContent = 'Thank you for subscribing!';
                     statusDiv.style.color = 'green';
                     newsletterForm.reset();
+                    window.formSecurity && window.formSecurity.reset('newsletterForm');
                     setTimeout(() => {
                         newsletterModal.classList.remove('active');
                         document.body.style.overflow = '';

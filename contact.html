@@ -135,7 +135,8 @@
                         email: document.getElementById('email').value,
                         phone: document.getElementById('phone').value,
                         message: document.getElementById('message').value,
-                        website: document.getElementById('contact-honeypot').value
+                        website: document.getElementById('contact-honeypot').value,
+                        ...formSecurity.fields('contactForm')
                     };
                     
                     const statusDiv = document.getElementById('formStatus');
@@ -156,6 +157,7 @@
                             });
                             document.getElementById('successModal').classList.add('active');
                             document.getElementById('contactForm').reset();
+                            formSecurity.reset('contactForm');
                             statusDiv.textContent = '';
                         } else {
                             throw new Error('Failed to send');
@@ -376,5 +378,7 @@ THIS BLOCK IS LIKELY REDUNDANT - CAUSING DUPLICATION OF SUBMISSION CONIRMATION T
     </div>
 </div>
 
+<script src="form-security.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
 </body>
 </html>

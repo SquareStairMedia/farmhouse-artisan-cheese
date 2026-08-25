@@ -848,7 +848,8 @@ document.querySelector('#contactForm').addEventListener('submit', async function
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
+        message: document.getElementById('message').value,
+        ...formSecurity.fields('contactForm')
     };
 
     const statusDiv = document.getElementById('formStatus');
@@ -869,6 +870,7 @@ document.querySelector('#contactForm').addEventListener('submit', async function
             statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
             statusDiv.style.color = 'green';
             document.getElementById('contactForm').reset();
+            formSecurity.reset('contactForm');
             setTimeout(closeModal, 2000);
         } else {
             throw new Error('Failed to send');
@@ -894,5 +896,7 @@ document.querySelector('#contactForm').addEventListener('submit', async function
     </div>
 </div>
 
+<script src="form-security.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
 </body>
 </html>

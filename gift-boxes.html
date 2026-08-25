@@ -1106,7 +1106,14 @@
             const response = await fetch('https://farmhouse-backend.onrender.com/api/gift-box-order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, phone, boxes: selectedBoxes, website: honeypot })
+                body: JSON.stringify({
+                    name,
+                    email,
+                    phone,
+                    boxes: selectedBoxes,
+                    website: honeypot,
+                    ...formSecurity.fields('giftBoxForm')
+                })
             });
 
             if (response.ok) {
@@ -1120,6 +1127,7 @@
                 const data = await response.json().catch(function () { return {}; });
                 errorDiv.textContent = data.error || 'Something went wrong. Please try again.';
                 errorDiv.style.display = 'block';
+                formSecurity.reset('giftBoxForm');
             }
         } catch (err) {
             errorDiv.textContent = 'Something went wrong. Please try again.';
@@ -1172,5 +1180,7 @@ dots.forEach((dot, index) => {
     </div>
 </div>
 
+<script src="form-security.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>
 </body>
 </html>

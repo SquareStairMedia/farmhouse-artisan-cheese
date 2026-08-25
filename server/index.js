@@ -32,6 +32,150 @@ app.use(
 );
 const PORT = process.env.PORT || 3000;
 
+// Render (and any host behind a load balancer) forwards the real client IP in
+// X-Forwarded-For. Without this, express-rate-limit sees the proxy's IP for
+// every request and the per-IP limits do nothing.
+app.set('trust proxy', 1);
+
+// --- Spam prevention helpers -------------------------------------------------
+
+const crypto = require('crypto');
+
+// Log spam attempts without storing message bodies or full email addresses.
+function logSpamAttempt(reason, req) {
+  const ipHash = crypto
+    .createHash('sha256')
+    .update(String(req.ip || ''))
+    .digest('hex')
+    .substring(0, 16);
+
+  console.log(
+    JSON.stringify({
+      timestamp: new Date().toISOString(),
+      reason,
+      route: req.path,
+      ipHash,
+      userAgent: (req.get('user-agent') || '').substring(0, 100)
+    })
+  );
+}
+
+// Cloudflare Turnstile verification.
+// Returns true when the token is valid, false when it is missing or rejected.
+async function verifyTurnstile(token, req) {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  // If the secret is not configured the server cannot verify anything.
+  // Log loudly and allow the request through so a missing env var never
+  // silently breaks the live forms.
+  if (!secret) {
+    console.warn('TURNSTILE_SECRET_KEY is not set - Turnstile verification skipped');
+    return true;
+  }
+
+  if (!token) return false;
+
+  try {
+    const response = await fetch(
+      'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          secret,
+          response: token,
+          remoteip: req.ip
+        })
+      }
+    );
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('Turnstile verification error:', error);
+    return false;
+  }
+}
+
+// Bots post the instant the page loads. Humans do not.
+function submittedTooFast(formLoadedAt, minSeconds) {
+  const loadedAt = parseInt(formLoadedAt, 10);
+  if (isNaN(loadedAt)) return false; // missing timestamp is not proof of a bot
+  const elapsed = (Date.now() - loadedAt) / 1000;
+  return elapsed < minSeconds;
+}
+
+// Content heuristics. Catches the two common patterns: keyword/link spam and
+// the random-character filler used by form-flooding bots.
+const SPAM_PATTERNS = [
+  /\b(viagra|cialis|casino|crypto wallet|seo services|backlinks|loan offer)\b/i,
+  /(https?:\/\/[^\s]+.*){2,}/i,
+  /\[url=|\[link=|<a\s+href/i,
+  /(click here|buy now|limited time offer|make money fast)/i
+];
+
+// Random strings such as "VwDHUpbxyWMDqaJPWmUsw" have no vowel rhythm and mix
+// cases mid-word. Real names and messages do not look like this.
+function looksLikeGibberish(text) {
+  if (!text) return false;
+  const token = text.trim();
+  if (token.length < 12) return false;
+  if (/\s/.test(token)) return false; // multi-word text is judged elsewhere
+  if (!/^[A-Za-z0-9]+$/.test(token)) return false;
+
+  const letters = token.replace(/[^A-Za-z]/g, '');
+  if (letters.length < 10) return false;
+
+  const vowelRatio = (letters.match(/[aeiouAEIOU]/g) || []).length / letters.length;
+  const caseSwitches = (letters.match(/[a-z][A-Z]|[A-Z][a-z]/g) || []).length;
+
+  return vowelRatio < 0.28 || caseSwitches >= 4;
+}
+
+function detectSpam({ name, message }) {
+  const haystack = [name, message].filter(Boolean).join(' ');
+  if (SPAM_PATTERNS.some((pattern) => pattern.test(haystack))) return true;
+  if (looksLikeGibberish(name)) return true;
+  if (looksLikeGibberish(message)) return true;
+  return false;
+}
+
+// Gmail and similar providers ignore dots in the local part, so a single
+// mailbox can generate unlimited unique-looking addresses. Normalize before
+// comparing so a flood from one mailbox is recognisable in the logs.
+function normalizeEmail(email) {
+  const [local, domain] = String(email).toLowerCase().split('@');
+  if (!domain) return String(email).toLowerCase();
+  if (domain === 'gmail.com' || domain === 'googlemail.com') {
+    return `${local.replace(/\./g, '').split('+')[0]}@gmail.com`;
+  }
+  return `${local.split('+')[0]}@${domain}`;
+}
+
+// Short-term memory of recently seen senders, so the same address cannot
+// submit repeatedly from rotating IP addresses.
+const recentSubmissions = new Map();
+const SUBMISSION_WINDOW_MS = 60 * 60 * 1000;
+const MAX_PER_EMAIL_PER_WINDOW = 3;
+
+function emailIsFlooding(email) {
+  const key = normalizeEmail(email);
+  const now = Date.now();
+  const hits = (recentSubmissions.get(key) || []).filter(
+    (t) => now - t < SUBMISSION_WINDOW_MS
+  );
+  hits.push(now);
+  recentSubmissions.set(key, hits);
+
+  // Keep the map from growing without bound.
+  if (recentSubmissions.size > 5000) {
+    for (const [k, v] of recentSubmissions) {
+      if (v.every((t) => now - t >= SUBMISSION_WINDOW_MS)) recentSubmissions.delete(k);
+    }
+  }
+
+  return hits.length > MAX_PER_EMAIL_PER_WINDOW;
+}
+
 // Initialize Resend
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -98,11 +242,27 @@ app.get('/', (req, res) => {
 // Contact form endpoint with rate limiting
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
-    const { name, email, phone, message, website } = req.body;
+    const { name, email, phone, message, website, form_loaded_at, turnstileToken } =
+      req.body;
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
+      logSpamAttempt('honeypot', req);
       return res.json({ success: true, message: 'Email sent successfully' });
+    }
+
+    // Timing check: a real person needs a few seconds to write a message
+    if (submittedTooFast(form_loaded_at, 5)) {
+      logSpamAttempt('timing', req);
+      return res.json({ success: true, message: 'Email sent successfully' });
+    }
+
+    // Cloudflare Turnstile
+    if (!(await verifyTurnstile(turnstileToken, req))) {
+      logSpamAttempt('turnstile', req);
+      return res
+        .status(400)
+        .json({ error: 'Verification failed. Please reload the page and try again.' });
     }
 
     // Validate required fields
@@ -118,6 +278,18 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     // Input length limits
     if (name.length > 100 || email.length > 254 || (phone && phone.length > 20) || message.length > 2000) {
       return res.status(400).json({ error: 'One or more fields exceed the maximum allowed length' });
+    }
+
+    // Content heuristics: keyword spam, link spam, random-character filler
+    if (detectSpam({ name, message })) {
+      logSpamAttempt('content', req);
+      return res.json({ success: true, message: 'Email sent successfully' });
+    }
+
+    // Per-sender flood control, independent of IP address
+    if (emailIsFlooding(email)) {
+      logSpamAttempt('email_flood', req);
+      return res.json({ success: true, message: 'Email sent successfully' });
     }
 
     // Sanitize user input
@@ -170,11 +342,34 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Newsletter signup endpoint with rate limiting
 app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
-    const { name, email, phone, seasonalOfferings, website } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      seasonalOfferings,
+      website,
+      form_loaded_at,
+      turnstileToken
+    } = req.body;
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
+      logSpamAttempt('honeypot', req);
       return res.json({ success: true, message: 'Newsletter signup successful' });
+    }
+
+    // Timing check
+    if (submittedTooFast(form_loaded_at, 3)) {
+      logSpamAttempt('timing', req);
+      return res.json({ success: true, message: 'Newsletter signup successful' });
+    }
+
+    // Cloudflare Turnstile
+    if (!(await verifyTurnstile(turnstileToken, req))) {
+      logSpamAttempt('turnstile', req);
+      return res
+        .status(400)
+        .json({ error: 'Verification failed. Please reload the page and try again.' });
     }
 
     // Validate required fields
@@ -190,6 +385,18 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     // Input length limits
     if (name.length > 100 || email.length > 254 || (phone && phone.length > 20)) {
       return res.status(400).json({ error: 'One or more fields exceed the maximum allowed length' });
+    }
+
+    // Content heuristics
+    if (detectSpam({ name })) {
+      logSpamAttempt('content', req);
+      return res.json({ success: true, message: 'Newsletter signup successful' });
+    }
+
+    // Per-sender flood control
+    if (emailIsFlooding(email)) {
+      logSpamAttempt('email_flood', req);
+      return res.json({ success: true, message: 'Newsletter signup successful' });
     }
 
     // Sanitize user input
@@ -267,11 +474,27 @@ if (!cmResponse.ok) {
 // Gift box order endpoint with rate limiting
 app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
   try {
-    const { name, email, phone, boxes, website } = req.body;
+    const { name, email, phone, boxes, website, form_loaded_at, turnstileToken } =
+      req.body;
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
+      logSpamAttempt('honeypot', req);
       return res.json({ success: true, message: 'Order received' });
+    }
+
+    // Timing check
+    if (submittedTooFast(form_loaded_at, 5)) {
+      logSpamAttempt('timing', req);
+      return res.json({ success: true, message: 'Order received' });
+    }
+
+    // Cloudflare Turnstile
+    if (!(await verifyTurnstile(turnstileToken, req))) {
+      logSpamAttempt('turnstile', req);
+      return res
+        .status(400)
+        .json({ error: 'Verification failed. Please reload the page and try again.' });
     }
 
     // Validate required fields
@@ -305,6 +528,18 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
           return res.status(400).json({ error: `Invalid quantity for ${box.name}` });
         }
       }
+    }
+
+    // Content heuristics
+    if (detectSpam({ name })) {
+      logSpamAttempt('content', req);
+      return res.json({ success: true, message: 'Order received' });
+    }
+
+    // Per-sender flood control
+    if (emailIsFlooding(email)) {
+      logSpamAttempt('email_flood', req);
+      return res.json({ success: true, message: 'Order received' });
     }
 
     // Sanitize user input
