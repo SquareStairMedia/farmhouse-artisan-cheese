@@ -55,6 +55,50 @@ function escapeHtml(text) {
   });
 }
 
+// Cloudflare Turnstile verification. Fail closed if the secret is unavailable,
+// and bind successful tokens to the expected Farmhouse hostname and form action.
+const TURNSTILE_ALLOWED_HOSTNAMES = new Set([
+  'farmhouseartisancheese.com',
+  'www.farmhouseartisancheese.com'
+]);
+
+async function verifyTurnstileToken(token, remoteIp, expectedAction) {
+  const secret = process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
+  if (!secret) {
+    console.error('CLOUDFLARE_TURNSTILE_SECRET_KEY is not configured');
+    return false;
+  }
+
+  if (!token || !expectedAction) return false;
+
+  const body = new URLSearchParams({
+    secret,
+    response: token
+  });
+  if (remoteIp) body.append('remoteip', remoteIp);
+
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body
+    });
+
+    if (!response.ok) return false;
+
+    const result = await response.json();
+    return result.success === true &&
+      TURNSTILE_ALLOWED_HOSTNAMES.has(result.hostname) &&
+      result.action === expectedAction;
+  } catch (error) {
+    console.error('Turnstile verification error:', error.message);
+    return false;
+  }
+}
+
+function getClientIp(req) {
+  return req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress;
+}
+
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
@@ -66,7 +110,7 @@ app.use(express.json());
 // Rate limiting for contact form - 5 submissions per hour per IP
 const contactLimiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hour
-  max: 5, 
+  max: 5,
   message: 'Too many contact form submissions from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -98,7 +142,13 @@ app.get('/', (req, res) => {
 // Contact form endpoint with rate limiting
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
-    const { name, email, phone, message, website } = req.body;
+    const { name, email, phone, message, website, turnstileToken, turnstileAction } = req.body;
+
+    const turnstileOk = turnstileAction === 'contact' &&
+      await verifyTurnstileToken(turnstileToken, getClientIp(req), 'contact');
+    if (!turnstileOk) {
+      return res.status(403).json({ error: 'Human verification failed. Please try again.' });
+    }
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
@@ -126,7 +176,6 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     const safePhone = escapeHtml(phone);
     const safeMessage = escapeHtml(message);
 
-    // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
@@ -139,9 +188,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         <p><strong>Message:</strong></p>
         <p>${safeMessage}</p>
       `
-    }); 
+    });
 
-    // Send auto-reply to customer
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: email,
@@ -170,7 +218,13 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Newsletter signup endpoint with rate limiting
 app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
-    const { name, email, phone, seasonalOfferings, website } = req.body;
+    const { name, email, phone, seasonalOfferings, website, turnstileToken, turnstileAction } = req.body;
+
+    const turnstileOk = turnstileAction === 'newsletter' &&
+      await verifyTurnstileToken(turnstileToken, getClientIp(req), 'newsletter');
+    if (!turnstileOk) {
+      return res.status(403).json({ error: 'Human verification failed. Please try again.' });
+    }
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
@@ -198,32 +252,28 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     const safePhone = escapeHtml(phone);
 
     const cmResponse = await fetch(
-  `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
-  {
-    method: 'POST',
-    headers: {
-      'Authorization':
-        'Basic ' +
-        Buffer.from(
-          process.env.CAMPAIGN_MONITOR_API_KEY + ':x'
-        ).toString('base64'),
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      EmailAddress: email,
-      Name: safeName,
-      Resubscribe: true,
-      ConsentToTrack: 'Yes'
-    })
-  }
-);
+      `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
+      {
+        method: 'POST',
+        headers: {
+          'Authorization':
+            'Basic ' + Buffer.from(process.env.CAMPAIGN_MONITOR_API_KEY + ':x').toString('base64'),
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          EmailAddress: email,
+          Name: safeName,
+          Resubscribe: true,
+          ConsentToTrack: 'Yes'
+        })
+      }
+    );
 
-if (!cmResponse.ok) {
-  const errorText = await cmResponse.text();
-  throw new Error(`Campaign Monitor error: ${errorText}`);
-}
+    if (!cmResponse.ok) {
+      const errorText = await cmResponse.text();
+      throw new Error(`Campaign Monitor error: ${errorText}`);
+    }
 
-    // Send notification email to shop owner (commented out during testing)
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
@@ -237,7 +287,6 @@ if (!cmResponse.ok) {
       `
     });
 
-    // Send welcome email to subscriber
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: email,
@@ -267,7 +316,13 @@ if (!cmResponse.ok) {
 // Gift box order endpoint with rate limiting
 app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
   try {
-    const { name, email, phone, boxes, website } = req.body;
+    const { name, email, phone, boxes, website, turnstileToken, turnstileAction } = req.body;
+
+    const turnstileOk = turnstileAction === 'gift_box_order' &&
+      await verifyTurnstileToken(turnstileToken, getClientIp(req), 'gift_box_order');
+    if (!turnstileOk) {
+      return res.status(403).json({ error: 'Human verification failed. Please try again.' });
+    }
 
     // Honeypot check: bots fill hidden fields, humans never see them
     if (website) {
@@ -329,7 +384,6 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
       </tr>`;
     }).join('');
 
-    // Send notification email to shop owner
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
@@ -353,7 +407,6 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
       `
     });
 
-    // Send warm auto-reply to customer
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: email,
