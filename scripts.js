@@ -1,3 +1,73 @@
+// Cloudflare Turnstile integration for protected Farmhouse forms
+(function () {
+    const SITE_KEY = '0x4AAAAAAEc-nxZGguvkII8J';
+    const protectedForms = [
+        { formId: 'contactForm', action: 'contact', endpoint: '/api/contact' },
+        { formId: 'newsletterForm', action: 'newsletter', endpoint: '/api/newsletter' },
+        { formId: 'giftBoxForm', action: 'gift_box_order', endpoint: '/api/gift-box-order' }
+    ];
+
+    function renderTurnstileWidgets() {
+        if (typeof window.turnstile === 'undefined') return;
+
+        protectedForms.forEach(({ formId, action }) => {
+            const form = document.getElementById(formId);
+            if (!form || form.querySelector('.cf-turnstile')) return;
+
+            const widget = document.createElement('div');
+            widget.className = 'cf-turnstile';
+            widget.style.margin = '0 0 18px';
+
+            const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+            if (submitButton) {
+                submitButton.parentNode.insertBefore(widget, submitButton);
+            } else {
+                form.appendChild(widget);
+            }
+
+            window.turnstile.render(widget, {
+                sitekey: SITE_KEY,
+                action
+            });
+        });
+    }
+
+    function loadTurnstile() {
+        if (document.querySelector('script[data-farmhouse-turnstile]')) return;
+        const script = document.createElement('script');
+        script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+        script.async = true;
+        script.defer = true;
+        script.dataset.farmhouseTurnstile = 'true';
+        script.onload = renderTurnstileWidgets;
+        document.head.appendChild(script);
+    }
+
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = async function (input, init = {}) {
+        const url = typeof input === 'string' ? input : input?.url || '';
+        const match = protectedForms.find(({ endpoint }) => url.includes(endpoint));
+
+        if (match && init.body && typeof init.body === 'string') {
+            const form = document.getElementById(match.formId);
+            const token = form?.querySelector('[name="cf-turnstile-response"]')?.value || '';
+
+            try {
+                const body = JSON.parse(init.body);
+                body.turnstileToken = token;
+                body.turnstileAction = match.action;
+                init = { ...init, body: JSON.stringify(body) };
+            } catch (error) {
+                console.error('Unable to attach Turnstile token:', error);
+            }
+        }
+
+        return originalFetch(input, init);
+    };
+
+    document.addEventListener('DOMContentLoaded', loadTurnstile);
+})();
+
 // Cookie Consent Banner (PIPEDA Compliant)
 document.addEventListener('DOMContentLoaded', function() {
     const cookieBanner = document.getElementById('cookieConsentBanner');
@@ -190,6 +260,7 @@ if (newsletterModal) {
                     statusDiv.textContent = 'Thank you for subscribing!';
                     statusDiv.style.color = 'green';
                     newsletterForm.reset();
+                    if (typeof turnstile !== 'undefined') turnstile.reset();
                     setTimeout(() => {
                         newsletterModal.classList.remove('active');
                         document.body.style.overflow = '';
@@ -201,6 +272,7 @@ if (newsletterModal) {
             } catch (error) {
                 statusDiv.textContent = 'Sorry, something went wrong. Please try again.';
                 statusDiv.style.color = 'red';
+                if (typeof turnstile !== 'undefined') turnstile.reset();
             }
         });
     }
