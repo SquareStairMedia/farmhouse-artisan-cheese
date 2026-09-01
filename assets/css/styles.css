@@ -1027,8 +1027,9 @@ footer {
     .page-hero h1 {
         font-size: 2.5em;
         letter-spacing: 8px;
+        font-weight: 300;
     }
-    
+
     .page-hero p {
         font-size: 1em;
     }
@@ -1140,6 +1141,7 @@ footer {
     .page-hero h1 {
         font-size: 1.8em;
         letter-spacing: 6px;
+        font-weight: 300;
     }
     
     /* Sections */
