@@ -105,7 +105,6 @@
             transition: all 0.4s ease;
             display: grid;
             grid-template-columns: 220px 1fr;
-            min-height: 150px;
         }
 
         .issue-card:hover {
@@ -114,13 +113,16 @@
         }
 
         .issue-card-image {
+            position: relative;
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
-            min-height: 150px;
         }
 
         .issue-card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -208,7 +210,8 @@
             }
 
             .issue-card-image {
-                min-height: 200px;
+                aspect-ratio: auto;
+                height: 200px;
             }
 
             .issue-card-content {
@@ -388,6 +391,8 @@
          *   subhead — the poetic phrase from the grey subhead band in that issue
          *   image   — relative path to the Did You Know image for that issue
          *   alt     — descriptive alt text for the image
+         *   focus   — CSS object-position for the square thumbnail crop (x y), e.g. "50% 30%".
+         *             Use it to keep the subject in frame; defaults to centre.
          *   href    — relative path to the newsletter HTML file
          */
         const gazetteIssues = [
@@ -397,6 +402,7 @@
                 subhead: "artisan cheese, easy meals, and the first flavours of fall",
                 image: "./assets/newsletter/september-2026/september-cheese-selection.webp",
                 alt: "Red Storm vintage Red Leicester in deep red wax with a cut wedge, grapes, crackers, and chutney",
+                focus: "50% 50%",
                 href: "./assets/newsletter/september-2026/September2026Newsletter.html"
             },
             {
@@ -405,6 +411,7 @@
                 subhead: "local flavours, artisan cheese, and the last golden weeks of summer",
                 image: "./assets/newsletter/august-2026/ontario-board.webp",
                 alt: "Ontario artisan cheese with fresh peaches, honey, and seeded crackers on a wooden board",
+                focus: "50% 33%",
                 href: "./assets/newsletter/august-2026/August2026Newsletter.html"
             },
             {
@@ -413,6 +420,7 @@
                 subhead: "somewhere between the dock and the open road, a little cheese makes anywhere feel like home",
                 image: "./assets/newsletter/july-2026/packing-cheese.webp",
                 alt: "Cheese packed and ready for a road trip or cottage weekend",
+                focus: "50% 60%",
                 href: "./assets/newsletter/july-2026/July2026Newsletter.html"
             },
             {
@@ -421,6 +429,7 @@
                 subhead: "the board is set, the wine is poured, summer has finally arrived",
                 image: "./assets/newsletter/june-2026/outdoor-cheese.png",
                 alt: "An outdoor cheese board of firm, aged cheeses set out for summer entertaining",
+                focus: "50% 50%",
                 href: "./assets/newsletter/june-2026/June2026Newsletter.html"
             },
             {
@@ -429,6 +438,7 @@
                 subhead: "herbs on the rind, salt in the air, something extraordinary hidden just beneath the surface",
                 image: "./assets/newsletter/may-2026/cheese-cave.jpg",
                 alt: "Wheels of artisan cheese aging on wooden shelves in a cheese cave",
+                focus: "50% 70%",
                 href: "./assets/newsletter/may-2026/May2026Newsletter.html"
             },
             {
@@ -437,6 +447,7 @@
                 subhead: "european tradition, ontario terroir, and true artisan care — a perfect centrepiece for april",
                 image: "./assets/newsletter/april-2026/quebec-cheese-blog.jpg",
                 alt: "Artisan cheeses from Quebec displayed on a wooden board",
+                focus: "42% 50%",
                 href: "./assets/newsletter/april-2026/April2026Newsletter.html"
             },
             {
@@ -445,6 +456,7 @@
                 subhead: "a cheese that feels both rustic and elegant, where tradition, craftsmanship, and flavour reach their peak",
                 image: "./assets/images/blog/cheese-prep.png",
                 alt: "Artisan cheese resting at room temperature before serving",
+                focus: "75% 50%",
                 href: "./assets/newsletter/march-2026/March2026Newsletter.html"
             },
             {
@@ -453,6 +465,7 @@
                 subhead: "a shared board, a deeper understanding, and something special on the horizon",
                 image: "./assets/newsletter/february-2026/cheese-hilights1.JPG",
                 alt: "A selection of washed rind and bloomy rind artisan cheeses",
+                focus: "50% 50%",
                 href: "./assets/newsletter/february-2026/February2026Newsletter.html"
             },
             {
@@ -461,6 +474,7 @@
                 subhead: "a neighbourhood moment, a curated experience, and thoughtful details for the season ahead",
                 image: "./assets/images/blog/farmhouse-lactose-hero.jpg",
                 alt: "Artisan cheese selection at Farmhouse Artisan Cheese",
+                focus: "55% 50%",
                 href: "./assets/newsletter/january-2026/January2026Newsletter.html"
             }
         ];
@@ -472,7 +486,7 @@
             article.className = 'issue-card';
             article.innerHTML =
                 '<div class="issue-card-image">' +
-                    '<img src="' + issue.image + '" alt="' + issue.alt + '" loading="lazy">' +
+                    '<img src="' + issue.image + '" alt="' + issue.alt + '" loading="lazy" style="object-position: ' + (issue.focus || '50% 50%') + ';">' +
                 '</div>' +
                 '<div class="issue-card-content">' +
                     '<p class="issue-meta">issue n&ordm; ' + issue.issue + ' &middot; ' + issue.month + '</p>' +
