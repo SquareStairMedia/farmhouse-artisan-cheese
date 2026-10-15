@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Learn about Farmhouse Artisan Cheese, Oakville's destination for premium artisan cheeses. Passionate about quality, we curate exceptional cheese selections from the world's finest producers.">
+    <meta name="description" content="The story behind Farmhouse Artisan Cheese, Oakville&#x27;s Kerr Village cheese shop, and how we curate cheeses from the finest local and world producers.">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farmhouseartisancheese.com/about.html">
@@ -60,13 +60,72 @@
     }
     </style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://farmhouseartisancheese.com/about.html",
+      "url": "https://farmhouseartisancheese.com/about.html",
+      "name": "About - Farmhouse Artisan Cheese",
+      "isPartOf": {
+        "@id": "https://farmhouseartisancheese.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://farmhouseartisancheese.com/about.html#breadcrumb"
+      },
+      "description": "The story behind Farmhouse Artisan Cheese, Oakville's Kerr Village cheese shop, and how we curate cheeses from the finest local and world producers.",
+      "about": {
+        "@id": "https://farmhouseartisancheese.com/#localbusiness"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://farmhouseartisancheese.com/about.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://farmhouseartisancheese.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://farmhouseartisancheese.com/about.html"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://farmhouseartisancheese.com/about.html#stephane",
+      "name": "Stéphane",
+      "jobTitle": "Owner",
+      "worksFor": {
+        "@id": "https://farmhouseartisancheese.com/#localbusiness"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://farmhouseartisancheese.com/about.html#laure",
+      "name": "Laure",
+      "jobTitle": "Owner",
+      "worksFor": {
+        "@id": "https://farmhouseartisancheese.com/#localbusiness"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo-container">
-                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
-                <span class="logo-text">Farmhouse Artisan Cheese</span>
+            <a href="/" class="logo-container">
+                <img src="./assets/images/FH-Logo-80.png" alt="Farmhouse Artisan Cheese logo" class="logo-icon" width="80" height="80">
+                <h1 class="logo-heading"><span class="logo-text">Farmhouse Artisan Cheese</span></h1>
             </a>              
             <button class="hamburger" aria-label="Toggle menu">
                 <span></span>
@@ -74,7 +133,7 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <span class="dropdown-trigger">Collection</span>
@@ -113,7 +172,7 @@
 
 <section class="page-hero page-hero--image">
     <div class="page-hero__overlay"></div>
-    <img src="./assets/images/exterior.webp" alt="Farmhouse Artisan Cheese storefront at 345 Kerr Street, Oakville" class="page-hero__bg" style="object-position: top;">
+    <img src="./assets/images/exterior.webp" alt="Farmhouse Artisan Cheese storefront at 345 Kerr Street, Oakville" class="page-hero__bg" style="object-position: top;" width="1360" height="765" fetchpriority="high">
 </section>
 
 <section class="about">
@@ -122,7 +181,7 @@
                 <h2>Our Story...</h2>
                 
                 <div class="about-image" style="float: right; width: 400px; height: 500px; margin: 0 0 30px 50px; border: 1px solid #333;">
-                    <img src="./assets/images/owners.jpeg" alt="Our Story" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
+                    <img src="./assets/images/owners-stephane-laure.webp" alt="Owners Stéphane and Laure behind the counter at Farmhouse Artisan Cheese" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" width="640" height="640">
                 </div>
                 
                 <p>Bonjour! I'm Stéphane, and together with my wife Laure, I'm proud to welcome you to Farmhouse Artisan Cheese, Oakville's only dedicated cheese shop.</p>
@@ -144,8 +203,8 @@
     <div class="footer-content">
         <div class="footer-section footer-logo">
             <div>
-                <a href="index.html">
-                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese">
+                <a href="/">
+                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese" width="194" height="100">
                 </a>
                 <div style="margin-top: 30px;">
                     <div style="display: flex; gap: 20px; align-items: center;">
@@ -168,7 +227,7 @@
             <h3>Navigate</h3>
             <ul>
                 <li><a href="about.html">About</a></li>
-                <li><a href="index.html#collection">Our Collection</a></li>
+                <li><a href="/#collection">Our Collection</a></li>
                 <li><a href="notes.html">Blog</a></li><li><a href="archives.html">Archives</a></li><li><a href="recipes.html">Recipes</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -179,7 +238,7 @@
             <h3>Location</h3>
             <p>345 Kerr Street<br>
             Oakville, ON L6K 3B7<br>
-            (905) 582-9600<br>
+            <a href="tel:+19055829600" style="color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; text-decoration: none;">(905) 582-9600</a><br>
             </p>
         </div>
         <div class="footer-section">

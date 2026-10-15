@@ -87,7 +87,7 @@ Required in `server/` deployment:
 2. **GTM Tracking**: Ensure Google Analytics ID `G-T8DVQVJV9S` is present in `<head>` of all pages (check for duplicates)
 3. **Email Sender Address**: All emails from `farmhouse-auto-reply@radarmagnet.com` (Resend verified domain)
 4. **Form Validation**: Minimal on frontend; all validation happens in backend (`name`, `email`, `message` required)
-5. **Backup Files**: `BACKUP*.html` files exist—never edit; they're version snapshots for rollback
+5. **Backup Files**: old `BACKUP*.html` / `SANDBOX.html` snapshots were removed (Oct 2026); use git history for rollback
 
 ## Common Tasks
 

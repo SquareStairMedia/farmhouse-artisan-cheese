@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Browse past issues of The Farmhouse Gazette, the monthly newsletter from Farmhouse Artisan Cheese in Oakville. Stories, seasonal selections, and artisan cheese insights.">
+    <meta name="description" content="Past issues of The Farmhouse Gazette, the monthly newsletter from Farmhouse Artisan Cheese in Oakville: stories, seasonal selections and cheese notes.">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farmhouseartisancheese.com/archives.html">
@@ -255,12 +255,53 @@
             }
         }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://farmhouseartisancheese.com/archives.html",
+      "url": "https://farmhouseartisancheese.com/archives.html",
+      "name": "The Farmhouse Gazette — Newsletter Archives",
+      "isPartOf": {
+        "@id": "https://farmhouseartisancheese.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://farmhouseartisancheese.com/archives.html#breadcrumb"
+      },
+      "description": "Past issues of The Farmhouse Gazette, the monthly newsletter from Farmhouse Artisan Cheese in Oakville: stories, seasonal selections and cheese notes.",
+      "publisher": {
+        "@id": "https://farmhouseartisancheese.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://farmhouseartisancheese.com/archives.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://farmhouseartisancheese.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Newsletter Archives",
+          "item": "https://farmhouseartisancheese.com/archives.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo-container">
-                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
+            <a href="/" class="logo-container">
+                <img src="./assets/images/FH-Logo-80.png" alt="Farmhouse Artisan Cheese logo" class="logo-icon" width="80" height="80">
                 <span class="logo-text">Farmhouse Artisan Cheese</span>
             </a>
             <button class="hamburger" aria-label="Toggle menu">
@@ -269,7 +310,7 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <span class="dropdown-trigger">Collection</span>
@@ -291,7 +332,7 @@
 
     <section class="category-hero">
         <div class="category-hero-images">
-            <img src="./assets/images/char-event.png" alt="The Farmhouse Gazette">
+            <img src="./assets/images/charcuterie-event-table.webp" alt="Charcuterie grazing table at an evening event" width="1024" height="1024" fetchpriority="high">
         </div>
         <div class="category-hero-content">
             <p class="gazette-eyebrow">The Farmhouse Gazette</p>
@@ -313,8 +354,8 @@
         <div class="footer-content">
             <div class="footer-section footer-logo">
                 <div>
-                    <a href="index.html">
-                        <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese">
+                    <a href="/">
+                        <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese" width="194" height="100">
                     </a>
                     <div style="margin-top: 30px;">
                         <div style="display: flex; gap: 20px; align-items: center;">
@@ -337,7 +378,7 @@
                 <h3>Navigate</h3>
                 <ul>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="index.html#collection">Our Collection</a></li>
+                    <li><a href="/#collection">Our Collection</a></li>
                     <li><a href="notes.html">Blog</a></li><li><a href="archives.html">Archives</a></li><li><a href="recipes.html">Recipes</a></li>
                     <li><a href="faq.html">FAQ</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -348,7 +389,7 @@
                 <h3>Location</h3>
                 <p>345 Kerr Street<br>
                 Oakville, ON L6K 3B7<br>
-                (905) 582-9600<br>
+                <a href="tel:+19055829600" style="color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; text-decoration: none;">(905) 582-9600</a><br>
                 </p>
             </div>
             <div class="footer-section">
