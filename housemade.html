@@ -174,12 +174,53 @@
         }
 
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://farmhouseartisancheese.com/housemade.html",
+      "url": "https://farmhouseartisancheese.com/housemade.html",
+      "name": "Housemade - Farmhouse Artisan Cheese",
+      "isPartOf": {
+        "@id": "https://farmhouseartisancheese.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://farmhouseartisancheese.com/housemade.html#breadcrumb"
+      },
+      "description": "Enjoy housemade specialties at Farmhouse Artisan Cheese in Oakville. Our fresh, handcrafted creations complement our artisan cheese selections perfectly.",
+      "publisher": {
+        "@id": "https://farmhouseartisancheese.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://farmhouseartisancheese.com/housemade.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://farmhouseartisancheese.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Housemade",
+          "item": "https://farmhouseartisancheese.com/housemade.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo-container">
-                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
+            <a href="/" class="logo-container">
+                <img src="./assets/images/FH-Logo-80.png" alt="Farmhouse Artisan Cheese logo" class="logo-icon" width="80" height="80">
                 <span class="logo-text">Farmhouse Artisan Cheese</span>
             </a>            
             <button class="hamburger" aria-label="Toggle menu">
@@ -188,7 +229,7 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <span class="dropdown-trigger">Collection</span>
@@ -210,7 +251,7 @@
 
     <section class="category-hero">
         <div class="category-hero-images">
-            <img src="./assets/images/grilledCheese.JPG" alt="Store Preserves">
+            <img src="./assets/images/grilled-cheese-sandwich.webp" alt="Housemade grilled cheese sandwich" width="2400" height="1983" fetchpriority="high">
         </div>
         <div class="category-hero-content">
             <h1>Housemade</h1>
@@ -226,7 +267,7 @@
                 <p>Each dish is built around fresh, thoughtfully selected ingredients that highlight flavor, texture, and balance. Whether you're grabbing a quick gourmet bite or planning to impress guests, our housemade specialties make it effortless to serve something that feels both comforting and elevated.</p>
             </div>
             <div class="content-image">
-                <img src="./assets/images/mac-n-cheese.JPEG" alt="Boutique Items" loading="lazy">
+                <img src="./assets/images/housemade-mac-and-cheese.webp" alt="Trays of housemade mac and cheese" loading="lazy" width="1316" height="1755">
             </div>
         </div>
     </section>
@@ -234,7 +275,7 @@
     <section class="about">
         <div class="about-content">
             <div class="about-image">
-                <img src="./assets/images/food-offerings.png" alt="Events and Gatherings" loading="lazy">
+                <img src="./assets/images/housemade-pies-mac-and-cheese.webp" alt="Housemade mac and cheese, savoury pies and pimento dip" loading="lazy" width="1496" height="1496" decoding="async">
             </div>
             <div class="about-text">
                 <h2>Local Provisions</h2>
@@ -259,8 +300,8 @@
     <div class="footer-content">
         <div class="footer-section footer-logo">
             <div>
-                <a href="index.html">
-                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese">
+                <a href="/">
+                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese" width="194" height="100">
                 </a>
                 <div style="margin-top: 30px;">
                     <div style="display: flex; gap: 20px; align-items: center;">
@@ -283,7 +324,7 @@
             <h3>Navigate</h3>
             <ul>
                 <li><a href="about.html">About</a></li>
-                <li><a href="index.html#collection">Our Collection</a></li>
+                <li><a href="/#collection">Our Collection</a></li>
                 <li><a href="notes.html">Blog</a></li><li><a href="archives.html">Archives</a></li><li><a href="recipes.html">Recipes</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -294,7 +335,7 @@
             <h3>Location</h3>
             <p>345 Kerr Street<br>
             Oakville, ON L6K 3B7<br>
-            (905) 582-9600<br>
+            <a href="tel:+19055829600" style="color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; text-decoration: none;">(905) 582-9600</a><br>
             </p>
         </div>
         <div class="footer-section">

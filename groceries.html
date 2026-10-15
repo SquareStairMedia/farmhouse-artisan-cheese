@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <meta name="description" content="Browse fine groceries and gourmet accompaniments at Farmhouse Artisan Cheese. Discover artisan crackers, preserves, and specialty items to complement your cheese selections.">
+    <meta name="description" content="Fine groceries at Farmhouse Artisan Cheese in Oakville: artisan crackers, preserves, honeys and specialty items to pair with your cheese.">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://farmhouseartisancheese.com/groceries.html">
@@ -183,12 +183,53 @@
         }
 
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://farmhouseartisancheese.com/groceries.html",
+      "url": "https://farmhouseartisancheese.com/groceries.html",
+      "name": "Fine Groceries - Farmhouse Artisan Cheese",
+      "isPartOf": {
+        "@id": "https://farmhouseartisancheese.com/#website"
+      },
+      "breadcrumb": {
+        "@id": "https://farmhouseartisancheese.com/groceries.html#breadcrumb"
+      },
+      "description": "Fine groceries at Farmhouse Artisan Cheese in Oakville: artisan crackers, preserves, honeys and specialty items to pair with your cheese.",
+      "publisher": {
+        "@id": "https://farmhouseartisancheese.com/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://farmhouseartisancheese.com/groceries.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://farmhouseartisancheese.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fine Groceries",
+          "item": "https://farmhouseartisancheese.com/groceries.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <header>
         <nav>
-            <a href="index.html" class="logo-container">
-                <img src="./assets/images/FH-Logo.png" alt="FH Logo" class="logo-icon">
+            <a href="/" class="logo-container">
+                <img src="./assets/images/FH-Logo-80.png" alt="Farmhouse Artisan Cheese logo" class="logo-icon" width="80" height="80">
                 <span class="logo-text">Farmhouse Artisan Cheese</span>
             </a>            
             <button class="hamburger" aria-label="Toggle menu">
@@ -197,7 +238,7 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li class="dropdown">
                     <span class="dropdown-trigger">Collection</span>
@@ -219,7 +260,7 @@
 
     <section class="category-hero">
         <div class="category-hero-images">
-            <img src="./assets/images/groceries-hero4.png" alt="Artisan Cheeses">
+            <img src="./assets/images/fine-groceries-shelf.webp" alt="Shelf of fine groceries, preserves and crackers" width="779" height="390" fetchpriority="high">
         </div>
         <div class="category-hero-content">
             <h1>Fine Groceries</h1>
@@ -235,7 +276,7 @@
                 <p>Our shelves are stocked with <strong>local preserves</strong>, <strong>artisan crackers</strong>, <strong>fine mustards</strong>, <strong>premium olives</strong>, <strong>roasted nuts</strong>, and other gourmet accompaniments. Each one has been chosen because we understand how flavour profiles work together.</p>
             </div>
             <div class="content-image">
-                <img src="./assets/images/blueberry.JPG" alt="Boutique Items" loading="lazy">
+                <img src="./assets/images/preserves-shelf.webp" alt="Shelf of Provisions preserves and pepper jellies" loading="lazy" width="1200" height="1600">
             </div>
         </div>
     </section>
@@ -243,7 +284,7 @@
     <section class="about perfect-pairings-section">
         <div class="about-content">
             <div class="about-image">
-                <img src="./assets/images/IMG_8663.JPG" alt="Perfect Pairings" loading="lazy">
+                <img src="./assets/images/blueberry-lavender-preserve.webp" alt="Blueberry lavender preserve with fresh blueberries" loading="lazy" width="1170" height="1755" decoding="async">
             </div>
             <div class="about-text">
                 <h2>Perfect Pairings</h2>
@@ -268,8 +309,8 @@
     <div class="footer-content">
         <div class="footer-section footer-logo">
             <div>
-                <a href="index.html">
-                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese">
+                <a href="/">
+                    <img src="./assets/images/Farmhouse-Artisan-Cheese-Logo-Black.png" alt="Farmhouse Artisan Cheese" width="194" height="100">
                 </a>
                 <div style="margin-top: 30px;">
                     <div style="display: flex; gap: 20px; align-items: center;">
@@ -292,7 +333,7 @@
             <h3>Navigate</h3>
             <ul>
                 <li><a href="about.html">About</a></li>
-                <li><a href="index.html#collection">Our Collection</a></li>
+                <li><a href="/#collection">Our Collection</a></li>
                 <li><a href="notes.html">Blog</a></li><li><a href="archives.html">Archives</a></li><li><a href="recipes.html">Recipes</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -303,7 +344,7 @@
             <h3>Location</h3>
             <p>345 Kerr Street<br>
             Oakville, ON L6K 3B7<br>
-            (905) 582-9600<br>
+            <a href="tel:+19055829600" style="color: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; text-decoration: none;">(905) 582-9600</a><br>
             </p>
         </div>
         <div class="footer-section">

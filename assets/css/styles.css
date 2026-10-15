@@ -119,6 +119,12 @@ nav {
     text-transform: uppercase;
 }
 
+/* Page H1 wrapping the header logo text: no box or styling of its own */
+.logo-heading {
+    all: unset;
+    display: contents;
+}
+
 /* Legacy support for pages not yet updated */
 .logo {
     font-size: 1em;
