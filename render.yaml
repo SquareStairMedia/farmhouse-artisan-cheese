@@ -14,3 +14,11 @@ services:
       - path: /*
         name: Strict-Transport-Security
         value: max-age=63072000; includeSubDomains; preload
+    routes:
+      # Old WordPress URL still indexed by Bing -> closest matching page
+      - type: redirect
+        source: /farmhouse-artisan-cheese-shares-the-art-of-the-charcuterie
+        destination: /boards.html
+      - type: redirect
+        source: /farmhouse-artisan-cheese-shares-the-art-of-the-charcuterie/
+        destination: /boards.html
