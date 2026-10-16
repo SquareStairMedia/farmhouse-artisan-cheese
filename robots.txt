@@ -7,6 +7,10 @@ Disallow: /assets/newsletter/Master/
 
 Sitemap: https://farmhouseartisancheese.com/sitemap.xml
 
+# IndexNow ownership key file: /8bbdf94de01a9cb7a6bb7069f02d4871.txt
+# Required by Bing's IndexNow. Contains only the key. Do not delete, rename or edit.
+# Key is public by design. Managed in Bing Webmaster Tools > IndexNow.
+
 #
 #                                        .::--:..                                        
 #                                       .@@*+++*#%@@@@@@@@%=                              
