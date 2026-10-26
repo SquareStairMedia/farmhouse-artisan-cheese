@@ -240,7 +240,7 @@ if (newsletterModal) {
                 email: document.getElementById('newsletter-email').value,
                 phone: document.getElementById('newsletter-phone').value,
                 seasonalOfferings: document.getElementById('seasonal-offerings').checked,
-                website: document.getElementById('newsletter-honeypot').value
+                website: document.getElementById('newsletter-honeypot')?.value || ''
             };
             
             const statusDiv = document.getElementById('newsletterStatus');
