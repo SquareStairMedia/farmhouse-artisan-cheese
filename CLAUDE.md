@@ -17,6 +17,13 @@ Stephen works on many projects at once and may not remember this one. At the sta
 - Still open: the soft 404 issue (see below), checking Bing Site Explorer for leftover WordPress URLs, redirect planning, automating IndexNow after deploys, and rolling this out to other sites.
 Then ask whether he wants to pick one of those up or do something else. Keep it short and avoid jargon. Do not start any of these without his go-ahead.
 
+## Newsletter unsubscribe page (built 2026-11-06, NOT live until set up)
+- unsubscribe.html is a two-step unsubscribe: visiting the page never unsubscribes anyone, only the button does. This stops email security scanners that auto-click links from unsubscribing people. It is noindex and deliberately NOT in sitemap.xml or llms.txt.
+- Backend: POST /api/unsubscribe in server/index.js (Turnstile, honeypot, rate limit). It unsubscribes in Campaign Monitor, saves the reason in a list custom field, and emails info@squarestairmedia.com and info@farmhouseartisancheese.com.
+- Setup still needed before it works: (1) in Campaign Monitor create a Text custom field named UnsubscribeReason on the newsletter list; (2) in the Cloudflare Turnstile dashboard confirm the existing widget allows the `unsubscribe` action on farmhouseartisancheese.com; (3) deploy the backend and the site; (4) change the footer unsubscribe link in the newsletter template to https://farmhouseartisancheese.com/unsubscribe.html?email=[email].
+- Keep Campaign Monitor's own List-Unsubscribe header untouched: that one-click header is what Gmail and Yahoo use and is separate from the footer link.
+- Reason emails and the CM field are best effort. Only the Campaign Monitor unsubscribe call must succeed.
+
 ## Internal linking and recipes
 - All recipes live on one page, recipes.html, and each has an anchor (for example recipes.html#raclette). Link to the anchor, never to a made-up page. The recipe ID must stay stable once it has been shared (newsletters, blog posts).
 - Link only where the two pieces are genuinely related. Do not force a blog post to link to a recipe just to add a link.

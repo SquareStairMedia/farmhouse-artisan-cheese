@@ -4,7 +4,8 @@
     const protectedForms = [
         { formId: 'contactForm', action: 'contact', endpoint: '/api/contact' },
         { formId: 'newsletterForm', action: 'newsletter', endpoint: '/api/newsletter' },
-        { formId: 'giftBoxForm', action: 'gift_box_order', endpoint: '/api/gift-box-order' }
+        { formId: 'giftBoxForm', action: 'gift_box_order', endpoint: '/api/gift-box-order' },
+        { formId: 'unsubscribeForm', action: 'unsubscribe', endpoint: '/api/unsubscribe' }
     ];
 
     function renderTurnstileWidgets() {

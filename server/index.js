@@ -125,6 +125,15 @@ const newsletterLimiter = rateLimit({
   legacyHeaders: false,
 });
 
+// Rate limiting for unsubscribe requests - 10 per hour per IP
+const unsubscribeLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 10,
+  message: 'Too many unsubscribe attempts from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 // Rate limiting for gift box orders - 5 submissions per hour per IP
 const giftBoxLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
@@ -314,6 +323,112 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
 });
 
 // Gift box order endpoint with rate limiting
+// Newsletter unsubscribe endpoint (called by unsubscribe.html after the subscriber presses the button).
+// Unsubscribes the address in Campaign Monitor first (the legal requirement), then records the optional
+// reason on the subscriber and emails SquareStair Media and the shop.
+const UNSUBSCRIBE_REASONS = {
+  too_many: 'I receive too many emails',
+  not_relevant: "The content isn't relevant to me",
+  not_signed_up: "I don't remember signing up",
+  moved_away: 'I no longer live near Oakville',
+  other: 'Something else'
+};
+const UNSUBSCRIBE_NOTIFY_EMAILS = ['info@squarestairmedia.com', 'info@farmhouseartisancheese.com'];
+// Name of the custom field to create in the Campaign Monitor list (type: Text).
+const CM_UNSUBSCRIBE_REASON_FIELD = 'UnsubscribeReason';
+
+app.post('/api/unsubscribe', unsubscribeLimiter, async (req, res) => {
+  try {
+    const { email, reason, comment, website, turnstileToken, turnstileAction } = req.body;
+
+    const turnstileOk = turnstileAction === 'unsubscribe' &&
+      await verifyTurnstileToken(turnstileToken, getClientIp(req), 'unsubscribe');
+    if (!turnstileOk) {
+      return res.status(403).json({ error: 'Human verification failed. Please try again.' });
+    }
+
+    // Honeypot check: bots fill hidden fields, humans never see them
+    if (website) {
+      return res.json({ success: true, message: 'Unsubscribed' });
+    }
+
+    if (typeof email !== 'string' || !email || !isValidEmail(email.trim()) || email.length > 254) {
+      return res.status(400).json({ error: 'Please enter a valid email address' });
+    }
+    if (comment !== undefined && (typeof comment !== 'string' || comment.length > 500)) {
+      return res.status(400).json({ error: 'Your comment is too long (500 characters maximum)' });
+    }
+    if (reason && !Object.prototype.hasOwnProperty.call(UNSUBSCRIBE_REASONS, reason)) {
+      return res.status(400).json({ error: 'Invalid reason' });
+    }
+
+    const cleanEmail = email.trim();
+    const reasonLabel = reason ? UNSUBSCRIBE_REASONS[reason] : 'No reason given';
+    const cleanComment = (comment || '').trim();
+    const cmAuth = 'Basic ' + Buffer.from(process.env.CAMPAIGN_MONITOR_API_KEY + ':x').toString('base64');
+    const cmListUrl = `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}`;
+
+    // 1. Unsubscribe. This must succeed or the subscriber is told it failed.
+    const unsubResponse = await fetch(`${cmListUrl}/unsubscribe.json`, {
+      method: 'POST',
+      headers: { 'Authorization': cmAuth, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ EmailAddress: cleanEmail })
+    });
+
+    if (!unsubResponse.ok) {
+      const errorText = await unsubResponse.text();
+      let code;
+      try { code = JSON.parse(errorText).Code; } catch (e) { /* not JSON */ }
+      // 203 = address is not on the list. Treat as already unsubscribed so the page does not reveal list membership.
+      if (code !== 203) {
+        throw new Error(`Campaign Monitor unsubscribe error: ${errorText}`);
+      }
+    }
+
+    // 2. Best effort: store the reason on the subscriber's record. Failure never blocks the unsubscribe.
+    // Requires a Text custom field named UnsubscribeReason on the list. Resubscribe stays false.
+    try {
+      const fieldValue = cleanComment ? `${reasonLabel} | ${cleanComment}` : reasonLabel;
+      const updateResponse = await fetch(`${cmListUrl}.json?email=${encodeURIComponent(cleanEmail)}`, {
+        method: 'PUT',
+        headers: { 'Authorization': cmAuth, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          CustomFields: [{ Key: CM_UNSUBSCRIBE_REASON_FIELD, Value: fieldValue.slice(0, 500) }],
+          Resubscribe: false
+        })
+      });
+      if (!updateResponse.ok) {
+        console.error('Campaign Monitor reason update failed:', await updateResponse.text());
+      }
+    } catch (error) {
+      console.error('Campaign Monitor reason update error:', error.message);
+    }
+
+    // 3. Best effort: notify SquareStair Media and the shop.
+    try {
+      await resend.emails.send({
+        from: 'farmhouse-auto-reply@radarmagnet.com',
+        to: UNSUBSCRIBE_NOTIFY_EMAILS,
+        subject: 'Newsletter unsubscribe',
+        html: `
+          <h2>Newsletter Unsubscribe</h2>
+          <p><strong>Email:</strong> ${escapeHtml(cleanEmail)}</p>
+          <p><strong>Reason:</strong> ${escapeHtml(reasonLabel)}</p>
+          <p><strong>Comment:</strong> ${cleanComment ? escapeHtml(cleanComment).replace(/\n/g, '<br>') : 'None'}</p>
+          <p style="color:#666;font-size:12px;">The subscriber has been unsubscribed in Campaign Monitor and the reason saved on their record.</p>
+        `
+      });
+    } catch (error) {
+      console.error('Unsubscribe notification email failed:', error.message);
+    }
+
+    res.json({ success: true, message: 'Unsubscribed' });
+  } catch (error) {
+    console.error('Error processing unsubscribe:', error);
+    res.status(500).json({ error: 'Failed to process your request' });
+  }
+});
+
 app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
   try {
     const { name, email, phone, boxes, website, turnstileToken, turnstileAction } = req.body;
