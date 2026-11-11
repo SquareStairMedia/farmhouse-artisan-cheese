@@ -1440,11 +1440,6 @@ footer {
     text-align: left;
 }
 
-.newsletter-consent a {
-    color: inherit;
-    text-decoration: underline;
-}
-
 .newsletter-submit {
     width: 100%;
     padding: 18px 60px;
