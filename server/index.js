@@ -104,7 +104,7 @@ function getClientIp(req) {
 // update it here too: it is what gets recorded as the consent they gave.
 const NEWSLETTER_CONSENT_TEXT = {
   checkbox: 'Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".',
-  subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time.'
+  subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese. You can unsubscribe at any time.'
 };
 
 // Subscribe an address to the Campaign Monitor list. Throws if Campaign Monitor refuses.
@@ -143,7 +143,7 @@ async function sendWelcomeEmail(name, email) {
     html: `
       <h2>Welcome, ${safeName}!</h2>
       <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
-      <p>We look forward to providing you with exciting new arrivals, seasonal selections, and special events at our Oakville location.</p>
+      <p>We look forward to sharing recipes, seasonal selections and our "Cheese of the Month" with you.</p>
       <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
       <p>Curious what you missed? Catch up on past issues anytime in our <a href="https://farmhouseartisancheese.com/archives.html">newsletter archive</a>.</p>
       <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
