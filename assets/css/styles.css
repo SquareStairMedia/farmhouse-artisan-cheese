@@ -1404,6 +1404,47 @@ footer {
     margin-bottom: 0;
 }
 
+/* Optional newsletter opt-in on contact and order forms.
+   Doubled selectors so these win over per-page .order-form input/label rules. */
+.newsletter-checkbox.newsletter-optin {
+    margin-bottom: 8px;
+}
+
+.newsletter-checkbox.newsletter-optin input[type="checkbox"] {
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    margin: 1px 0 0;
+    padding: 0;
+    accent-color: #000;
+    cursor: pointer;
+}
+
+.newsletter-checkbox.newsletter-optin label {
+    display: block;
+    margin-bottom: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    cursor: pointer;
+}
+
+/* Consent fine print: who is asking, how to withdraw, privacy link */
+.newsletter-consent {
+    margin: 0 0 28px;
+    font-size: 0.8em;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: #555;
+    text-align: left;
+}
+
+.newsletter-consent a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 .newsletter-submit {
     width: 100%;
     padding: 18px 60px;

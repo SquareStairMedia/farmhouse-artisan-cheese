@@ -963,7 +963,7 @@
     <div class="newsletter-modal-content">
         <button class="newsletter-modal-close">&times;</button>
         <h2>Stay Connected</h2>
-        <p>Be the first to hear about new arrivals, seasonal selections, and special events.</p>
+        <p>Be the first to hear about recipes, seasonal selections, and our "Cheese of the Month".</p>
         <form class="newsletter-form" id="newsletterForm">
             <div class="form-group">
                 <label for="newsletter-name">Name *</label>
@@ -980,10 +980,7 @@
                 <input type="tel" id="newsletter-phone" name="phone">
             </div>
             
-            <div class="newsletter-checkbox">
-                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
-                <label for="seasonal-offerings">Yes! Please include me in your newsletter and other exciting announcements.</label>
-            </div>
+            <p class="newsletter-consent">By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
             
             <button type="submit" class="newsletter-submit">Subscribe</button>
             <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
@@ -1058,6 +1055,12 @@
                     </div>
                 </div>
 
+                <div class="newsletter-checkbox newsletter-optin">
+                    <input type="checkbox" id="gb-newsletter-optin" name="newsletterOptIn">
+                    <label for="gb-newsletter-optin">Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".</label>
+                </div>
+                <p class="newsletter-consent">From Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
                 <div class="form-error" id="giftBoxError" style="display:none;"></div>
 
                 <button type="submit" class="modal-submit">Submit Order</button>
@@ -1067,6 +1070,7 @@
         <div id="giftBoxConfirmation" class="modal-confirmation" style="display:none;">
             <h2>Order Received</h2>
             <p>Thank you for your order. A member of our team will be in touch within 24–48 hours to confirm the details.</p>
+            <p id="giftBoxNewsletterNote" hidden>You're also on our newsletter list. You can unsubscribe at any time using the link in any issue.</p>
         </div>
     </div>
 </div>
@@ -1129,6 +1133,7 @@
         const email = document.getElementById('gb-email').value.trim();
         const phone = document.getElementById('gb-phone').value.trim();
         const honeypot = document.getElementById('gb-website').value;
+        const newsletterOptIn = document.getElementById('gb-newsletter-optin').checked;
 
         const selectedBoxes = [];
         document.querySelectorAll('.box-option.selected').forEach(function (option) {
@@ -1159,7 +1164,7 @@
             const response = await fetch('https://farmhouse-backend.onrender.com/api/gift-box-order', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, phone, boxes: selectedBoxes, website: honeypot })
+                body: JSON.stringify({ name, email, phone, boxes: selectedBoxes, newsletterOptIn, sourcePage: window.location.pathname, website: honeypot })
             });
 
             if (response.ok) {
@@ -1167,6 +1172,7 @@
                     'event_category': 'Order',
                     'event_label': 'Gift Box Order - ' + document.title
                 });
+                document.getElementById('giftBoxNewsletterNote').hidden = !newsletterOptIn;
                 formWrap.style.display = 'none';
                 confirmation.style.display = 'block';
             } else {

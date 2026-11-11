@@ -587,7 +587,7 @@
     <div class="newsletter-modal-content">
         <button class="newsletter-modal-close">&times;</button>
         <h2>Stay Connected</h2>
-        <p>Be the first to hear about new arrivals, seasonal selections, and special events.</p>
+        <p>Be the first to hear about recipes, seasonal selections, and our "Cheese of the Month".</p>
         <form class="newsletter-form" id="newsletterForm">
             <div class="form-group">
                 <label for="newsletter-name">Name *</label>
@@ -604,10 +604,7 @@
                 <input type="tel" id="newsletter-phone" name="phone">
             </div>
             
-            <div class="newsletter-checkbox">
-                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
-                <label for="seasonal-offerings">Yes! Please include me in your newsletter and other exciting announcements.</label>
-            </div>
+            <p class="newsletter-consent">By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
             
             <button type="submit" class="newsletter-submit">Subscribe</button>
             <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
@@ -644,6 +641,12 @@
                 <textarea id="message" name="message" required></textarea>
             </div>
             
+            <div class="newsletter-checkbox newsletter-optin">
+                <input type="checkbox" id="contact-newsletter-optin" name="newsletterOptIn">
+                <label for="contact-newsletter-optin">Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".</label>
+            </div>
+            <p class="newsletter-consent">From Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
             <button type="submit" class="submit-button">Send Message</button>
             <div id="formStatus" style="margin-top: 20px; text-align: center;"></div>
         </form>
@@ -758,7 +761,9 @@ document.querySelector('#contactForm').addEventListener('submit', async function
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
+        message: document.getElementById('message').value,
+        newsletterOptIn: document.getElementById('contact-newsletter-optin').checked,
+        sourcePage: window.location.pathname
     };
     
     const statusDiv = document.getElementById('formStatus');
@@ -776,7 +781,8 @@ document.querySelector('#contactForm').addEventListener('submit', async function
                 'event_category': 'Contact',
                 'event_label': 'Contact Form Submission - ' + document.title
             });
-            statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.';
+            statusDiv.textContent = 'Message sent successfully! We\'ll be in touch soon.' +
+                (formData.newsletterOptIn ? ' You\'re also on our newsletter list.' : '');
             statusDiv.style.color = 'green';
             document.getElementById('contactForm').reset();
             setTimeout(closeModal, 2000); // Close modal after 2 seconds

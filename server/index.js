@@ -99,6 +99,69 @@ function getClientIp(req) {
   return req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket.remoteAddress;
 }
 
+// Newsletter consent (CASL). The wording below must match what visitors see next to
+// the opt-in checkbox / above the Subscribe button. If the on-page wording changes,
+// update it here too: it is what gets recorded as the consent they gave.
+const NEWSLETTER_CONSENT_TEXT = {
+  checkbox: 'Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".',
+  subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time.'
+};
+
+// Subscribe an address to the Campaign Monitor list. Throws if Campaign Monitor refuses.
+async function subscribeToNewsletter(name, email) {
+  const cmResponse = await fetch(
+    `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
+    {
+      method: 'POST',
+      headers: {
+        'Authorization':
+          'Basic ' + Buffer.from(process.env.CAMPAIGN_MONITOR_API_KEY + ':x').toString('base64'),
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        EmailAddress: email,
+        Name: name,
+        Resubscribe: true,
+        ConsentToTrack: 'Yes'
+      })
+    }
+  );
+
+  if (!cmResponse.ok) {
+    const errorText = await cmResponse.text();
+    throw new Error(`Campaign Monitor error: ${errorText}`);
+  }
+}
+
+// Handle the optional newsletter checkbox on the contact and gift box forms.
+// Only an explicit boolean true counts as consent. A Campaign Monitor failure must not
+// fail the visitor's message or order, so it is reported to the owner instead.
+// Returns { optedIn, synced, record } where record is an HTML snippet for the owner email.
+async function handleNewsletterOptIn({ optIn, name, email, form, sourcePage }) {
+  if (optIn !== true) {
+    return { optedIn: false, synced: false, record: '<p><strong>Newsletter opt-in:</strong> No</p>' };
+  }
+
+  const consentedAt = new Date().toISOString();
+  const page = typeof sourcePage === 'string' ? escapeHtml(sourcePage.slice(0, 200)) : 'unknown';
+  let synced = true;
+  try {
+    await subscribeToNewsletter(name, email);
+  } catch (error) {
+    synced = false;
+    console.error('Newsletter opt-in could not be added to Campaign Monitor:', error.message);
+  }
+
+  console.log(`Newsletter consent recorded: form=${form} page=${page} at=${consentedAt} synced=${synced}`);
+
+  const record = `
+        <p><strong>Newsletter opt-in:</strong> Yes (${synced ? 'added to the Campaign Monitor list' : '<strong>could not be added automatically, please add this address to the list by hand</strong>'})</p>
+        <p style="color:#666; font-size: 0.9em;">Consent record: ${escapeHtml(consentedAt)} | form: ${escapeHtml(form)} | page: ${page}<br>
+        Wording shown: "${escapeHtml(NEWSLETTER_CONSENT_TEXT.checkbox)}"</p>`;
+
+  return { optedIn: true, synced, record };
+}
+
 // Middleware
 app.use(cors({
   origin: process.env.NODE_ENV === 'production'
@@ -142,7 +205,7 @@ app.get('/', (req, res) => {
 // Contact form endpoint with rate limiting
 app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
-    const { name, email, phone, message, website, turnstileToken, turnstileAction } = req.body;
+    const { name, email, phone, message, newsletterOptIn, sourcePage, website, turnstileToken, turnstileAction } = req.body;
 
     const turnstileOk = turnstileAction === 'contact' &&
       await verifyTurnstileToken(turnstileToken, getClientIp(req), 'contact');
@@ -176,6 +239,10 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     const safePhone = escapeHtml(phone);
     const safeMessage = escapeHtml(message);
 
+    const optIn = await handleNewsletterOptIn({
+      optIn: newsletterOptIn, name, email, form: 'contact', sourcePage
+    });
+
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
       to: [process.env.OWNER_EMAIL, process.env.BACKUP_EMAIL],
@@ -187,6 +254,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
         <p><strong>Message:</strong></p>
         <p>${safeMessage}</p>
+        ${optIn.record}
       `
     });
 
@@ -198,6 +266,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
         <h2>Thank you for reaching out!</h2>
         <p>Dear ${safeName},</p>
         <p>We've received your message and will get back to you shortly.</p>
+        ${optIn.optedIn ? '<p>Thank you for opting in to our newsletter, The Farmhouse Gazette. You can unsubscribe at any time using the link in any issue.</p>' : ''}
         <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
         <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
         <br>
@@ -218,7 +287,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
 // Newsletter signup endpoint with rate limiting
 app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
   try {
-    const { name, email, phone, seasonalOfferings, website, turnstileToken, turnstileAction } = req.body;
+    const { name, email, phone, sourcePage, website, turnstileToken, turnstileAction } = req.body;
 
     const turnstileOk = turnstileAction === 'newsletter' &&
       await verifyTurnstileToken(turnstileToken, getClientIp(req), 'newsletter');
@@ -251,28 +320,11 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
     const safeEmail = escapeHtml(email);
     const safePhone = escapeHtml(phone);
 
-    const cmResponse = await fetch(
-      `https://api.createsend.com/api/v3.3/subscribers/${process.env.CAMPAIGN_MONITOR_LIST_ID}.json`,
-      {
-        method: 'POST',
-        headers: {
-          'Authorization':
-            'Basic ' + Buffer.from(process.env.CAMPAIGN_MONITOR_API_KEY + ':x').toString('base64'),
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          EmailAddress: email,
-          Name: safeName,
-          Resubscribe: true,
-          ConsentToTrack: 'Yes'
-        })
-      }
-    );
+    await subscribeToNewsletter(name, email);
 
-    if (!cmResponse.ok) {
-      const errorText = await cmResponse.text();
-      throw new Error(`Campaign Monitor error: ${errorText}`);
-    }
+    const consentedAt = new Date().toISOString();
+    const safePage = typeof sourcePage === 'string' ? escapeHtml(sourcePage.slice(0, 200)) : 'unknown';
+    console.log(`Newsletter consent recorded: form=newsletter page=${safePage} at=${consentedAt} synced=true`);
 
     await resend.emails.send({
       from: 'farmhouse-auto-reply@radarmagnet.com',
@@ -283,7 +335,8 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
         <p><strong>Name:</strong> ${safeName}</p>
         <p><strong>Email:</strong> ${safeEmail}</p>
         <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
-        <p><strong>Seasonal Offerings:</strong> ${seasonalOfferings ? 'Yes' : 'No'}</p>
+        <p style="color:#666; font-size: 0.9em;">Consent record: ${escapeHtml(consentedAt)} | form: newsletter | page: ${safePage}<br>
+        Wording shown: "${escapeHtml(NEWSLETTER_CONSENT_TEXT.subscribe)}"</p>
       `
     });
 
@@ -316,7 +369,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
 // Gift box order endpoint with rate limiting
 app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
   try {
-    const { name, email, phone, boxes, website, turnstileToken, turnstileAction } = req.body;
+    const { name, email, phone, boxes, newsletterOptIn, sourcePage, website, turnstileToken, turnstileAction } = req.body;
 
     const turnstileOk = turnstileAction === 'gift_box_order' &&
       await verifyTurnstileToken(turnstileToken, getClientIp(req), 'gift_box_order');
@@ -367,6 +420,10 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
     const safeEmail = escapeHtml(email);
     const safePhone = escapeHtml(phone);
 
+    const optIn = await handleNewsletterOptIn({
+      optIn: newsletterOptIn, name, email, form: 'gift_box_order', sourcePage
+    });
+
     // Build order summary table for store notification email
     const orderRows = boxes.map(box => {
       if (box.name === 'The Executive') {
@@ -404,6 +461,7 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
           </thead>
           <tbody>${orderRows}</tbody>
         </table>
+        ${optIn.record}
       `
     });
 
@@ -414,6 +472,7 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
       html: `
         <h2>Thank you, ${safeName}!</h2>
         <p>We've received your gift box order and a member of our team will be in touch within 24–48 hours to confirm the details.</p>
+        ${optIn.optedIn ? '<p>Thank you for opting in to our newsletter, The Farmhouse Gazette. You can unsubscribe at any time using the link in any issue.</p>' : ''}
         <p>If you have any questions in the meantime, you're always welcome to reach us by phone at (905) 582-9600, or stop by our shop on Kerr Street in Oakville.</p>
         <p>We look forward to curating something wonderful for you.</p>
         <br>
