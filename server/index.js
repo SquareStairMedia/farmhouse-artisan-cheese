@@ -103,7 +103,8 @@ function getClientIp(req) {
 // the opt-in checkbox / above the Subscribe button. If the on-page wording changes,
 // update it here too: it is what gets recorded as the consent they gave.
 const NEWSLETTER_CONSENT_TEXT = {
-  checkbox: 'Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".',
+  checkbox: 'Please email me the monthly Farmhouse Gazette: recipes, seasonal selections and your "Cheese of the Month".',
+  checkboxNote: '(By checking this box, you provide express consent to receive electronic news and marketing promotions from Farmhouse Artisan Cheese. You can withdraw your consent and unsubscribe at any time by clicking the link at the bottom of our emails or by contacting us at info@farmhouseartisancheese.com.)',
   subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese. You can unsubscribe at any time.'
 };
 
@@ -180,7 +181,7 @@ async function handleNewsletterOptIn({ optIn, name, email, form, sourcePage }) {
   const record = `
         <p><strong>Newsletter opt-in:</strong> Yes (${synced ? 'added to the Campaign Monitor list' : '<strong>could not be added automatically, please add this address to the list by hand</strong>'})</p>
         <p style="color:#666; font-size: 0.9em;">Consent record: ${escapeHtml(consentedAt)} | form: ${escapeHtml(form)} | page: ${page}<br>
-        Wording shown: "${escapeHtml(NEWSLETTER_CONSENT_TEXT.checkbox)}"</p>`;
+        Wording shown: "${escapeHtml(NEWSLETTER_CONSENT_TEXT.checkbox)} ${escapeHtml(NEWSLETTER_CONSENT_TEXT.checkboxNote)}"</p>`;
 
   return { optedIn: true, synced, record };
 }
