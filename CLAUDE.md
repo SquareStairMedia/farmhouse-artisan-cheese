@@ -29,7 +29,7 @@ Then ask whether he wants to pick one of those up or do something else. Keep it 
 ## Newsletter opt-in (CASL)
 - Contact forms (contact.html, and the Contact Us modals in faq.html and boards.html) and the gift box order form (gift-boxes.html) have an optional, unchecked "send me The Farmhouse Gazette" checkbox. Only a ticked box subscribes someone; contact and orders never do on their own.
 - The newsletter popup (28 pages) has no checkbox. Its consent line sits above the Subscribe button.
-- Backend (server/index.js): `handleNewsletterOptIn` adds opt-ins to Campaign Monitor and the owner email carries a consent record (date, form, page, wording). If Campaign Monitor fails, the message or order still goes through and the owner email says to add the address by hand.
+- Backend (server/index.js): `handleNewsletterOptIn` adds opt-ins to Campaign Monitor and the owner email carries a consent record (date, form, page, wording). If Campaign Monitor fails, the message or order still goes through and the owner email says to add the address by hand. Opt-ins also get the same "Welcome to Farmhouse Artisan Cheese" email as direct signups (`sendWelcomeEmail`), sent separately from the contact or order confirmation, and only once they are on the list. The confirmation email keeps its own newsletter line.
 - `NEWSLETTER_CONSENT_TEXT` in server/index.js must match the wording on the pages. Change both together.
 - scripts.js defines a no-op `window.gtag` until analytics loads. Without it, visitors who decline cookies or block analytics could not open the contact/order modals.
 
