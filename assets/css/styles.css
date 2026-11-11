@@ -1430,6 +1430,17 @@ footer {
     cursor: pointer;
 }
 
+/* Express-consent note under the opt-in checkbox */
+.newsletter-optin-note {
+    margin: 0 0 28px;
+    font-size: 0.8em;
+    font-style: italic;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    color: #767676;
+    text-align: left;
+}
+
 /* Consent fine print: who is asking, how to withdraw, privacy link */
 .newsletter-consent {
     margin: 0 0 28px;
