@@ -133,6 +133,29 @@ async function subscribeToNewsletter(name, email) {
   }
 }
 
+// The welcome email every new subscriber gets, whichever form they signed up through.
+async function sendWelcomeEmail(name, email) {
+  const safeName = escapeHtml(name);
+  await resend.emails.send({
+    from: 'farmhouse-auto-reply@radarmagnet.com',
+    to: email,
+    subject: 'Welcome to Farmhouse Artisan Cheese',
+    html: `
+      <h2>Welcome, ${safeName}!</h2>
+      <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
+      <p>We look forward to providing you with exciting new arrivals, seasonal selections, and special events at our Oakville location.</p>
+      <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
+      <p>Curious what you missed? Catch up on past issues anytime in our <a href="https://farmhouseartisancheese.com/archives.html">newsletter archive</a>.</p>
+      <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
+      <br>
+      <p>Best regards,</p>
+      <p><strong>Farmhouse Artisan Cheese</strong></p>
+      <p>345 Kerr Street, Oakville, ON L6K 3B7</p>
+      <p>(905) 582-9600</p>
+    `
+  });
+}
+
 // Handle the optional newsletter checkbox on the contact and gift box forms.
 // Only an explicit boolean true counts as consent. A Campaign Monitor failure must not
 // fail the visitor's message or order, so it is reported to the owner instead.
@@ -277,6 +300,16 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       `
     });
 
+    // Separate welcome email, only once they are actually on the list. The message or
+    // order is already delivered, so a failure here is logged and must not fail the request.
+    if (optIn.synced) {
+      try {
+        await sendWelcomeEmail(name, email);
+      } catch (error) {
+        console.error('Newsletter welcome email failed:', error.message);
+      }
+    }
+
     res.json({ success: true, message: 'Email sent successfully' });
   } catch (error) {
     console.error('Error sending email:', error);
@@ -340,24 +373,7 @@ app.post('/api/newsletter', newsletterLimiter, async (req, res) => {
       `
     });
 
-    await resend.emails.send({
-      from: 'farmhouse-auto-reply@radarmagnet.com',
-      to: email,
-      subject: 'Welcome to Farmhouse Artisan Cheese',
-      html: `
-        <h2>Welcome, ${safeName}!</h2>
-        <p>Thank you for joining our email list. We're delighted to have you as part of our community.</p>
-        <p>We look forward to providing you with exciting new arrivals, seasonal selections, and special events at our Oakville location.</p>
-        <p>Browse our selection online and stay connected with us on <a href="https://www.facebook.com/farmhouseartisancheese/">Facebook</a> and <a href="https://www.instagram.com/farmhouseartisancheese/">Instagram</a> for inspiration, seasonal offerings, and behind-the-scenes glimpses of our shop.</p>
-        <p>Curious what you missed? Catch up on past issues anytime in our <a href="https://farmhouseartisancheese.com/archives.html">newsletter archive</a>.</p>
-        <p>And when you are in the neighbourhood, drop in and visit us at our Oakville location on Kerr Street just north of Lakeshore.</p>
-        <br>
-        <p>Best regards,</p>
-        <p><strong>Farmhouse Artisan Cheese</strong></p>
-        <p>345 Kerr Street, Oakville, ON L6K 3B7</p>
-        <p>(905) 582-9600</p>
-      `
-    });
+    await sendWelcomeEmail(name, email);
 
     res.json({ success: true, message: 'Newsletter signup successful' });
   } catch (error) {
@@ -482,6 +498,16 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
         <p>(905) 582-9600</p>
       `
     });
+
+    // Separate welcome email, only once they are actually on the list. The message or
+    // order is already delivered, so a failure here is logged and must not fail the request.
+    if (optIn.synced) {
+      try {
+        await sendWelcomeEmail(name, email);
+      } catch (error) {
+        console.error('Newsletter welcome email failed:', error.message);
+      }
+    }
 
     res.json({ success: true, message: 'Order received' });
   } catch (error) {
