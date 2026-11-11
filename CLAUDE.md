@@ -26,6 +26,13 @@ Then ask whether he wants to pick one of those up or do something else. Keep it 
 - November 2026 links added: gift box blog (choose-the-perfect-gift-box.html) is linked from notes.html, how-much-cheese-per-person (Next Post), blog-gift-worth-savouring and gift-boxes.html, and links out to gift-boxes, contact, blog-gift-worth-savouring and how-much-cheese-per-person. The Raclette recipe (recipes.html#raclette) is linked from back-to-busy and lactose, and links out to lactose and back-to-busy.
 - Still to consider: cheeses.html does not mention Raclette or Laguiole. Add them there when stocked so newsletter and recipe links to the cheeses page land on something relevant.
 
+## Newsletter opt-in (CASL)
+- Contact forms (contact.html, and the Contact Us modals in faq.html and boards.html) and the gift box order form (gift-boxes.html) have an optional, unchecked "send me The Farmhouse Gazette" checkbox. Only a ticked box subscribes someone; contact and orders never do on their own.
+- The newsletter popup (28 pages) has no checkbox. Its consent line sits above the Subscribe button.
+- Backend (server/index.js): `handleNewsletterOptIn` adds opt-ins to Campaign Monitor and the owner email carries a consent record (date, form, page, wording). If Campaign Monitor fails, the message or order still goes through and the owner email says to add the address by hand.
+- `NEWSLETTER_CONSENT_TEXT` in server/index.js must match the wording on the pages. Change both together.
+- scripts.js defines a no-op `window.gtag` until analytics loads. Without it, visitors who decline cookies or block analytics could not open the contact/order modals.
+
 ## Known issues and upkeep
 - Unknown URLs return HTTP 200 with the "Page Not Found" page instead of a real 404 (soft 404). The site is behind Cloudflare and this repo has no rewrite rules, so check Cloudflare settings, not the code.
 - The lastmod dates in sitemap.xml are edited by hand. Update them when a page changes.

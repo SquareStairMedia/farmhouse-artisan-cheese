@@ -1,3 +1,9 @@
+// Analytics only loads after cookie consent (see loadGoogleAnalytics below). Until then,
+// and for visitors who decline or block it, gtag() calls on the forms must be harmless
+// no-ops: an undefined gtag throws and stops modals opening and success messages showing.
+// Nothing is sent or stored by this stub; loadGoogleAnalytics replaces it with the real gtag.
+window.gtag = window.gtag || function () {};
+
 // Cloudflare Turnstile integration for protected Farmhouse forms
 (function () {
     const SITE_KEY = '0x4AAAAAAEc-nxZGguvkII8J';
@@ -239,7 +245,7 @@ if (newsletterModal) {
                 name: document.getElementById('newsletter-name').value,
                 email: document.getElementById('newsletter-email').value,
                 phone: document.getElementById('newsletter-phone').value,
-                seasonalOfferings: document.getElementById('seasonal-offerings').checked,
+                sourcePage: window.location.pathname,
                 website: document.getElementById('newsletter-honeypot')?.value || ''
             };
             

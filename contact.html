@@ -208,6 +208,12 @@
                         <textarea id="message" name="message" required maxlength="2000"></textarea>
                     </div>
 
+                    <div class="newsletter-checkbox newsletter-optin">
+                        <input type="checkbox" id="contact-newsletter-optin" name="newsletterOptIn">
+                        <label for="contact-newsletter-optin">Yes, send me The Farmhouse Gazette: new arrivals, seasonal selections and events, about once a month. (Optional)</label>
+                    </div>
+                    <p class="newsletter-consent">From Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+
                     <button type="submit" class="submit-button">Send Message</button>
                     <div id="formStatus" style="margin-top: 20px; text-align: center;"></div>
                 </form>
@@ -221,6 +227,8 @@
                         email: document.getElementById('email').value,
                         phone: document.getElementById('phone').value,
                         message: document.getElementById('message').value,
+                        newsletterOptIn: document.getElementById('contact-newsletter-optin').checked,
+                        sourcePage: window.location.pathname,
                         website: document.getElementById('contact-honeypot').value
                     };
                     
@@ -240,6 +248,7 @@
                                 'event_category': 'Contact',
                                 'event_label': 'Contact Form Submission'
                             });
+                            document.getElementById('successNewsletterNote').hidden = !formData.newsletterOptIn;
                             document.getElementById('successModal').classList.add('active');
                             document.getElementById('contactForm').reset();
                             statusDiv.textContent = '';
@@ -348,6 +357,7 @@
     <div class="success-content">
         <h2>Thank You!</h2>
         <p>Your message has been sent successfully. Please check your email for our confirmation. We'll be in touch soon.</p>
+        <p id="successNewsletterNote" hidden>You're also on our newsletter list. You can unsubscribe at any time using the link in any issue.</p>
         <button class="success-close" onclick="closeSuccessModal()">Close</button>
     </div>
 </div>
@@ -382,10 +392,7 @@
                 <input type="tel" id="newsletter-phone" name="phone" maxlength="20">
             </div>
             
-            <div class="newsletter-checkbox">
-                <input type="checkbox" id="seasonal-offerings" name="seasonalOfferings">
-                <label for="seasonal-offerings">Yes! Please include me in your newsletter and other exciting announcements.</label>
-            </div>
+            <p class="newsletter-consent">By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
             
             <button type="submit" class="newsletter-submit">Subscribe</button>
             <div id="newsletterStatus" style="margin-top: 20px; text-align: center;"></div>
