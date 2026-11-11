@@ -30,10 +30,14 @@ Then ask whether he wants to pick one of those up or do something else. Keep it 
 - Contact forms (contact.html, and the Contact Us modals in faq.html and boards.html) and the gift box order form (gift-boxes.html) have an optional, unchecked "send me The Farmhouse Gazette" checkbox. Only a ticked box subscribes someone; contact and orders never do on their own.
 - The newsletter popup (28 pages) has no checkbox. Its consent line sits above the Subscribe button.
 - Backend (server/index.js): `handleNewsletterOptIn` adds opt-ins to Campaign Monitor and the owner email carries a consent record (date, form, page, wording). If Campaign Monitor fails, the message or order still goes through and the owner email says to add the address by hand. Opt-ins also get the same "Welcome to Farmhouse Artisan Cheese" email as direct signups (`sendWelcomeEmail`), sent separately from the contact or order confirmation, and only once they are on the list. The confirmation email keeps its own newsletter line.
-- `NEWSLETTER_CONSENT_TEXT` in server/index.js must match the wording on the pages. Change both together.
+- Wording: "Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month"." (no "(Optional)" and no frequency, on purpose). It is in the 4 forms above and in `NEWSLETTER_CONSENT_TEXT` in server/index.js, which must match. Change them together.
+- The popup intro text (27 pages) uses the same topics. The welcome email text (`sendWelcomeEmail`) still says "new arrivals, seasonal selections, and special events" and has not been aligned yet.
+- After a deploy that touches these forms, send one test contact message with the box ticked. Expect 3 emails (owner copy with consent record, confirmation, welcome) and the address in Campaign Monitor, then unsubscribe the test address. The server on Render must be redeployed too, or opt-ins are not added to Campaign Monitor.
 - scripts.js defines a no-op `window.gtag` until analytics loads. Without it, visitors who decline cookies or block analytics could not open the contact/order modals.
 
 ## Known issues and upkeep
 - Unknown URLs return HTTP 200 with the "Page Not Found" page instead of a real 404 (soft 404). The site is behind Cloudflare and this repo has no rewrite rules, so check Cloudflare settings, not the code.
 - The lastmod dates in sitemap.xml are edited by hand. Update them when a page changes.
 - The domain used to run WordPress (Rank Math). Old WordPress URLs may still be known to Bing.
+- contact.html: the second inline script adds a click listener to #successModal before that element exists, so clicking outside the success popup does not close it (the Close button works).
+- .github/copilot-instructions.md still has stale details outside the forms (file structure, line counts, page count). The forms and email sections are current.
