@@ -104,7 +104,7 @@ function getClientIp(req) {
 // update it here too: it is what gets recorded as the consent they gave.
 const NEWSLETTER_CONSENT_TEXT = {
   checkbox: 'Yes, send me The Farmhouse Gazette: recipes, seasonal selections and our "Cheese of the Month".',
-  subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese, 345 Kerr Street, Oakville, ON L6K 3B7. You can unsubscribe at any time.'
+  subscribe: 'By subscribing, you agree to receive our newsletter from Farmhouse Artisan Cheese. You can unsubscribe at any time.'
 };
 
 // Subscribe an address to the Campaign Monitor list. Throws if Campaign Monitor refuses.
