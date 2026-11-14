@@ -35,6 +35,13 @@ Then ask whether he wants to pick one of those up or do something else. Keep it 
 - After a deploy that touches these forms, send one test contact message with the box ticked. Expect 3 emails (owner copy with consent record, confirmation, welcome) and the address in Campaign Monitor, then unsubscribe the test address. The server on Render must be redeployed too, or opt-ins are not added to Campaign Monitor.
 - scripts.js defines a no-op `window.gtag` until analytics loads. Without it, visitors who decline cookies or block analytics could not open the contact/order modals.
 
+## Security headers (Render static site)
+- Headers are set by hand in the Render dashboard (service farmhouse-artisan-cheese > Headers), path /*. The header block in render.yaml is NOT applied: the service was created in the dashboard, not from the Blueprint, and its name does not match the file. Do not assume render.yaml or the Helmet setup in server/index.js protects the site. Helmet only covers the Express API.
+- Found 2026-11-13 via securityheaders.com (grade D): only X-Content-Type-Options was being sent. Added 2026-11-14 and checked live: Strict-Transport-Security (max-age=31536000; includeSubDomains), X-Frame-Options SAMEORIGIN, Referrer-Policy strict-origin-when-cross-origin, Permissions-Policy (camera, microphone, geolocation, payment, usb all off).
+- Content-Security-Policy is NOT done. It must start as Content-Security-Policy-Report-Only, be tested in the browser console on the home, contact and gift-boxes pages (Turnstile, Google Analytics after cookie consent, form posts to farmhouse-backend.onrender.com), then be renamed to Content-Security-Policy. The pages use inline scripts and 498 inline style attributes, so the policy needs 'unsafe-inline' for scripts and styles.
+- Always check what the live site really sends (curl -I https://farmhouseartisancheese.com/), not just what the config files say. Re-check after any hosting change.
+- For other sites: nosniff, Referrer-Policy and HSTS are safe defaults. Review per site: includeSubDomains (breaks non-HTTPS subdomains), Permissions-Policy (breaks maps, payments, video), X-Frame-Options (breaks legitimate embedding). CSP is always per site.
+
 ## Known issues and upkeep
 - Unknown URLs return HTTP 200 with the "Page Not Found" page instead of a real 404 (soft 404). The site is behind Cloudflare and this repo has no rewrite rules, so check Cloudflare settings, not the code.
 - The lastmod dates in sitemap.xml are edited by hand. Update them when a page changes.
