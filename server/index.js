@@ -452,7 +452,7 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
           <td style="padding: 10px 0; color: #666;">Team to discuss directly</td>
         </tr>`;
       }
-      const price = box.name === 'The Discovery' ? '$79 + tax' : '$159 + tax';
+      const price = box.name === 'The Discovery' ? '$85 + tax' : '$169 + tax';
       return `<tr>
         <td style="padding: 10px 16px 10px 0;"><strong>${escapeHtml(box.name)}</strong></td>
         <td style="padding: 10px 16px 10px 0;">${price}</td>
