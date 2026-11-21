@@ -419,12 +419,14 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
       return res.status(400).json({ error: 'Please select at least one gift box' });
     }
 
-    const allowedBoxes = ['The Discovery', 'The Master', 'The Executive'];
+    // 'The Executive' kept as an alias so orders from a cached older page still work.
+    const customBoxNames = ['Custom Gift Box', 'The Executive'];
+    const allowedBoxes = ['The Discovery', 'The Master', ...customBoxNames];
     for (const box of boxes) {
       if (!box.name || !allowedBoxes.includes(box.name)) {
         return res.status(400).json({ error: 'Invalid gift box selection' });
       }
-      if (box.name !== 'The Executive') {
+      if (!customBoxNames.includes(box.name)) {
         const qty = parseInt(box.qty, 10);
         if (isNaN(qty) || qty < 1 || qty > 99) {
           return res.status(400).json({ error: `Invalid quantity for ${box.name}` });
@@ -443,7 +445,7 @@ app.post('/api/gift-box-order', giftBoxLimiter, async (req, res) => {
 
     // Build order summary table for store notification email
     const orderRows = boxes.map(box => {
-      if (box.name === 'The Executive') {
+      if (customBoxNames.includes(box.name)) {
         return `<tr>
           <td style="padding: 10px 16px 10px 0;"><strong>${escapeHtml(box.name)}</strong></td>
           <td style="padding: 10px 16px 10px 0;">Custom Pricing</td>
